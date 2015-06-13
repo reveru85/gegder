@@ -7,9 +7,12 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */; };
+		13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */; };
+		13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */; };
 		2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079BF01B29C8AE004D141D /* AppDelegate.swift */; };
-		2D079BF31B29C8AE004D141D /* FirstViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079BF21B29C8AE004D141D /* FirstViewController.swift */; };
-		2D079BF51B29C8AE004D141D /* SecondViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079BF41B29C8AE004D141D /* SecondViewController.swift */; };
+		2D079BF31B29C8AE004D141D /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079BF21B29C8AE004D141D /* HomeViewController.swift */; };
+		2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079BF41B29C8AE004D141D /* TrendingViewController.swift */; };
 		2D079BF81B29C8AE004D141D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BF61B29C8AE004D141D /* Main.storyboard */; };
 		2D079BFA1B29C8AE004D141D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BF91B29C8AE004D141D /* Images.xcassets */; };
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
@@ -27,11 +30,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
+		13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
 		2D079BEB1B29C8AE004D141D /* Gegder.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Gegder.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D079BEF1B29C8AE004D141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D079BF01B29C8AE004D141D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		2D079BF21B29C8AE004D141D /* FirstViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirstViewController.swift; sourceTree = "<group>"; };
-		2D079BF41B29C8AE004D141D /* SecondViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondViewController.swift; sourceTree = "<group>"; };
+		2D079BF21B29C8AE004D141D /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		2D079BF41B29C8AE004D141D /* TrendingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrendingViewController.swift; sourceTree = "<group>"; };
 		2D079BF71B29C8AE004D141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2D079BF91B29C8AE004D141D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		2D079BFC1B29C8AE004D141D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -80,12 +86,15 @@
 			isa = PBXGroup;
 			children = (
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
-				2D079BF21B29C8AE004D141D /* FirstViewController.swift */,
-				2D079BF41B29C8AE004D141D /* SecondViewController.swift */,
+				2D079BF21B29C8AE004D141D /* HomeViewController.swift */,
+				2D079BF41B29C8AE004D141D /* TrendingViewController.swift */,
 				2D079BF61B29C8AE004D141D /* Main.storyboard */,
 				2D079BF91B29C8AE004D141D /* Images.xcassets */,
 				2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */,
 				2D079BEE1B29C8AE004D141D /* Supporting Files */,
+				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
+				13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */,
+				13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */,
 			);
 			path = Gegder;
 			sourceTree = "<group>";
@@ -215,9 +224,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D079BF51B29C8AE004D141D /* SecondViewController.swift in Sources */,
+				13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */,
+				2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */,
 				2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */,
-				2D079BF31B29C8AE004D141D /* FirstViewController.swift in Sources */,
+				13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */,
+				2D079BF31B29C8AE004D141D /* HomeViewController.swift in Sources */,
+				13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -415,6 +427,7 @@
 				2D079C0E1B29C8AF004D141D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		2D079C0F1B29C8AF004D141D /* Build configuration list for PBXNativeTarget "GegderTests" */ = {
 			isa = XCConfigurationList;
@@ -423,6 +436,7 @@
 				2D079C111B29C8AF004D141D /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
