@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		134429D21B2EF45B00C56968 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D11B2EF45B00C56968 /* PostData.swift */; };
+		134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D31B2EF72C00C56968 /* PostTableViewCell.swift */; };
 		13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */; };
 		13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */; };
 		13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */; };
@@ -30,6 +32,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		134429D11B2EF45B00C56968 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
+		134429D31B2EF72C00C56968 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -95,6 +99,8 @@
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
 				13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */,
 				13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */,
+				134429D11B2EF45B00C56968 /* PostData.swift */,
+				134429D31B2EF72C00C56968 /* PostTableViewCell.swift */,
 			);
 			path = Gegder;
 			sourceTree = "<group>";
@@ -227,8 +233,10 @@
 				13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */,
 				2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */,
 				2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */,
+				134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */,
 				13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */,
 				2D079BF31B29C8AE004D141D /* HomeViewController.swift in Sources */,
+				134429D21B2EF45B00C56968 /* PostData.swift in Sources */,
 				13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

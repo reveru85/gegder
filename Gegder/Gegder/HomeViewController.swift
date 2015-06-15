@@ -12,12 +12,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     @IBOutlet weak var HomeTableView: UITableView!
     let postCellId = "PostCell"
-    
-    var data = ["Apple", "Apricot", "Banana", "Blueberry", "Cantaloupe", "Cherry",
-        "Clementine", "Coconut", "Cranberry", "Fig", "Grape", "Grapefruit",
-        "Kiwi fruit", "Lemon", "Lime", "Lychee", "Mandarine", "Mango",
-        "Melon", "Nectarine", "Olive", "Orange", "Papaya", "Peach",
-        "Pear", "Pineapple", "Raspberry", "Strawberry"]
+    let data = PostData()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +20,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         HomeTableView.delegate = self
         HomeTableView.dataSource = self
+        HomeTableView.estimatedRowHeight = 44
+        HomeTableView.rowHeight = UITableViewAutomaticDimension
     }
 
     override func didReceiveMemoryWarning() {
@@ -33,13 +30,24 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return data.count
+        return data.entries.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! UITableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-        cell.textLabel?.text = data[indexPath.row]
+        let post = data.entries[indexPath.row]
+        
+        let imageurl = NSURL(string: post.image)
+        let imagedata = NSData(contentsOfURL: imageurl!)
+        
+        cell.UserLabel.text = post.username
+        
+        cell.PostImage.image = UIImage(data: imagedata!)
+        
+        //cell.PostImage.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        
         
         return cell
     }

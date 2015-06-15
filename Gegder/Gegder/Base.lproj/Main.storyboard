@@ -123,31 +123,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="200" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sPk-kr-Cre">
-                                <rect key="frame" x="0.0" y="20" width="600" height="600"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="sPk-kr-Cre">
+                                <rect key="frame" x="0.0" y="20" width="600" height="580"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" id="ECH-yo-eYu">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="PostCell" rowHeight="183" id="ECH-yo-eYu" customClass="PostTableViewCell" customModule="Gegder" customModuleProvider="target">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="ECH-yo-eYu" id="AQn-3s-vG6">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-G8-FoT">
-                                                    <rect key="frame" x="0.0" y="78" width="600" height="43"/>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-G8-FoT">
+                                                    <rect key="frame" x="20" y="61" width="560" height="101"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="height" constant="101" id="OhF-fu-TfN"/>
+                                                    </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbp-3R-3vK">
-                                                    <rect key="frame" x="8" y="0.0" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pbp-3R-3vK">
+                                                    <rect key="frame" x="20" y="20" width="560" height="21"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="trailing" secondItem="Pbp-3R-3vK" secondAttribute="trailing" constant="20" id="16m-aE-hDI"/>
+                                                <constraint firstAttribute="bottom" secondItem="OTL-G8-FoT" secondAttribute="bottom" constant="20" id="3mj-Kc-wEV"/>
+                                                <constraint firstItem="OTL-G8-FoT" firstAttribute="leading" secondItem="AQn-3s-vG6" secondAttribute="leading" constant="20" id="Axs-xx-JwT"/>
+                                                <constraint firstItem="OTL-G8-FoT" firstAttribute="top" secondItem="Pbp-3R-3vK" secondAttribute="bottom" constant="20" id="DoF-If-tFW"/>
+                                                <constraint firstAttribute="trailing" secondItem="OTL-G8-FoT" secondAttribute="trailing" constant="20" id="L60-6s-ruY"/>
+                                                <constraint firstItem="Pbp-3R-3vK" firstAttribute="top" secondItem="AQn-3s-vG6" secondAttribute="top" constant="20" id="sl2-x5-78I"/>
+                                                <constraint firstItem="Pbp-3R-3vK" firstAttribute="leading" secondItem="AQn-3s-vG6" secondAttribute="leading" constant="20" id="vRU-wu-0Co"/>
+                                            </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="PostImage" destination="OTL-G8-FoT" id="vfH-Nt-XNQ"/>
+                                            <outlet property="UserLabel" destination="Pbp-3R-3vK" id="Fcy-4J-kCg"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="sPk-kr-Cre" secondAttribute="bottom" id="5gb-Pt-E8Y"/>
+                            <constraint firstItem="sPk-kr-Cre" firstAttribute="leading" secondItem="e5p-jf-ZHS" secondAttribute="leading" id="9Ch-5Z-ga7"/>
+                            <constraint firstItem="sPk-kr-Cre" firstAttribute="top" secondItem="BZM-jb-3wz" secondAttribute="bottom" id="Gdu-cS-1rL"/>
+                            <constraint firstAttribute="trailing" secondItem="sPk-kr-Cre" secondAttribute="trailing" id="rU9-7R-81i"/>
+                        </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Home" id="HsK-P9-y8m"/>
                     <connections>
