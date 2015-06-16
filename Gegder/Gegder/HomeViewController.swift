@@ -38,16 +38,25 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let post = data.entries[indexPath.row]
         
-        let imageurl = NSURL(string: post.image)
-        let imagedata = NSData(contentsOfURL: imageurl!)
+        let userimageurl = NSURL(string: post.userimage)
+        let userimagedata = NSData(contentsOfURL: userimageurl!)
+        
+        let postimageurl = NSURL(string: post.postimage)
+        let postimagedata = NSData(contentsOfURL: postimageurl!)
+        
         
         cell.UserLabel.text = post.username
-        
-        cell.PostImage.image = UIImage(data: imagedata!)
+        cell.UserImage.image = UIImage(data: userimagedata!)
+        cell.UserLocation.text = post.userlocation
+        cell.PostImage.image = UIImage(data: postimagedata!)
         
         //cell.PostImage.contentMode = UIViewContentMode.ScaleAspectFit
+        //let width = cell.PostImage.image?.size.width
+        //let width2 = cell.PostImage.frame.width
         
+        //cell.PostImage.frame = CGRect(x: cell.PostImage.frame.midX, y: cell.PostImage.frame.midY, width: cell.PostImage.frame.width, height: cell.frame.width)
         
+        //cell.UserLocation.text = "\(width2)"
         
         return cell
     }
