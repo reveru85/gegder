@@ -38,25 +38,32 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let post = data.entries[indexPath.row]
         
-        let userimageurl = NSURL(string: post.userimage)
-        let userimagedata = NSData(contentsOfURL: userimageurl!)
+        //let userimageurl = NSURL(string: post.userimage)
+        //let userimagedata = NSData(contentsOfURL: userimageurl!)
         
-        let postimageurl = NSURL(string: post.postimage)
-        let postimagedata = NSData(contentsOfURL: postimageurl!)
+        //let postimageurl = NSURL(string: post.postimage)
+        //let postimagedata = NSData(contentsOfURL: postimageurl!)
         
         
         cell.UserLabel.text = post.username
-        cell.UserImage.image = UIImage(data: userimagedata!)
+        //cell.UserImage.image = UIImage(data: userimagedata!)
         cell.UserLocation.text = post.userlocation
-        cell.PostImage.image = UIImage(data: postimagedata!)
+        //cell.PostImage.image = UIImage(data: postimagedata!)
         
-        //cell.PostImage.contentMode = UIViewContentMode.ScaleAspectFit
-        //let width = cell.PostImage.image?.size.width
-        //let width2 = cell.PostImage.frame.width
+        //test async image load
         
-        //cell.PostImage.frame = CGRect(x: cell.PostImage.frame.midX, y: cell.PostImage.frame.midY, width: cell.PostImage.frame.width, height: cell.frame.width)
+        if let imageUrl = NSURL(string: post.postimage) {
+            let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+            NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                if data != nil {
+                    let image = UIImage(data: data)
+                    cell.PostImage.image = image
+                }
+            
+            })
+        }
         
-        //cell.UserLocation.text = "\(width2)"
         
         return cell
     }
