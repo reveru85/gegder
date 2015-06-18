@@ -9,6 +9,12 @@
 /* Begin PBXBuildFile section */
 		134429D21B2EF45B00C56968 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D11B2EF45B00C56968 /* PostData.swift */; };
 		134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D31B2EF72C00C56968 /* PostTableViewCell.swift */; };
+		134F2E2C1B32F86800C09E9B /* PoetsenOne-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */; };
+		134F2E331B32F8DC00C09E9B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2E1B32F8DC00C09E9B /* Lato-Bold.ttf */; };
+		134F2E341B32F8DC00C09E9B /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2F1B32F8DC00C09E9B /* Lato-Light.ttf */; };
+		134F2E351B32F8DC00C09E9B /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E301B32F8DC00C09E9B /* Lato-Regular.ttf */; };
+		134F2E361B32F8DC00C09E9B /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E311B32F8DC00C09E9B /* Lato-Semibold.ttf */; };
+		134F2E371B32F8DC00C09E9B /* OpenSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E321B32F8DC00C09E9B /* OpenSansBold.ttf */; };
 		13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */; };
 		13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */; };
 		13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */; };
@@ -34,6 +40,12 @@
 /* Begin PBXFileReference section */
 		134429D11B2EF45B00C56968 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		134429D31B2EF72C00C56968 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
+		134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoetsenOne-Regular.otf"; sourceTree = "<group>"; };
+		134F2E2E1B32F8DC00C09E9B /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		134F2E2F1B32F8DC00C09E9B /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		134F2E301B32F8DC00C09E9B /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		134F2E311B32F8DC00C09E9B /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
+		134F2E321B32F8DC00C09E9B /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
 		13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -68,6 +80,19 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		134F2E2D1B32F89200C09E9B /* Font */ = {
+			isa = PBXGroup;
+			children = (
+				134F2E2E1B32F8DC00C09E9B /* Lato-Bold.ttf */,
+				134F2E2F1B32F8DC00C09E9B /* Lato-Light.ttf */,
+				134F2E301B32F8DC00C09E9B /* Lato-Regular.ttf */,
+				134F2E311B32F8DC00C09E9B /* Lato-Semibold.ttf */,
+				134F2E321B32F8DC00C09E9B /* OpenSansBold.ttf */,
+				134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */,
+			);
+			name = Font;
+			sourceTree = "<group>";
+		};
 		2D079BE21B29C8AE004D141D = {
 			isa = PBXGroup;
 			children = (
@@ -91,16 +116,17 @@
 			children = (
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
 				2D079BF21B29C8AE004D141D /* HomeViewController.swift */,
-				2D079BF41B29C8AE004D141D /* TrendingViewController.swift */,
-				2D079BF61B29C8AE004D141D /* Main.storyboard */,
-				2D079BF91B29C8AE004D141D /* Images.xcassets */,
-				2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */,
-				2D079BEE1B29C8AE004D141D /* Supporting Files */,
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
-				13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */,
-				13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */,
 				134429D11B2EF45B00C56968 /* PostData.swift */,
 				134429D31B2EF72C00C56968 /* PostTableViewCell.swift */,
+				13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */,
+				2D079BF41B29C8AE004D141D /* TrendingViewController.swift */,
+				13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */,
+				2D079BF91B29C8AE004D141D /* Images.xcassets */,
+				134F2E2D1B32F89200C09E9B /* Font */,
+				2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */,
+				2D079BF61B29C8AE004D141D /* Main.storyboard */,
+				2D079BEE1B29C8AE004D141D /* Supporting Files */,
 			);
 			path = Gegder;
 			sourceTree = "<group>";
@@ -210,8 +236,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				134F2E2C1B32F86800C09E9B /* PoetsenOne-Regular.otf in Resources */,
+				134F2E361B32F8DC00C09E9B /* Lato-Semibold.ttf in Resources */,
+				134F2E331B32F8DC00C09E9B /* Lato-Bold.ttf in Resources */,
 				2D079BF81B29C8AE004D141D /* Main.storyboard in Resources */,
+				134F2E341B32F8DC00C09E9B /* Lato-Light.ttf in Resources */,
+				134F2E351B32F8DC00C09E9B /* Lato-Regular.ttf in Resources */,
 				2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */,
+				134F2E371B32F8DC00C09E9B /* OpenSansBold.ttf in Resources */,
 				2D079BFA1B29C8AE004D141D /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
