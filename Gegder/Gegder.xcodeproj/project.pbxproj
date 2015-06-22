@@ -76,6 +76,7 @@
 		2D079C071B29C8AF004D141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D079C081B29C8AF004D141D /* GegderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GegderTests.swift; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
+		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -113,6 +114,7 @@
 		2D079BE21B29C8AE004D141D = {
 			isa = PBXGroup;
 			children = (
+				2D74669E1B384D1E009E6891 /* ben.playground */,
 				2D079BED1B29C8AE004D141D /* Gegder */,
 				2D079C051B29C8AF004D141D /* GegderTests */,
 				2D079BEC1B29C8AE004D141D /* Products */,
