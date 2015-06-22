@@ -16,8 +16,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
-        NSLog("Hello world")
-        
         var navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PoetsenOne", size: 24)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
