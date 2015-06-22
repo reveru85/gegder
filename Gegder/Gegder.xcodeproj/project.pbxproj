@@ -35,6 +35,20 @@
 			remoteGlobalIDString = 2D079BEA1B29C8AE004D141D;
 			remoteInfo = Gegder;
 		};
+		2D7466991B384425009E6891 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE45519693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
+		2D74669B1B384425009E6891 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = 754BE46019693E190098E6F3;
+			remoteInfo = CryptoSwiftTests;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
@@ -60,6 +74,7 @@
 		2D079C021B29C8AF004D141D /* GegderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GegderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D079C071B29C8AF004D141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D079C081B29C8AF004D141D /* GegderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GegderTests.swift; sourceTree = "<group>"; };
+		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +114,7 @@
 				2D079BED1B29C8AE004D141D /* Gegder */,
 				2D079C051B29C8AF004D141D /* GegderTests */,
 				2D079BEC1B29C8AE004D141D /* Products */,
+				2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */,
 			);
 			sourceTree = "<group>";
 		};
@@ -154,6 +170,15 @@
 				2D079C071B29C8AF004D141D /* Info.plist */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		2D7466941B384425009E6891 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				2D74669A1B384425009E6891 /* CryptoSwift.framework */,
+				2D74669C1B384425009E6891 /* CryptoSwiftTests.xctest */,
+			);
+			name = Products;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -223,6 +248,12 @@
 			mainGroup = 2D079BE21B29C8AE004D141D;
 			productRefGroup = 2D079BEC1B29C8AE004D141D /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 2D7466941B384425009E6891 /* Products */;
+					ProjectRef = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				2D079BEA1B29C8AE004D141D /* Gegder */,
@@ -230,6 +261,23 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		2D74669A1B384425009E6891 /* CryptoSwift.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CryptoSwift.framework;
+			remoteRef = 2D7466991B384425009E6891 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		2D74669C1B384425009E6891 /* CryptoSwiftTests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = CryptoSwiftTests.xctest;
+			remoteRef = 2D74669B1B384425009E6891 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		2D079BE91B29C8AE004D141D /* Resources */ = {
