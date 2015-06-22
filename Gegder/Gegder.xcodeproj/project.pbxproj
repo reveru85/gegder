@@ -25,6 +25,7 @@
 		2D079BFA1B29C8AE004D141D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BF91B29C8AE004D141D /* Images.xcassets */; };
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
+		2D74669D1B3844ED009E6891 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -82,6 +83,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D74669D1B3844ED009E6891 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
