@@ -13,13 +13,16 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="PoetsenOne-Regular.otf">
             <string>PoetsenOne-Regular</string>
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Trending-->
+        <!--Gegder-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="TrendingViewController" customModule="Gegder" customModuleProvider="target" sceneMemberID="viewController">
@@ -28,15 +31,36 @@
                         <viewControllerLayoutGuide type="bottom" id="Djb-ko-YwX"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="QS5-Rx-YEW">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="0la-Z0-O2g">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="PostCell2" id="3Wl-Vz-KQI">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="3Wl-Vz-KQI" id="OgY-Gk-0dX">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="0la-Z0-O2g" firstAttribute="top" secondItem="QS5-Rx-YEW" secondAttribute="top" id="Lt2-hv-3IR"/>
+                            <constraint firstAttribute="trailing" secondItem="0la-Z0-O2g" secondAttribute="trailing" id="gyl-FE-zRI"/>
+                            <constraint firstItem="0la-Z0-O2g" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" id="u1i-Mu-8DG"/>
+                            <constraint firstItem="Djb-ko-YwX" firstAttribute="top" secondItem="0la-Z0-O2g" secondAttribute="bottom" id="zvd-d5-Dmv"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Trending" image="ic_hash_on" id="cPa-gy-q4n"/>
+                    <navigationItem key="navigationItem" title="Gegder" id="bTy-xz-zRa"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="750" y="360"/>
+            <point key="canvasLocation" x="1562" y="360"/>
         </scene>
         <!--Search-->
         <scene sceneID="Nj5-xq-1HS">
@@ -50,9 +74,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="551"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n9-T4-tdf">
-                                <rect key="frame" x="261" y="256" width="79" height="39"/>
-                                <fontDescription key="fontDescription" name="PoetsenOne-Regular" family="PoetsenOne" pointSize="32"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="4n9-T4-tdf">
+                                <rect key="frame" x="209" y="256" width="182" height="39"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="32"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
@@ -100,20 +124,50 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Gegder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dHZ-Xf-RPf">
+                                <rect key="frame" x="224" y="540" width="153" height="54"/>
+                                <fontDescription key="fontDescription" name="PoetsenOne-Regular" family="PoetsenOne" pointSize="45"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
-                                <rect key="frame" x="277" y="285" width="46" height="30"/>
-                                <state key="normal" title="Button">
+                                <rect key="frame" x="277" y="543" width="46" height="27"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                <state key="normal" title="Not now">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="49e-Tb-3d3" kind="presentation" id="0Um-JR-f4g"/>
                                 </connections>
                             </button>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lcN-3w-igT">
+                                <rect key="frame" x="100" y="110" width="400" height="400"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" secondItem="lcN-3w-igT" secondAttribute="height" multiplier="1:1" id="WOU-Pd-AdO"/>
+                                </constraints>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
+                                <rect key="frame" x="223" y="493" width="155" height="30"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                <state key="normal" title="Connect with Facebook">
+                                    <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.67450980390000004" green="0.1176470588" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="wA7-To-Pob" secondAttribute="centerY" id="1QP-hi-tLA"/>
-                            <constraint firstAttribute="centerX" secondItem="wA7-To-Pob" secondAttribute="centerX" id="MVU-Rw-vFr"/>
+                            <constraint firstAttribute="centerX" secondItem="wA7-To-Pob" secondAttribute="centerX" id="4Jg-yY-49W"/>
+                            <constraint firstAttribute="centerX" secondItem="dHZ-Xf-RPf" secondAttribute="centerX" id="4jG-ql-VPq"/>
+                            <constraint firstItem="lcN-3w-igT" firstAttribute="top" secondItem="FEk-nh-4sf" secondAttribute="bottom" constant="90" id="8md-2a-ddl"/>
+                            <constraint firstItem="lcN-3w-igT" firstAttribute="leading" secondItem="zoO-7J-rmy" secondAttribute="leading" constant="100" id="Avv-n7-Vfl"/>
+                            <constraint firstItem="dHZ-Xf-RPf" firstAttribute="top" secondItem="lcN-3w-igT" secondAttribute="bottom" constant="30" id="bPZ-2O-Rci"/>
+                            <constraint firstItem="le8-bZ-4IM" firstAttribute="top" secondItem="wA7-To-Pob" secondAttribute="bottom" constant="30" id="pFZ-NS-XWR"/>
+                            <constraint firstItem="wA7-To-Pob" firstAttribute="top" secondItem="z89-bw-vJq" secondAttribute="bottom" constant="20" id="pql-qq-Co4"/>
+                            <constraint firstAttribute="centerX" secondItem="lcN-3w-igT" secondAttribute="centerX" id="sWP-CI-c97"/>
+                            <constraint firstAttribute="centerX" secondItem="z89-bw-vJq" secondAttribute="centerX" id="sbE-eE-6SH"/>
+                            <constraint firstAttribute="trailing" secondItem="lcN-3w-igT" secondAttribute="trailing" constant="100" id="t1v-tH-vdQ"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -336,7 +390,7 @@
                     </tabBar>
                     <connections>
                         <segue destination="5BZ-8j-Lpg" kind="relationship" relationship="viewControllers" id="EBp-Xd-rNJ"/>
-                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
+                        <segue destination="u8c-TQ-FzB" kind="relationship" relationship="viewControllers" id="lzU-1b-eKA"/>
                         <segue destination="sle-N5-DUI" kind="relationship" relationship="viewControllers" id="TuR-HE-8RG"/>
                         <segue destination="Fb8-cd-rq9" kind="relationship" relationship="viewControllers" id="xVK-6B-Bxx"/>
                     </connections>
@@ -369,6 +423,26 @@
             </objects>
             <point key="canvasLocation" x="797" y="-982"/>
         </scene>
+        <!--Trending-->
+        <scene sceneID="kT8-5D-b1h">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="u8c-TQ-FzB" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Trending" image="ic_hash_on" id="cPa-gy-q4n"/>
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" translucent="NO" id="m0n-o6-ZcY">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.67450980390000004" green="0.1176470588" blue="0.32549019610000002" alpha="1" colorSpace="calibratedRGB"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="8rJ-Kc-sve" kind="relationship" relationship="rootViewController" id="a3g-ev-rDs"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="WZV-KF-MWA" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="750" y="360"/>
+        </scene>
     </scenes>
     <resources>
         <image name="ic_comment" width="300" height="250"/>
@@ -379,6 +453,7 @@
         <image name="ic_location" width="68" height="96"/>
         <image name="ic_notification_on" width="21" height="25"/>
         <image name="ic_search_on" width="25" height="25"/>
+        <image name="logo" width="300" height="300"/>
         <image name="logo_post" width="80" height="80"/>
         <image name="post_default" width="500" height="500"/>
     </resources>
