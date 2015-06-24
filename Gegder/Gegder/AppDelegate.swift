@@ -17,11 +17,32 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-//        // Sample code for MD5 hash
-//        if let hash = "00:1C:B3:09:85:15".md5() {
-//            println(hash)
-//        }
-
+        // Sample code for MD5 hash
+        if let hash = "00:1C:B3:09:85:15".md5() {
+            println(hash)
+        }
+        
+        // Test code for SwiftyJSON (Get User Data API Call)
+        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/user/load_user/59F627418330A01D8F0CBA9F63513570")
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var user = JSON(data: data!)
+                
+                // Prints entire JSON object
+                println(user)
+                
+                // Prints value of specific key in JSON object (dictionary)
+                println(user["id"])
+                
+                // Prints all key-value pairs of JSON object (dictionary)
+                for (key: String, value: JSON) in user {
+                    println("\(key) : \(value)")
+                }
+            }
+        })
+        
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()
         
