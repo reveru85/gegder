@@ -36,19 +36,17 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
+        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+        
+        //post contains post data
         let post = data.entries[indexPath.row]
         
-        //let userimageurl = NSURL(string: post.userimage)
-        //let userimagedata = NSData(contentsOfURL: userimageurl!)
-        
-        //let postimageurl = NSURL(string: post.postimage)
-        //let postimagedata = NSData(contentsOfURL: postimageurl!)
-        
-        
+        //username
         cell.UserLabel.text = post.username
-        //cell.UserImage.image = UIImage(data: userimagedata!)
+        //location
         cell.UserLocation.text = post.userlocation
-        //cell.PostImage.image = UIImage(data: postimagedata!)
         
         //test async image load
         

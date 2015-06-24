@@ -17,11 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Sample code for MD5 hash
-        if let hash = "00:1C:B3:09:85:15".md5() {
-            println(hash)
-        }
-        
+//        // Sample code for MD5 hash
+//        if let hash = "00:1C:B3:09:85:15".md5() {
+//            println(hash)
+//        }
+
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()
         

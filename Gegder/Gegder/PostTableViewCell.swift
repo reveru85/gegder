@@ -14,6 +14,14 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var UserLabel: UILabel!
     @IBOutlet weak var UserLocation: UILabel!
     @IBOutlet weak var PostImage: UIImageView!
+    @IBOutlet weak var PostDateTime: UILabel!
+    @IBOutlet weak var PostHashtags: UILabel!
+    @IBOutlet weak var PostCommentButton: UIButton!
+    @IBOutlet weak var PostCommentCount: UILabel!
+    @IBOutlet weak var PostLikeButton: UIButton!
+    @IBOutlet weak var PostLikeCount: UILabel!
+    @IBOutlet weak var PostDislikeButton: UIButton!
+    @IBOutlet weak var PostDislikeCount: UILabel!
     
     override func awakeFromNib() {
         super.awakeFromNib()        
