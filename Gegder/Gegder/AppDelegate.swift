@@ -22,23 +22,45 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(hash)
         }
         
-        // Test code for SwiftyJSON (Get User Data API Call)
-        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/user/load_user/59F627418330A01D8F0CBA9F63513570")
+        // Sample code for unique device ID
+        let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
+        println(deviceID)
+        
+        if let hash2 = deviceID.md5() {
+            println(hash2)
+        }
+            
+        // Test code for SwiftyJSON (Get User Data API)
+//        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/user/load_user/59F627418330A01D8F0CBA9F63513570")
+//        var request = NSURLRequest(URL: url!)
+//        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//            if data != nil {
+//                var user = JSON(data: data!)
+//                
+//                // Prints entire JSON object
+//                println(user)
+//                
+//                // Prints value of specific key in JSON object (dictionary)
+//                println(user["id"])
+//                
+//                // Prints all key-value pairs of JSON object (dictionary)
+//                for (key: String, value: JSON) in user {
+//                    println("\(key) : \(value)")
+//                }
+//            }
+//        })
+        
+        // Test code for SwiftyJSON (Get First Load Posts API)
+        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/E248326F006BFB87178DF6A238275DA8")
         var request = NSURLRequest(URL: url!)
         let queue: NSOperationQueue = NSOperationQueue.mainQueue()
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
-                var user = JSON(data: data!)
+                var posts = JSON(data: data!)
                 
-                // Prints entire JSON object
-                println(user)
-                
-                // Prints value of specific key in JSON object (dictionary)
-                println(user["id"])
-                
-                // Prints all key-value pairs of JSON object (dictionary)
-                for (key: String, value: JSON) in user {
-                    println("\(key) : \(value)")
+                for (index: String, post: JSON) in posts {
+                    println(post["location"]);
                 }
             }
         })
