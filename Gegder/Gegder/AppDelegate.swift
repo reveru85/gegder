@@ -29,10 +29,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var user = JSON(data: data!)
+                
+                // Prints entire JSON object
                 println(user)
+                
+                // Prints value of specific key in JSON object (dictionary)
+                println(user["id"])
+                
+                // Prints all key-value pairs of JSON object (dictionary)
+                for (key: String, value: JSON) in user {
+                    println("\(key) : \(value)")
+                }
             }
         })
-        
         
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()
