@@ -46,21 +46,21 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         //username
         cell.UserLabel.text = post.username
         //location
-        cell.UserLocation.text = post.userlocation
+//        cell.UserLocation.text = post.userlocation
         
         //test async image load
         
-        if let imageUrl = NSURL(string: post.postimage) {
-            let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-            NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                if data != nil {
-                    let image = UIImage(data: data)
-                    cell.PostImage.image = image
-                }
-                
-            })
-        }
+//        if let imageUrl = NSURL(string: post.postimage) {
+//            let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+//            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+//            NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//                if data != nil {
+//                    let image = UIImage(data: data)
+//                    cell.PostImage.image = image
+//                }
+//                
+//            })
+//        }
         
         
         return cell

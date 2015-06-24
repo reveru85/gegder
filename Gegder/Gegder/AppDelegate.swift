@@ -13,57 +13,47 @@ import CryptoSwift
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
-
+    internal var userID: String?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
-        // Sample code for MD5 hash
-        if let hash = "00:1C:B3:09:85:15".md5() {
-            println(hash)
-        }
-        
-        // Sample code for unique device ID
         let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
-        println(deviceID)
+        let deviceHash = deviceID.md5()
         
-        if let hash2 = deviceID.md5() {
-            println(hash2)
-        }
-            
-        // Test code for SwiftyJSON (Get User Data API)
-//        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/user/load_user/59F627418330A01D8F0CBA9F63513570")
-//        var request = NSURLRequest(URL: url!)
-//        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//            if data != nil {
-//                var user = JSON(data: data!)
-//                
-//                // Prints entire JSON object
-//                println(user)
-//                
-//                // Prints value of specific key in JSON object (dictionary)
-//                println(user["id"])
-//                
-//                // Prints all key-value pairs of JSON object (dictionary)
-//                for (key: String, value: JSON) in user {
-//                    println("\(key) : \(value)")
-//                }
-//            }
-//        })
+        var urlString = "http://dev.snapsnap.com.sg/index.php/user/load_user/" + deviceHash!
         
-        // Test code for SwiftyJSON (Get First Load Posts API)
-        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/E248326F006BFB87178DF6A238275DA8")
+        //Get UserID from server based on deviceID's hash
+        var url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
         let queue: NSOperationQueue = NSOperationQueue.mainQueue()
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
-                var posts = JSON(data: data!)
+                var user = JSON(data: data!)
                 
-                for (index: String, post: JSON) in posts {
-                    println(post["location"]);
-                }
+                // Prints value of specific key in JSON object (dictionary)
+                println(user["id"])
+                self.userID = user["id"].string
+                
+                // Prints all key-value pairs of JSON object (dictionary)
+//                for (key: String, value: JSON) in user {
+//                    println("\(key) : \(value)")
+//                }
             }
         })
+        
+        // Test code for SwiftyJSON (Get First Load Posts API)
+//        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/E248326F006BFB87178DF6A238275DA8")
+//        var request = NSURLRequest(URL: url!)
+//        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//            if data != nil {
+//                var posts = JSON(data: data!)
+//                
+//                for (index: String, post: JSON) in posts {
+//                    println(post["location"]);
+//                }
+//            }
+//        })
         
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()

@@ -13,6 +13,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     @IBOutlet weak var HomeTableView: UITableView!
     let postCellId = "PostCell"
     let data = PostData()
+    let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,8 +23,26 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         HomeTableView.dataSource = self
         HomeTableView.estimatedRowHeight = 44
         HomeTableView.rowHeight = UITableViewAutomaticDimension
+        
+        // Get First Load Posts API
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/" + userID!
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var posts = JSON(data: data!)
+                
+                self.data.addEntriesFromJSON(posts)
+                
+                println(self.data.entries.count)
+                
+                self.HomeTableView.reloadData()
+            }
+        })
+        
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
@@ -46,11 +65,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //username
         cell.UserLabel.text = post.username
         //location
-        cell.UserLocation.text = post.userlocation
-        
-        //test async image load
-        
-        if let imageUrl = NSURL(string: post.postimage) {
+        cell.UserLocation.text = post.location
+        //async image load
+        if let imageUrl = NSURL(string: post.media_url!) {
             let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
             let queue: NSOperationQueue = NSOperationQueue.mainQueue()
             NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
@@ -58,10 +75,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     let image = UIImage(data: data)
                     cell.PostImage.image = image
                 }
-            
+                
             })
         }
-        
+        cell.PostDateTime.text = post.created_datetime
+        cell.PostHashtags.text = post.hash_tag
+        cell.PostCommentCount.text = post.total_comments
+        cell.PostLikeCount.text = post.total_likes
+        cell.PostDislikeCount.text = post.total_dislikes
         
         return cell
     }
