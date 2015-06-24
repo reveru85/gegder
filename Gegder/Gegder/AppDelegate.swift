@@ -22,6 +22,18 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             println(hash)
         }
         
+        // Test code for SwiftyJSON (Get User Data API Call)
+        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/user/load_user/59F627418330A01D8F0CBA9F63513570")
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var user = JSON(data: data!)
+                println(user)
+            }
+        })
+        
+        
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()
         
