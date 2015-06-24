@@ -25,6 +25,7 @@
 		2D079BFA1B29C8AE004D141D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BF91B29C8AE004D141D /* Images.xcassets */; };
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
+		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
 		2D74669D1B3844ED009E6891 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 		2D079C021B29C8AF004D141D /* GegderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GegderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2D079C071B29C8AF004D141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D079C081B29C8AF004D141D /* GegderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GegderTests.swift; sourceTree = "<group>"; };
+		2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -134,6 +136,7 @@
 		2D079BED1B29C8AE004D141D /* Gegder */ = {
 			isa = PBXGroup;
 			children = (
+				2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */,
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
 				2D079BF21B29C8AE004D141D /* HomeViewController.swift */,
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
@@ -320,6 +323,7 @@
 				134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */,
 				13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */,
 				2D079BF31B29C8AE004D141D /* HomeViewController.swift in Sources */,
+				2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */,
 				134429D21B2EF45B00C56968 /* PostData.swift in Sources */,
 				13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */,
 			);
