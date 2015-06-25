@@ -115,7 +115,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                 if data != nil {
                     var posts = JSON(data: data!)
-                    println("There are \(posts.count) new posts")
                     
                     // Only add if JSON from server contains more posts
                     if posts.count != 0 {
