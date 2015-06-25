@@ -14,6 +14,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let postCellId = "PostCell"
     let data = PostData()
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    var firstLoadComplete = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,11 +36,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 
                 //first load clear placeholder entry
                 self.data.clearEntries()
-                
                 self.data.addEntriesFromJSON(posts)
-                
-                println(self.data.entries.count)
-                
                 self.HomeTableView.reloadData()
             }
         })
@@ -58,9 +55,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
         //post contains post data
         let post = data.entries[indexPath.row]
@@ -89,7 +86,44 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
         
+        // Update rows remaining based on the currently loaded row
+//        println("\(data.entries.count) \(indexPath.row)")
+//        let rowsRemaining = data.entries.count - indexPath.row
+//        if rowsRemaining < 3 {
+//            println("Reload now: \(rowsRemaining)")
+//        }
+        
         return cell
+    }
+
+    func tableView(tableView: UITableView, willDisplayCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if firstLoadComplete {
+            println(indexPath.row)
+            if indexPath.row + 1 == data.entries.count {
+                println("TRIGGER")
+                
+//                // Get First Load Posts API
+//                var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/" + userID!
+//                let url = NSURL(string: urlString)
+//                var request = NSURLRequest(URL: url!)
+//                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+//                NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//                    if data != nil {
+//                        var posts = JSON(data: data!)
+//                        
+//                        //first load clear placeholder entry
+//                        self.data.clearEntries()
+//                        self.data.addEntriesFromJSON(posts)
+//                        self.HomeTableView.reloadData()
+//                    }
+//                })
+            }
+        }
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        firstLoadComplete = true;
     }
 }
 
