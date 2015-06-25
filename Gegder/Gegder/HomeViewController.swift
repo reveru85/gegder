@@ -33,6 +33,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             if data != nil {
                 var posts = JSON(data: data!)
                 
+                //first load clear placeholder entry
+                self.data.clearEntries()
+                
                 self.data.addEntriesFromJSON(posts)
                 
                 println(self.data.entries.count)
@@ -67,16 +70,18 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //location
         cell.UserLocation.text = post.location
         //async image load
-        if let imageUrl = NSURL(string: post.media_url!) {
-            let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-            NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                if data != nil {
-                    let image = UIImage(data: data)
-                    cell.PostImage.image = image
-                }
-                
-            })
+        if post.media_url != nil {
+            if let imageUrl = NSURL(string: post.media_url!) {
+                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                    if data != nil {
+                        let image = UIImage(data: data)
+                        cell.PostImage.image = image
+                    }
+                    
+                })
+            }
         }
         cell.PostDateTime.text = post.created_datetime
         cell.PostHashtags.text = post.hash_tag

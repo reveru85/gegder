@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
+		132156BA1B3C274A00468C03 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		134429D21B2EF45B00C56968 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D11B2EF45B00C56968 /* PostData.swift */; };
 		134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D31B2EF72C00C56968 /* PostTableViewCell.swift */; };
 		134F2E2C1B32F86800C09E9B /* PoetsenOne-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */; };
@@ -26,10 +28,16 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
-		2D74669D1B3844ED009E6891 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
+		132156BB1B3C274A00468C03 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
 		2D079C031B29C8AF004D141D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D079BE31B29C8AE004D141D /* Project object */;
@@ -52,6 +60,20 @@
 			remoteInfo = CryptoSwiftTests;
 		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		132156BD1B3C274B00468C03 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				132156BA1B3C274A00468C03 /* CryptoSwift.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		134429D11B2EF45B00C56968 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
@@ -86,7 +108,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D74669D1B3844ED009E6891 /* CryptoSwift.framework in Frameworks */,
+				132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -198,10 +220,12 @@
 				2D079BE71B29C8AE004D141D /* Sources */,
 				2D079BE81B29C8AE004D141D /* Frameworks */,
 				2D079BE91B29C8AE004D141D /* Resources */,
+				132156BD1B3C274B00468C03 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				132156BC1B3C274A00468C03 /* PBXTargetDependency */,
 			);
 			name = Gegder;
 			productName = Gegder;
@@ -237,6 +261,7 @@
 				TargetAttributes = {
 					2D079BEA1B29C8AE004D141D = {
 						CreatedOnToolsVersion = 6.3.2;
+						DevelopmentTeam = W535U5KD4P;
 					};
 					2D079C011B29C8AF004D141D = {
 						CreatedOnToolsVersion = 6.3.2;
@@ -340,6 +365,11 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
+		132156BC1B3C274A00468C03 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = 132156BB1B3C274A00468C03 /* PBXContainerItemProxy */;
+		};
 		2D079C041B29C8AF004D141D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2D079BEA1B29C8AE004D141D /* Gegder */;
@@ -454,9 +484,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Debug;
 		};
@@ -464,9 +497,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 			};
 			name = Release;
 		};
