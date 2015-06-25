@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PoetsenOne", size: 24)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBarAppearance.tintColor = UIColor.whiteColor()
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
