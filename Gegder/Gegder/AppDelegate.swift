@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var user = JSON(data: data!)
                 
                 // Prints value of specific key in JSON object (dictionary)
-                println(user["id"])
+                //println(user["id"])
                 self.userID = user["id"].string
                 
                 // Prints all key-value pairs of JSON object (dictionary)
