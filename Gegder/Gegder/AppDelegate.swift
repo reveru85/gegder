@@ -31,7 +31,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var user = JSON(data: data!)
                 
                 // Prints value of specific key in JSON object (dictionary)
-                println(user["id"])
+                //println(user["id"])
                 self.userID = user["id"].string
                 
                 // Prints all key-value pairs of JSON object (dictionary)
@@ -59,6 +59,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         var navigationBarAppearance = UINavigationBar.appearance()
         
         navigationBarAppearance.titleTextAttributes = [NSFontAttributeName: UIFont(name: "PoetsenOne", size: 24)!, NSForegroundColorAttributeName: UIColor.whiteColor()]
+        navigationBarAppearance.tintColor = UIColor.whiteColor()
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
         
