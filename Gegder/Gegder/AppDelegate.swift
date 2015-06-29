@@ -31,29 +31,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 var user = JSON(data: data!)
                 
                 // Prints value of specific key in JSON object (dictionary)
-                //println(user["id"])
                 self.userID = user["id"].string
                 
                 // Prints all key-value pairs of JSON object (dictionary)
 //                for (key: String, value: JSON) in user {
 //                    println("\(key) : \(value)")
 //                }
+                
+                var welcomeViewController = self.window!.rootViewController as! WelcomeViewController
+                welcomeViewController.userIDLoadComplete()
             }
         })
-        
-        // Test code for SwiftyJSON (Get First Load Posts API)
-//        let url = NSURL(string: "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/E248326F006BFB87178DF6A238275DA8")
-//        var request = NSURLRequest(URL: url!)
-//        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//            if data != nil {
-//                var posts = JSON(data: data!)
-//                
-//                for (index: String, post: JSON) in posts {
-//                    println(post["location"]);
-//                }
-//            }
-//        })
         
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()

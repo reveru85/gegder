@@ -81,8 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     if data != nil {
                         let image = UIImage(data: data)
                         cell.PostImage.image = image
-                    }
-                    
+                    }                    
                 })
             }
         }
@@ -92,6 +91,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.PostCommentCount.text = post.total_comments
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
+        
+        println(post.display_order)
         
         return cell
     }
@@ -103,34 +104,49 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var distanceFromBottom = scrollView.contentSize.height - contentYoffset
         
         if distanceFromBottom < height {
+
             // Reached end of table
-            getPreviousPosts(data.entries.last?.post_id!)
+            let currentLastPostID = data.entries.last?.post_id!
+            
+            // Track the last post ID globally so as to not make repeated "Get Previous Posts" on the same last post
+            if lastPostID != currentLastPostID {
+                
+                println("Last Post ID: \(lastPostID)")
+                println("Current Last: \(currentLastPostID!)")
+                
+                lastPostID = currentLastPostID!
+                getPreviousPosts(currentLastPostID)
+            }
         }
     }
     
     func getPreviousPosts(postID : String?) {
+    
+        println("Loading more posts...")
         
-        // Track the last post ID globally so as to not make repeated "Get Previous Posts" on the same last post
-        if lastPostID != postID {
-            lastPostID = postID!
-            
-            // Get Previous Posts based on Oldest Post
-            var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_previous_post/" + postID! + "/" + userID!
-            let url = NSURL(string: urlString)
-            var request = NSURLRequest(URL: url!)
-            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-            NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                if data != nil {
-                    var posts = JSON(data: data!)
+        // Get Previous Posts based on Oldest Post
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_previous_post/" + postID! + "/" + userID!
+        
+        println(urlString)
+        
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var posts = JSON(data: data!)
+                
+                // Only add if JSON from server contains more posts
+                if posts.count != 0 {
                     
-                    // Only add if JSON from server contains more posts
-                    if posts.count != 0 {
-                        self.data.addEntriesFromJSON(posts)
-                        self.HomeTableView.reloadData()
-                    }
+                    println("Number of new posts: \(posts.count)")
+                    
+                    self.data.addEntriesFromJSON(posts)
+                    self.HomeTableView.reloadData()
                 }
-            })
-        }
+            }
+        })
+        
     }
     
     //camera stuff

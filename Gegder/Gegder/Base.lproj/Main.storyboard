@@ -321,7 +321,7 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
                                 <rect key="frame" x="223" y="493" width="155" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                 <state key="normal" title="Connect with Facebook">
@@ -329,7 +329,7 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
+                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
                                 <rect key="frame" x="277" y="543" width="46" height="27"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                 <state key="normal" title="Not now">
@@ -365,6 +365,10 @@
                             <constraint firstAttribute="centerX" secondItem="z89-bw-vJq" secondAttribute="centerX" id="sbE-eE-6SH"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="ConnectFBButton" destination="z89-bw-vJq" id="K4L-cU-ehm"/>
+                        <outlet property="NotNowButton" destination="wA7-To-Pob" id="h8Z-J1-brc"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdQ-UP-Dgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

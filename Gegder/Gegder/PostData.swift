@@ -22,6 +22,7 @@ class PostData {
         var is_like : Bool?
         var is_dislike : Bool?
         var post_id : String?
+        var display_order : String?
     }
     
     var entries = [PostEntry]()
@@ -36,7 +37,9 @@ class PostData {
     }
     
     func addEntriesFromJSON(data: JSON) {
+        
         for (index: String, post: JSON) in data {
+            
             let entry = PostEntry()
             entry.title = post["title"].string!
             entry.username = post["username"].string!
@@ -50,6 +53,7 @@ class PostData {
             entry.is_like = post["is_like"].bool!
             entry.is_dislike = post["is_dislike"].bool!
             entry.post_id = post["id"].string!
+            entry.display_order = post["display_order"].string!
             
             entries.append(entry)
         }
