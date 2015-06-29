@@ -36,6 +36,15 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
     }
     
+    override init() {
+        super.init()
+        
+        offset = constant
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillShowNotification:", name: UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardWillHideNotification:", name: UIKeyboardWillHideNotification, object: nil)
+    }
+    
     deinit {
         NSNotificationCenter.defaultCenter().removeObserver(self)
     }
@@ -43,6 +52,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     // MARK: Notification
     
     func keyboardWillShowNotification(notification: NSNotification) {
+        println("keyboardWillShowNotification")
         if let userInfo = notification.userInfo {
             if let frameValue = userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue {
                 let frame = frameValue.CGRectValue()
@@ -74,6 +84,7 @@ public class KeyboardLayoutConstraint: NSLayoutConstraint {
     }
     
     func keyboardWillHideNotification(notification: NSNotification) {
+        println("keyboardWillHideNotification")
         keyboardVisibleHeight = 0
         self.updateConstant()
         

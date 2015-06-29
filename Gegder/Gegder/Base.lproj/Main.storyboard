@@ -704,7 +704,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FI8-cq-ua0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FI8-cq-ua0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELR-8c-lFb">
@@ -735,7 +735,6 @@
                             <constraint firstItem="ELR-8c-lFb" firstAttribute="width" secondItem="SIk-tc-blA" secondAttribute="width" id="Cye-wW-RL0"/>
                             <constraint firstItem="FI8-cq-ua0" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" id="Fku-cZ-p2K"/>
                             <constraint firstAttribute="trailing" secondItem="FI8-cq-ua0" secondAttribute="trailing" id="JUz-SO-vma"/>
-                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="FI8-cq-ua0" secondAttribute="bottom" id="x1S-WN-Cga"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Preview" id="HDx-XG-bc1">
@@ -747,6 +746,7 @@
                         <barButtonItem key="rightBarButtonItem" title="Post" id="9GS-XS-65j"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="ScrollView" destination="FI8-cq-ua0" id="g1q-tZ-p1v"/>
                         <outlet property="cameraPreview" destination="ELR-8c-lFb" id="9Vc-KG-kks"/>
                     </connections>
                 </viewController>
