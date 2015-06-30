@@ -32,12 +32,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 
                 // Prints value of specific key in JSON object (dictionary)
                 self.userID = user["id"].string
-                println(self.userID)
-                
-                // Prints all key-value pairs of JSON object (dictionary)
-//                for (key: String, value: JSON) in user {
-//                    println("\(key) : \(value)")
-//                }
                 
                 var welcomeViewController = self.window!.rootViewController as! WelcomeViewController
                 welcomeViewController.userIDLoadComplete()

@@ -26,6 +26,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="PoetsenOne-Regular.otf">
             <string>PoetsenOne-Regular</string>
@@ -284,7 +285,19 @@
                     <view key="view" contentMode="scaleToFill" id="lMQ-7q-VmE">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdV-fm-gIj">
+                                <rect key="frame" x="243" y="231" width="114" height="24"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerY" secondItem="PdV-fm-gIj" secondAttribute="centerY" id="Orw-Wf-87O"/>
+                            <constraint firstAttribute="centerX" secondItem="PdV-fm-gIj" secondAttribute="centerX" id="h6g-bW-8NM"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Gegder" id="Ssz-yu-Lkl"/>
                 </viewController>

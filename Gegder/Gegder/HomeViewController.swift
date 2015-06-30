@@ -62,10 +62,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-//        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-//        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-//        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        
         // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]
         
@@ -158,7 +154,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             vc.newImage = self.newImage
         }
     }
-    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         

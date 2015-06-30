@@ -43,6 +43,10 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     @IBAction func PostButton(sender: AnyObject) {
         println("post!")
         println(hashtagField.text)
+        
+        //newImage.
+        
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     

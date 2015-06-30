@@ -64,10 +64,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-//        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-//        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-//        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        
         //post contains post data
         let post = data.entries[indexPath.row]
         
@@ -107,7 +103,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             vc.newImage = self.newImage
         }
     }
-    
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
 
