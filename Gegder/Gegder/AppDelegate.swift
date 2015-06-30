@@ -63,16 +63,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        println(decodedimage)
         
         
-        var newPost = JSON(["jpegImageEncoded":"", "latestPostId":"", "userId":"", "timezone":"", "description":"", "isLogin":""])
+//        var newPost = JSON(["jpegImageEncoded":"", "latestPostId":"", "userId":"", "timezone":"", "description":"", "isLogin":""])
+//        
+//        newPost["jpegImageEncoded"].string = base64String
+//        newPost["latestPostId"].string = "199C77C04356608030806A2D40E93DAE"
+//        newPost["userId"].string = "3E3734A45B280196F042AAA76117583E"
+//        newPost["isLogin"].string = "0"
+//        
+//        println(newPost)
         
-        newPost["jpegImageEncoded"].string = base64String
-        newPost["latestPostId"].string = "199C77C04356608030806A2D40E93DAE"
-        newPost["userId"].string = "3E3734A45B280196F042AAA76117583E"
-        newPost["isLogin"].string = "0"
-        
-        println(newPost)
-        
-        var postData = "jpegImageEncoded=" + base64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE" + "&userId=" + "3E3734A45B280196F042AAA76117583E" + "&timezone=" + "" + "&description=" + "" + "&isLogin=" + "0"
+        var postData = "jpegImageEncoded=" + base64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE" + "&userId=" + "3E3734A45B280196F042AAA76117583E" + "&isLogin=" + "0"
         
         println(postData)
         
@@ -89,13 +89,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         println("Sending new post...")
         
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if data != nil {
-                var posts = JSON(data: data!)
-                println("Data received: \(posts.count)")
-                println(posts)
-            }
-        })
+//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//            if data != nil {
+//                var posts = JSON(data: data!)
+//                println("Data received: \(posts.count)")
+//                println(posts)
+//            }
+//        })
         
         return true
     }

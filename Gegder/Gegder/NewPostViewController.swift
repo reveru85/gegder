@@ -15,6 +15,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var cameraPreview: UIImageView!
     var newImage: UIImage?
+    let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,10 +45,53 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         println("post!")
         println(hashtagField.text)
         
-        //newImage.
+//        var image : UIImage = UIImage(named:"testphoto")!
+//        var imageData = UIImageJPEGRepresentation(image, 0.2)
+//        
+        var imageData = UIImageJPEGRepresentation(newImage, 0.2)
+//        var imageData = UIImagePNGRepresentation(newImage)
+        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         
+//        println(base64String)
         
-        self.dismissViewControllerAnimated(true, completion: nil)
+//        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))
+//        var decodedimage = UIImage(data: decodedData!)
+//        println(decodedimage)
+        
+        let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
+        
+        var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE"
+        
+        var postData2 = "&userId=" + userID! + "&isLogin=" + "0"
+        
+        var postData = postData1 + postData2
+        
+        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
+        var url = NSURL(string: urlPath)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        
+        request.HTTPMethod = "POST"
+        request.timeoutInterval = 60
+        request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPShouldHandleCookies=false
+        
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
+                println(strData)
+                var posts = JSON(data: data!)
+                println("Data received: \(posts.count)")
+                println(posts)
+            }
+        })
+        
+        //let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))
+        //var decodedimage = UIImage(data: decodedData!)
+//        println(decodedimage)
+        //cameraPreview.image = decodedimage as UIImage!
+        
+        //self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     func keyboardNotification(notification: NSNotification) {
