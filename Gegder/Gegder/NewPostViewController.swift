@@ -9,10 +9,10 @@
 
 import UIKit
 
-class NewPostViewController: UIViewController {
+class NewPostViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var ScrollView: UIScrollView!
-    @IBOutlet weak var ScrollViewBottomConstraint: NSLayoutConstraint!
+    @IBOutlet weak var hashtagField: UITextField!
+    @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var cameraPreview: UIImageView!
     var newImage: UIImage?
     
@@ -22,11 +22,13 @@ class NewPostViewController: UIViewController {
         
         cameraPreview.image = newImage
         
-//        ScrollViewBottomConstraint = KeyboardLayoutConstraint()
-        //ScrollViewBottomConstraint.
-        
-        let keyboardViewV = KeyboardLayoutConstraint(item: ScrollView, attribute: NSLayoutAttribute.Bottom, relatedBy: NSLayoutRelation.Equal, toItem: self.bottomLayoutGuide, attribute: NSLayoutAttribute.Bottom, multiplier: 1.0, constant: 0.0)
-        self.view.addConstraint(keyboardViewV)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillShowNotification, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillHideNotification, object: nil)
+    
+    }
+    
+    deinit {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
     
     override func didReceiveMemoryWarning() {
@@ -38,5 +40,34 @@ class NewPostViewController: UIViewController {
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func PostButton(sender: AnyObject) {
+        println("post!")
+        println(hashtagField.text)
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func keyboardNotification(notification: NSNotification) {
+        let isShowing = notification.name == UIKeyboardWillShowNotification
+        
+        if let userInfo = notification.userInfo {
+            let endFrame = (userInfo[UIKeyboardFrameEndUserInfoKey] as? NSValue)?.CGRectValue()
+            let endFrameHeight = endFrame?.size.height ?? 0.0
+            let duration:NSTimeInterval = (userInfo[UIKeyboardAnimationDurationUserInfoKey] as? NSNumber)?.doubleValue ?? 0
+            let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
+            let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
+            let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
+            self.bottomConstraint?.constant = isShowing ? endFrameHeight : 0.0
+            UIView.animateWithDuration(duration,
+                delay: NSTimeInterval(0),
+                options: animationCurve,
+                animations: { self.view.layoutIfNeeded() },
+                completion: nil)
+        }
+    }
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
 }
 

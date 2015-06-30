@@ -12,7 +12,6 @@
 		134429D21B2EF45B00C56968 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D11B2EF45B00C56968 /* PostData.swift */; };
 		134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D31B2EF72C00C56968 /* PostTableViewCell.swift */; };
 		1344BFEE1B417799004F798F /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1344BFED1B417799004F798F /* NewPostViewController.swift */; };
-		1344BFF21B4192D7004F798F /* KeyboardLayoutContraint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1344BFF11B4192D7004F798F /* KeyboardLayoutContraint.swift */; };
 		134F2E2C1B32F86800C09E9B /* PoetsenOne-Regular.otf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */; };
 		134F2E331B32F8DC00C09E9B /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2E1B32F8DC00C09E9B /* Lato-Bold.ttf */; };
 		134F2E341B32F8DC00C09E9B /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E2F1B32F8DC00C09E9B /* Lato-Light.ttf */; };
@@ -81,7 +80,6 @@
 		134429D11B2EF45B00C56968 /* PostData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostData.swift; sourceTree = "<group>"; };
 		134429D31B2EF72C00C56968 /* PostTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PostTableViewCell.swift; sourceTree = "<group>"; };
 		1344BFED1B417799004F798F /* NewPostViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewPostViewController.swift; sourceTree = "<group>"; };
-		1344BFF11B4192D7004F798F /* KeyboardLayoutContraint.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardLayoutContraint.swift; sourceTree = "<group>"; };
 		134F2E2B1B32F86800C09E9B /* PoetsenOne-Regular.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "PoetsenOne-Regular.otf"; sourceTree = "<group>"; };
 		134F2E2E1B32F8DC00C09E9B /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
 		134F2E2F1B32F8DC00C09E9B /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
@@ -164,7 +162,6 @@
 			children = (
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
 				2D079BF21B29C8AE004D141D /* HomeViewController.swift */,
-				1344BFF11B4192D7004F798F /* KeyboardLayoutContraint.swift */,
 				1344BFED1B417799004F798F /* NewPostViewController.swift */,
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
 				134429D11B2EF45B00C56968 /* PostData.swift */,
@@ -351,7 +348,6 @@
 				13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */,
 				2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */,
 				2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */,
-				1344BFF21B4192D7004F798F /* KeyboardLayoutContraint.swift in Sources */,
 				1344BFEE1B417799004F798F /* NewPostViewController.swift in Sources */,
 				134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */,
 				13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */,

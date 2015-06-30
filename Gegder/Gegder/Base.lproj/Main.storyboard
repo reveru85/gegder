@@ -25,6 +25,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="PoetsenOne-Regular.otf">
             <string>PoetsenOne-Regular</string>
@@ -708,7 +709,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="FI8-cq-ua0">
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FI8-cq-ua0">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ELR-8c-lFb">
@@ -717,24 +718,29 @@
                                             <constraint firstAttribute="width" secondItem="ELR-8c-lFb" secondAttribute="height" multiplier="1:1" id="Hvs-9r-YWL"/>
                                         </constraints>
                                     </imageView>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Write a caption" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fuq-lr-doX">
-                                        <rect key="frame" x="0.0" y="600" width="600" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder=" Insert #Hashtags" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="fuq-lr-doX">
+                                        <rect key="frame" x="0.0" y="600" width="600" height="19"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                        <connections>
+                                            <outlet property="delegate" destination="Q7A-z6-3Oh" id="wuo-9f-oIH"/>
+                                        </connections>
                                     </textField>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstItem="ELR-8c-lFb" firstAttribute="top" secondItem="FI8-cq-ua0" secondAttribute="top" id="3T5-2h-bbp"/>
+                                    <constraint firstItem="ELR-8c-lFb" firstAttribute="leading" secondItem="FI8-cq-ua0" secondAttribute="leading" id="JZw-iv-jrz"/>
                                     <constraint firstAttribute="trailing" secondItem="fuq-lr-doX" secondAttribute="trailing" id="L6b-0z-fPg"/>
-                                    <constraint firstItem="ELR-8c-lFb" firstAttribute="leading" secondItem="FI8-cq-ua0" secondAttribute="leading" id="LFq-v4-sub"/>
+                                    <constraint firstAttribute="trailing" secondItem="ELR-8c-lFb" secondAttribute="trailing" id="LrD-0X-VjV"/>
                                     <constraint firstItem="fuq-lr-doX" firstAttribute="top" secondItem="ELR-8c-lFb" secondAttribute="bottom" id="Z7m-PL-8UP"/>
-                                    <constraint firstAttribute="trailing" secondItem="ELR-8c-lFb" secondAttribute="trailing" id="e1w-hR-2Ix"/>
                                     <constraint firstItem="fuq-lr-doX" firstAttribute="leading" secondItem="FI8-cq-ua0" secondAttribute="leading" id="igx-7B-lhW"/>
+                                    <constraint firstAttribute="bottom" secondItem="fuq-lr-doX" secondAttribute="bottom" id="pYb-1c-mZY"/>
+                                    <constraint firstItem="ELR-8c-lFb" firstAttribute="top" secondItem="FI8-cq-ua0" secondAttribute="top" id="zRN-Jt-c9l"/>
                                 </constraints>
                             </scrollView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="FI8-cq-ua0" secondAttribute="bottom" id="6CR-SK-Ivj"/>
                             <constraint firstItem="FI8-cq-ua0" firstAttribute="top" secondItem="pMg-bl-aOd" secondAttribute="bottom" id="9zb-7o-CQZ"/>
                             <constraint firstItem="ELR-8c-lFb" firstAttribute="width" secondItem="SIk-tc-blA" secondAttribute="width" id="Cye-wW-RL0"/>
                             <constraint firstItem="FI8-cq-ua0" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" id="Fku-cZ-p2K"/>
@@ -747,11 +753,16 @@
                                 <action selector="CancelButton:" destination="Q7A-z6-3Oh" id="cb5-fV-vle"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Post" id="9GS-XS-65j"/>
+                        <barButtonItem key="rightBarButtonItem" title="Post" id="9GS-XS-65j">
+                            <connections>
+                                <action selector="PostButton:" destination="Q7A-z6-3Oh" id="vfv-h6-44N"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="ScrollView" destination="FI8-cq-ua0" id="g1q-tZ-p1v"/>
+                        <outlet property="bottomConstraint" destination="6CR-SK-Ivj" id="dON-pk-5RB"/>
                         <outlet property="cameraPreview" destination="ELR-8c-lFb" id="9Vc-KG-kks"/>
+                        <outlet property="hashtagField" destination="fuq-lr-doX" id="yhP-jA-UyG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwv-cX-iiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -779,11 +790,11 @@
         </scene>
     </scenes>
     <resources>
-        <image name="ic_comment" width="300" height="250"/>
-        <image name="ic_dislike" width="266" height="242"/>
+        <image name="ic_comment" width="300" height="300"/>
+        <image name="ic_dislike" width="300" height="300"/>
         <image name="ic_hash_on" width="25" height="25"/>
         <image name="ic_home_on" width="25" height="22"/>
-        <image name="ic_like" width="266" height="242"/>
+        <image name="ic_like" width="300" height="300"/>
         <image name="ic_location" width="68" height="96"/>
         <image name="ic_logo_button_post" width="150" height="150"/>
         <image name="ic_notification_on" width="21" height="25"/>
