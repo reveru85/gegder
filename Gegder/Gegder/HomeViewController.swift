@@ -8,13 +8,17 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBOutlet weak var HomeTableView: UITableView!
     let postCellId = "PostCell"
     let data = PostData()
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     var lastPostID = ""
+    
+    //camera stuff
+    let picker = UIImagePickerController()
+    var newImage: UIImage?
     
     override func viewDidLoad() {
         
@@ -39,6 +43,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.HomeTableView.reloadData()
             }
         })
+        
+        //camera stuff
+        picker.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -140,6 +147,48 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         })
         
+    }
+    
+    //camera stuff
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GoToNewPost") {
+            var nc = segue.destinationViewController as! UINavigationController
+            var vc = nc.viewControllers.first as! NewPostViewController
+            
+            vc.newImage = self.newImage
+        }
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+        
+        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2
+        
+        dismissViewControllerAnimated(true, completion: nil) //5
+        self.performSegueWithIdentifier("GoToNewPost", sender:self)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style:.Default, handler: nil)
+        alertVC.addAction(okAction)
+        presentViewController(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func shootPhoto(sender: AnyObject) {
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.Camera
+            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo
+            picker.showsCameraControls = true
+            presentViewController(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
     }
 }
 

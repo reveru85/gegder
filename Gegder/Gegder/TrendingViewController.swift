@@ -8,12 +8,16 @@
 
 import UIKit
 
-class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
 
     @IBOutlet weak var TrendingTableView: UITableView!
     let postCellId = "PostCell2"
     let data = PostData()
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    
+    //camera stuff
+    let picker = UIImagePickerController()
+    var newImage: UIImage?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,6 +47,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                 self.TrendingTableView.reloadData()
             }
         })
+        
+        //camera stuff
+        picker.delegate = self
     }
 
     override func didReceiveMemoryWarning() {
@@ -57,9 +64,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
-        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostCommentButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostLikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
+//        cell.PostDislikeButton.imageView?.contentMode = UIViewContentMode.ScaleAspectFit
         
         //post contains post data
         let post = data.entries[indexPath.row]
@@ -89,6 +96,48 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.PostDislikeCount.text = post.total_dislikes
         
         return cell
+    }
+    
+    //camera stuff
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GoToNewPost") {
+            var nc = segue.destinationViewController as! UINavigationController
+            var vc = nc.viewControllers.first as! NewPostViewController
+            
+            vc.newImage = self.newImage
+        }
+    }
+    
+    
+    func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
+
+        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2
+        
+        dismissViewControllerAnimated(true, completion: nil) //5
+        self.performSegueWithIdentifier("GoToNewPost", sender:self)
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    func noCamera(){
+        let alertVC = UIAlertController(title: "No Camera", message: "Sorry, this device has no camera", preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style:.Default, handler: nil)
+        alertVC.addAction(okAction)
+        presentViewController(alertVC, animated: true, completion: nil)
+    }
+    
+    @IBAction func shootPhoto(sender: AnyObject) {
+        if UIImagePickerController.availableCaptureModesForCameraDevice(.Rear) != nil {
+            picker.allowsEditing = false
+            picker.sourceType = UIImagePickerControllerSourceType.Camera
+            picker.cameraCaptureMode = UIImagePickerControllerCameraCaptureMode.Photo
+            picker.showsCameraControls = true
+            presentViewController(picker, animated: true, completion: nil)
+        } else {
+            noCamera()
+        }
     }
 
 }
