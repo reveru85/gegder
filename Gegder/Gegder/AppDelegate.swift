@@ -82,9 +82,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         println(postData)
         
-        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_trending_list/dphodto/dphodto_image_post"
+        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
         var url1 = NSURL(string: urlPath)
         var request1: NSMutableURLRequest = NSMutableURLRequest(URL: url1!)
+        
+        println(url1)
         
         request1.HTTPMethod = "POST"
         request1.timeoutInterval = 60
