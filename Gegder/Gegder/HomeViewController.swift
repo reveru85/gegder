@@ -68,6 +68,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Update the UI with the current post
         cell.UserLabel.text = post.username
         cell.UserLocation.text = post.location
+        
+        // Insert placeholder image else reused image will show up
+        cell.PostImage.image = UIImage(named:"post_default")
     
         if post.media_url != nil {
             if let imageUrl = NSURL(string: post.media_url!) {

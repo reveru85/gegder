@@ -71,6 +71,10 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.UserLabel.text = post.username
         //location
         cell.UserLocation.text = post.location
+        
+        // Insert placeholder image else reused image will show up
+        cell.PostImage.image = UIImage(named:"post_default")
+        
         //async image load
         if post.media_url != nil {
             if let imageUrl = NSURL(string: post.media_url!) {
