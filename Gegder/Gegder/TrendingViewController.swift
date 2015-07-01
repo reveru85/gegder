@@ -66,36 +66,81 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
-        //post contains post data
+        // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]
-        
-        //username
-        cell.UserLabel.text = post.username
-        //location
-        cell.UserLocation.text = post.location
-        
-        // Insert placeholder image else reused image will show up
         cell.PostImage.image = UIImage(named:"post_default")
         
-        //async image load
-        if post.media_url != nil {
-            if let imageUrl = NSURL(string: post.media_url!) {
-                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                    if data != nil {
-                        let image = UIImage(data: data)
-                        cell.PostImage.image = image
+        // Assign image URL string as key to image cache
+        let urlString = post.media_url
+        
+        // If this image is already cached, don't re-download
+        if (urlString != nil) {
+            if let img = imageCache[urlString!] {
+                println("Image exists in cache")
+                cell.PostImage.image = img
+            }
+            else {
+                // The image isn't cached, download the img data
+                // We should perform this in a background thread
+                if urlString != nil {
+                    if let imageUrl = NSURL(string: urlString!) {
+                        let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+                        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+                        NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                            if data != nil {
+                                
+                                println("Downloading new image from URL...")
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data)
+                                // Store the image in to our cache
+                                self.imageCache[urlString!] = image
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                                        //cellToUpdate.imageView?.image = image
+                                        (cellToUpdate as! PostTableViewCell).PostImage.image = image
+                                    }
+                                })
+                            }
+                        })
                     }
-                    
-                })
+                }
             }
         }
+        
+//        if post.media_url != nil {
+//            if let imageUrl = NSURL(string: post.media_url!) {
+//                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+//                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+//                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+//                    if data != nil {
+//                        let image = UIImage(data: data)
+//                        cell.PostImage.image = image
+//                    }
+//                    
+//                })
+//            }
+//        }
+        
+        cell.UserLabel.text = post.username
+        cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
         cell.PostHashtags.text = post.hash_tag
         cell.PostCommentCount.text = post.total_comments
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
+        
+        if post.is_like {
+            cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")
+        } else {
+            cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like")
+        }
+        
+        if post.is_dislike {
+            cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike_on")
+        } else {
+            cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
+        }
         
         return cell
     }

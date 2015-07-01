@@ -74,8 +74,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]
-        
-        // Insert placeholder image else reused image will show up
         cell.PostImage.image = UIImage(named:"post_default")
         
         // Assign image URL string as key to image cache
