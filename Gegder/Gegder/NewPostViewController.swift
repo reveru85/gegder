@@ -73,7 +73,9 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
         
-        var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE"
+        let firstPostId = (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID
+        
+        var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + firstPostId!
         var postData2 = "&userId=" + userID! + "&isLogin=" + "0"
         
         var postData = postData1 + postData2
