@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var postButton: UIBarButtonItem!
     @IBOutlet weak var hashtagField: UITextField!
@@ -54,18 +55,20 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         postButton.enabled = false
         cancelButton.enabled = false
         
+        postingBlurView.hidden = false
+        
         var editedImage = newImage?.fixOrientation()
         editedImage = editedImage?.cropToSquare()
         
         //resize
         let size = CGSizeMake(720, 720)
-        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
         editedImage!.drawInRect(CGRect(origin: CGPointZero, size: size))
         
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        var imageData = UIImageJPEGRepresentation(scaledImage, 0.2)
+        var imageData = UIImageJPEGRepresentation(scaledImage, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
@@ -95,8 +98,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
                 println("Data received: \(posts.count)")
                 println(posts)
                 self.dismissViewControllerAnimated(true, completion: nil)
-                
-                
             }
         })
         
