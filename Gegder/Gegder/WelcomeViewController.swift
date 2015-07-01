@@ -10,6 +10,7 @@ import UIKit
 
 class WelcomeViewController: UIViewController {
     
+    @IBOutlet weak var LoadingSpinner: UIActivityIndicatorView!
     @IBOutlet weak var NotNowButton: UIButton!
     @IBOutlet weak var ConnectFBButton: UIButton!
     
@@ -24,6 +25,7 @@ class WelcomeViewController: UIViewController {
     }
     
     func userIDLoadComplete() {
+        LoadingSpinner.hidden = true
         ConnectFBButton.hidden = false
         NotNowButton.hidden = false
     }

@@ -336,6 +336,9 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-hn-zXj">
+                                <rect key="frame" x="290" y="503" width="20" height="20"/>
+                            </activityIndicatorView>
                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
                                 <rect key="frame" x="223" y="493" width="155" height="30"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
@@ -366,6 +369,7 @@
                         <constraints>
                             <constraint firstAttribute="centerX" secondItem="wA7-To-Pob" secondAttribute="centerX" id="4Jg-yY-49W"/>
                             <constraint firstAttribute="centerX" secondItem="dHZ-Xf-RPf" secondAttribute="centerX" id="4jG-ql-VPq"/>
+                            <constraint firstItem="wA7-To-Pob" firstAttribute="top" secondItem="c4y-hn-zXj" secondAttribute="bottom" constant="20" id="7dF-Bv-y9N"/>
                             <constraint firstItem="lcN-3w-igT" firstAttribute="top" secondItem="FEk-nh-4sf" secondAttribute="bottom" constant="50" id="8md-2a-ddl"/>
                             <constraint firstItem="jh4-fO-qLy" firstAttribute="top" secondItem="dHZ-Xf-RPf" secondAttribute="centerY" constant="50" id="By3-vj-sma"/>
                             <constraint firstItem="fHg-aH-8sb" firstAttribute="top" secondItem="jh4-fO-qLy" secondAttribute="bottom" id="FpT-eX-snQ"/>
@@ -373,6 +377,7 @@
                             <constraint firstAttribute="width" secondItem="lcN-3w-igT" secondAttribute="width" multiplier="5:2" id="XRM-mm-jEX"/>
                             <constraint firstItem="jh4-fO-qLy" firstAttribute="centerX" secondItem="dHZ-Xf-RPf" secondAttribute="centerX" constant="10" id="XgN-xc-9hL"/>
                             <constraint firstItem="dHZ-Xf-RPf" firstAttribute="centerY" secondItem="lcN-3w-igT" secondAttribute="bottom" constant="50" id="bPZ-2O-Rci"/>
+                            <constraint firstAttribute="centerX" secondItem="c4y-hn-zXj" secondAttribute="centerX" id="hPV-jK-03R"/>
                             <constraint firstItem="le8-bZ-4IM" firstAttribute="top" secondItem="wA7-To-Pob" secondAttribute="bottom" constant="30" id="pFZ-NS-XWR"/>
                             <constraint firstItem="wA7-To-Pob" firstAttribute="top" secondItem="z89-bw-vJq" secondAttribute="bottom" constant="20" id="pql-qq-Co4"/>
                             <constraint firstAttribute="width" secondItem="dHZ-Xf-RPf" secondAttribute="width" multiplier="3:2" id="rZH-EC-79Y"/>
@@ -382,6 +387,7 @@
                     </view>
                     <connections>
                         <outlet property="ConnectFBButton" destination="z89-bw-vJq" id="K4L-cU-ehm"/>
+                        <outlet property="LoadingSpinner" destination="c4y-hn-zXj" id="5Oo-Ja-iRl"/>
                         <outlet property="NotNowButton" destination="wA7-To-Pob" id="h8Z-J1-brc"/>
                     </connections>
                 </viewController>
