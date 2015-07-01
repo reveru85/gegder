@@ -65,13 +65,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]
         
-        // Update the UI with the current post
-        cell.UserLabel.text = post.username
-        cell.UserLocation.text = post.location
-        
         // Insert placeholder image else reused image will show up
         cell.PostImage.image = UIImage(named:"post_default")
-    
+        
         if post.media_url != nil {
             if let imageUrl = NSURL(string: post.media_url!) {
                 let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
@@ -80,16 +76,31 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     if data != nil {
                         let image = UIImage(data: data)
                         cell.PostImage.image = image
-                    }                    
+                    }
                 })
             }
         }
-        
+
+        // Update the UI with the current post
+        cell.UserLabel.text = post.username
+        cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
         cell.PostHashtags.text = post.hash_tag
         cell.PostCommentCount.text = post.total_comments
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
+        
+        if post.is_like {
+            cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")
+        } else {
+            cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like")
+        }
+        
+        if post.is_dislike {
+            cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike_on")
+        } else {
+            cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
+        }
         
         println(post.display_order)
         

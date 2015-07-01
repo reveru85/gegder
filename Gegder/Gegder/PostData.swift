@@ -19,10 +19,15 @@ class PostData {
         var total_comments : String?
         var total_likes : String?
         var total_dislikes : String?
-        var is_like : Bool?
-        var is_dislike : Bool?
+        var is_like : Bool
+        var is_dislike : Bool
         var post_id : String?
         var display_order : String?
+        
+        init() {
+            is_like = false
+            is_dislike = false
+        }
     }
     
     var entries = [PostEntry]()

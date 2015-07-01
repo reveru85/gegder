@@ -26,7 +26,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillHideNotification, object: nil)
-    
     }
     
     deinit {
@@ -39,6 +38,9 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func CancelButton(sender: AnyObject) {
+        //hide keyboard
+        view.endEditing(true)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -46,12 +48,24 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         println("post!")
 //        println(hashtagField.text)
         
+        //hide keyboard
+        view.endEditing(true)
+        
         postButton.enabled = false
         cancelButton.enabled = false
         
         var editedImage = newImage?.fixOrientation()
+        editedImage = editedImage?.cropToSquare()
         
-        var imageData = UIImageJPEGRepresentation(editedImage, 0.2)
+        //resize
+        let size = CGSizeMake(720, 720)
+        UIGraphicsBeginImageContextWithOptions(size, true, 0)
+        editedImage!.drawInRect(CGRect(origin: CGPointZero, size: size))
+        
+        let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
+        UIGraphicsEndImageContext()
+        
+        var imageData = UIImageJPEGRepresentation(scaledImage, 0.2)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
@@ -114,6 +128,42 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
 }
 
 extension UIImage {
+    
+    func cropToSquare() -> UIImage {
+        // Create a copy of the image without the imageOrientation property so it is in its native orientation (landscape)
+        let contextImage: UIImage = UIImage(CGImage: self.CGImage)!
+        
+        // Get the size of the contextImage
+        let contextSize: CGSize = contextImage.size
+        
+        let posX: CGFloat
+        let posY: CGFloat
+        let width: CGFloat
+        let height: CGFloat
+        
+        // Check to see which length is the longest and create the offset based on that length, then set the width and height of our rect
+        if contextSize.width > contextSize.height {
+            posX = ((contextSize.width - contextSize.height) / 2)
+            posY = 0
+            width = contextSize.height
+            height = contextSize.height
+        } else {
+            posX = 0
+            posY = ((contextSize.height - contextSize.width) / 2)
+            width = contextSize.width
+            height = contextSize.width
+        }
+        
+        let rect: CGRect = CGRectMake(posX, posY, width, height)
+        
+        // Create bitmap image from context using the rect
+        let imageRef: CGImageRef = CGImageCreateWithImageInRect(contextImage.CGImage, rect)
+        
+        // Create a new image based on the imageRef and rotate back to the original orientation
+        let image: UIImage = UIImage(CGImage: imageRef, scale: self.scale, orientation: self.imageOrientation)!
+        
+        return image
+    }
     
     func fixOrientation() -> UIImage {
         
