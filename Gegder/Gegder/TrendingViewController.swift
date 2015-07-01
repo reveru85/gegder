@@ -14,6 +14,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     let postCellId = "PostCell2"
     let data = PostData()
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    var refreshControl: UIRefreshControl!
+    var imageCache = [String:UIImage]()
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -36,20 +38,20 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var posts = JSON(data: data!)
-                
-                //first load clear placeholder entry
                 self.data.clearEntries()
-                
                 self.data.addEntriesFromJSON(posts)
-                
-                println(self.data.entries.count)
-                
                 self.TrendingTableView.reloadData()
             }
         })
         
-        //camera stuff
+        // Camera stuff
         picker.delegate = self
+        
+        // Pull to refresh code
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
+        self.TrendingTableView.addSubview(refreshControl)
     }
 
     override func didReceiveMemoryWarning() {
@@ -96,6 +98,26 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.PostDislikeCount.text = post.total_dislikes
         
         return cell
+    }
+    
+    func getNewPosts() {
+        
+        println("Getting new trending posts...")
+        
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_trending_list/" + userID!
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var posts = JSON(data: data!)
+                self.data.clearEntries()
+                self.data.addEntriesFromJSON(posts)
+                self.TrendingTableView.reloadData()
+            }
+            
+            self.refreshControl.endRefreshing()
+        })
     }
     
     //camera stuff
