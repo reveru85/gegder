@@ -16,6 +16,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     var lastPostID = ""
     var refreshControl: UIRefreshControl!
+    var imageCache = [String:UIImage]()
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -76,16 +77,41 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Insert placeholder image else reused image will show up
         cell.PostImage.image = UIImage(named:"post_default")
         
-        if post.media_url != nil {
-            if let imageUrl = NSURL(string: post.media_url!) {
-                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-                    if data != nil {
-                        let image = UIImage(data: data)
-                        cell.PostImage.image = image
+        // Assign image URL string as key to image cache
+        let urlString = post.media_url
+        
+        // If this image is already cached, don't re-download
+        if (urlString != nil) {
+            if let img = imageCache[urlString!] {
+                println("Image exists in cache")
+                cell.PostImage.image = img
+            }
+            else {
+                // The image isn't cached, download the img data
+                // We should perform this in a background thread
+                if urlString != nil {
+                    if let imageUrl = NSURL(string: urlString!) {
+                        let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
+                        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+                        NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                            if data != nil {
+                                
+                                println("Downloading new image from URL...")
+                                // Convert the downloaded data in to a UIImage object
+                                let image = UIImage(data: data)
+                                // Store the image in to our cache
+                                self.imageCache[urlString!] = image
+                                // Update the cell
+                                dispatch_async(dispatch_get_main_queue(), {
+                                    if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
+                                        //cellToUpdate.imageView?.image = image
+                                        (cellToUpdate as! PostTableViewCell).PostImage.image = image
+                                    }
+                                })
+                            }
+                        })
                     }
-                })
+                }
             }
         }
 
@@ -111,6 +137,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         println(post.display_order)
+        println(post.media_url)
         
         return cell
     }
@@ -187,6 +214,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                     
                     println("Number of new posts: \(posts.count)")
                     self.data.addEntriesToFrontFromJSON(posts)
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.data.entries.first!.post_id!
                     self.HomeTableView.reloadData()
                 }
             }
