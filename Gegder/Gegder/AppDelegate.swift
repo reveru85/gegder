@@ -52,11 +52,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         
         // Test image base64 encode
-        var image : UIImage = UIImage(named:"ic_share_facebook")!
-        var imageData = UIImagePNGRepresentation(image)
+//        var image : UIImage = UIImage(named:"ic_share_facebook")!
+//        var imageData = UIImagePNGRepresentation(image)
         //var imageData = UIImageJPEGRepresentation(image, 0.2)
         
-        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
+//        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         
 //        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))
 //        var decodedimage = UIImage(data: decodedData!)
@@ -72,22 +72,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        
 //        println(newPost)
         
-        var postData = "jpegImageEncoded=" + base64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE" + "&userId=" + "3E3734A45B280196F042AAA76117583E" + "&isLogin=" + "0"
-        
-        println(postData)
-        
-        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
-        var url1 = NSURL(string: urlPath)
-        var request1: NSMutableURLRequest = NSMutableURLRequest(URL: url1!)
-        
-        println(url1)
-        
-        request1.HTTPMethod = "POST"
-        request1.timeoutInterval = 60
-        request1.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
-        request1.HTTPShouldHandleCookies=false
-        
-        println("Sending new post...")
+//        var postData = "jpegImageEncoded=" + base64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE" + "&userId=" + "3E3734A45B280196F042AAA76117583E" + "&isLogin=" + "0"
+//        
+//        println(postData)
+//        
+//        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
+//        var url1 = NSURL(string: urlPath)
+//        var request1: NSMutableURLRequest = NSMutableURLRequest(URL: url1!)
+//        
+//        println(url1)
+//        
+//        request1.HTTPMethod = "POST"
+//        request1.timeoutInterval = 60
+//        request1.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
+//        request1.HTTPShouldHandleCookies=false
+//        
+//        println("Sending new post...")
         
 //        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
 //            if data != nil {

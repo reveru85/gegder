@@ -775,7 +775,9 @@
                     <connections>
                         <outlet property="bottomConstraint" destination="6CR-SK-Ivj" id="dON-pk-5RB"/>
                         <outlet property="cameraPreview" destination="ELR-8c-lFb" id="9Vc-KG-kks"/>
+                        <outlet property="cancelButton" destination="bEM-5z-xDp" id="S6h-Zl-8f9"/>
                         <outlet property="hashtagField" destination="fuq-lr-doX" id="yhP-jA-UyG"/>
+                        <outlet property="postButton" destination="9GS-XS-65j" id="UOy-V6-zw4"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="uwv-cX-iiQ" userLabel="First Responder" sceneMemberID="firstResponder"/>
