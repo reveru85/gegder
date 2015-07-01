@@ -15,6 +15,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     let data = PostData()
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     var lastPostID = ""
+    var refreshControl: UIRefreshControl!
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -40,12 +41,19 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 var posts = JSON(data: data!)
                 self.data.clearEntries()
                 self.data.addEntriesFromJSON(posts)
+                (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.data.entries.first!.post_id!
                 self.HomeTableView.reloadData()
             }
         })
         
         //camera stuff
         picker.delegate = self
+        
+        // Pull to refresh code
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "getNewPosts:", forControlEvents: UIControlEvents.ValueChanged)
+        self.HomeTableView.addSubview(refreshControl)
     }
     
     override func didReceiveMemoryWarning() {
@@ -123,7 +131,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
         println("Loading more posts...")
         
-        // Get Previous Posts based on Oldest Post
+        // Get previous posts based on oldest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_previous_post/" + postID! + "/" + userID!
         
         println(urlString)
@@ -145,11 +153,40 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         })
+    }
+    
+    func getNewPosts(sender:AnyObject) {
         
+        println("Getting new posts...")
+        
+        // Get new posts based on newest post
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_new_post/" + self.data.entries.first!.post_id! + "/" + userID!
+        
+        println(urlString)
+        
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var posts = JSON(data: data!)
+                
+                // Only add if JSON from server contains more posts
+                if posts.count != 0 {
+                    
+                    println("Number of new posts: \(posts.count)")
+                    self.data.addEntriesToFrontFromJSON(posts)
+                    self.HomeTableView.reloadData()
+                }
+            }
+            
+            self.refreshControl.endRefreshing()
+        })
     }
     
     //camera stuff
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
             var vc = nc.viewControllers.first as! NewPostViewController

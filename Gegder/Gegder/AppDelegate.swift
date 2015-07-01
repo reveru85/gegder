@@ -14,6 +14,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     internal var userID: String?
+    internal var firstPostID : String?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
@@ -29,10 +30,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var user = JSON(data: data!)
-                
-                // Prints value of specific key in JSON object (dictionary)
-                self.userID = user["id"].string
-                
+                self.userID = user["id"].string                
                 var welcomeViewController = self.window!.rootViewController as! WelcomeViewController
                 welcomeViewController.userIDLoadComplete()
             }
@@ -45,57 +43,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navigationBarAppearance.tintColor = UIColor.whiteColor()
         
         UIApplication.sharedApplication().statusBarStyle = UIStatusBarStyle.LightContent
-        
-        
-        // Test code for posting
-        // http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_trending_list/dphodto/dphodto_image_post
-        
-        
-        // Test image base64 encode
-//        var image : UIImage = UIImage(named:"ic_share_facebook")!
-//        var imageData = UIImagePNGRepresentation(image)
-        //var imageData = UIImageJPEGRepresentation(image, 0.2)
-        
-//        let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
-        
-//        let decodedData = NSData(base64EncodedString: base64String, options: NSDataBase64DecodingOptions(rawValue: 0))
-//        var decodedimage = UIImage(data: decodedData!)
-//        println(decodedimage)
-        
-        
-//        var newPost = JSON(["jpegImageEncoded":"", "latestPostId":"", "userId":"", "timezone":"", "description":"", "isLogin":""])
-//        
-//        newPost["jpegImageEncoded"].string = base64String
-//        newPost["latestPostId"].string = "199C77C04356608030806A2D40E93DAE"
-//        newPost["userId"].string = "3E3734A45B280196F042AAA76117583E"
-//        newPost["isLogin"].string = "0"
-//        
-//        println(newPost)
-        
-//        var postData = "jpegImageEncoded=" + base64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE" + "&userId=" + "3E3734A45B280196F042AAA76117583E" + "&isLogin=" + "0"
-//        
-//        println(postData)
-//        
-//        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
-//        var url1 = NSURL(string: urlPath)
-//        var request1: NSMutableURLRequest = NSMutableURLRequest(URL: url1!)
-//        
-//        println(url1)
-//        
-//        request1.HTTPMethod = "POST"
-//        request1.timeoutInterval = 60
-//        request1.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
-//        request1.HTTPShouldHandleCookies=false
-//        
-//        println("Sending new post...")
-        
-//        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//            if data != nil {
-//                var posts = JSON(data: data!)
-//                println("Data received: \(posts.count)")
-//                println(posts)
-//            }
-//        })
         
         return true
     }

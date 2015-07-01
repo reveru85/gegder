@@ -81,6 +81,8 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
                 println("Data received: \(posts.count)")
                 println(posts)
                 self.dismissViewControllerAnimated(true, completion: nil)
+                
+                
             }
         })
         

@@ -57,7 +57,39 @@ class PostData {
             
             entries.append(entry)
         }
-        
     }
     
+    func addEntriesToFrontFromJSON(data: JSON) {
+        
+        var oldEntries = entries
+        var newEntries = [PostEntry]()
+        
+        for (index: String, post: JSON) in data {
+            
+            let entry = PostEntry()
+            entry.title = post["title"].string!
+            entry.username = post["username"].string!
+            entry.location = post["location"].string!
+            entry.media_url = post["link_url"].string!
+            entry.created_datetime = post["created_datetime"].string!
+            entry.hash_tag = post["hash_tag"].string!
+            entry.total_comments = post["total_comments"].string!
+            entry.total_likes = post["total_likes"].string!
+            entry.total_dislikes = post["total_dislikes"].string!
+            entry.is_like = post["is_like"].bool!
+            entry.is_dislike = post["is_dislike"].bool!
+            entry.post_id = post["id"].string!
+            entry.display_order = post["display_order"].string!
+            
+            newEntries.append(entry)
+        }
+        
+        println(newEntries)
+        
+        entries = newEntries + oldEntries
+        
+        println("before count: \(oldEntries.count)")
+        println("after count: \(entries.count)")
+        println("new count: \(newEntries.count)")
+    }
 }
