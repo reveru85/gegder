@@ -23,10 +23,11 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var newImage: UIImage?
     
     override func viewDidLoad() {
-        
         super.viewDidLoad()
-        
         // Do any additional setup after loading the view, typically from a nib.
+        
+        (UIApplication.sharedApplication().delegate as! AppDelegate).homeView = self
+        
         HomeTableView.delegate = self
         HomeTableView.dataSource = self
         HomeTableView.estimatedRowHeight = 44

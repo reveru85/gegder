@@ -18,6 +18,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet weak var cameraPreview: UIImageView!
     var newImage: UIImage?
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    let homeView = (UIApplication.sharedApplication().delegate as! AppDelegate).homeView
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -73,7 +74,9 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
         
-        var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + "199C77C04356608030806A2D40E93DAE"
+        let firstPostId = (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID
+        
+        var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + firstPostId!
         var postData2 = "&userId=" + userID! + "&isLogin=" + "0"
         
         var postData = postData1 + postData2
@@ -94,9 +97,18 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
             if data != nil {
                 var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
                 println(strData)
+
                 var posts = JSON(data: data!)
-                println("Data received: \(posts.count)")
-                println(posts)
+                
+                // Only add if JSON from server contains more posts
+                if posts.count != 0 {
+                    
+                    println("Number of new posts: \(posts.count)")
+                    self.homeView!.data.addEntriesToFrontFromJSON(posts)
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.homeView!.data.entries.first!.post_id!
+                    self.homeView!.HomeTableView.reloadData()
+                }
+                
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         })
