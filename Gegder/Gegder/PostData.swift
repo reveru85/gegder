@@ -16,6 +16,7 @@ class PostData {
         var media_url : String?
         var created_datetime : String?
         var hash_tag : String?
+        var description : String?
         var total_comments : String?
         var total_likes : String?
         var total_dislikes : String?
@@ -52,6 +53,7 @@ class PostData {
             entry.media_url = post["link_url"].string!
             entry.created_datetime = post["created_datetime"].string!
             entry.hash_tag = post["hash_tag"].string!
+            entry.description = post["description"].string!
             entry.total_comments = post["total_comments"].string!
             entry.total_likes = post["total_likes"].string!
             entry.total_dislikes = post["total_dislikes"].string!
@@ -78,6 +80,7 @@ class PostData {
             entry.media_url = post["link_url"].string!
             entry.created_datetime = post["created_datetime"].string!
             entry.hash_tag = post["hash_tag"].string!
+            entry.description = post["description"].string!
             entry.total_comments = post["total_comments"].string!
             entry.total_likes = post["total_likes"].string!
             entry.total_dislikes = post["total_dislikes"].string!
@@ -93,9 +96,9 @@ class PostData {
         
         entries = newEntries + oldEntries
         
-        println("before count: \(oldEntries.count)")
-        println("after count: \(entries.count)")
-        println("new count: \(newEntries.count)")
+//        println("before count: \(oldEntries.count)")
+//        println("after count: \(entries.count)")
+//        println("new count: \(newEntries.count)")
     }
     
     func likePost(postId: String) {

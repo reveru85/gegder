@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var lastPostID = ""
     var refreshControl: UIRefreshControl!
     var imageCache = [String:UIImage]()
+    var selectedPostCellId = ""
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -59,17 +60,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return data.entries.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
         // Initialise an instance of PostData class using the current row
@@ -82,7 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // If this image is already cached, don't re-download
         if (urlString != nil) {
             if let img = imageCache[urlString!] {
-                println("Image exists in cache")
+                //println("Image exists in cache")
                 cell.PostImage.image = img
             }
             else {
@@ -95,7 +94,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                             if data != nil {
                                 
-                                println("Downloading new image from URL...")
+                                //println("Downloading new image from URL...")
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data)
                                 // Store the image in to our cache
@@ -115,6 +114,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         // Update the UI with the current post
+        cell.PostTitle.text = post.title
         cell.UserLabel.text = post.username
         cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
@@ -203,7 +203,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get new posts based on newest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_new_post/" + self.data.entries.first!.post_id! + "/" + userID!
         
-        println(urlString)
+//        println(urlString)
         
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
@@ -226,17 +226,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
-    //camera stuff
+    //prep for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
             var vc = nc.viewControllers.first as! NewPostViewController
             
             vc.newImage = self.newImage
         }
+        else if (segue.identifier == "ShowComments") {
+            var vc = segue.destinationViewController as! CommentsViewController
+            
+            vc.postId = self.selectedPostCellId
+        }
     }
     
+    //camera stuff
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2

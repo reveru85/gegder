@@ -16,6 +16,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     var refreshControl: UIRefreshControl!
     var imageCache = [String:UIImage]()
+    var selectedPostCellId = ""
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -76,7 +77,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         // If this image is already cached, don't re-download
         if (urlString != nil) {
             if let img = imageCache[urlString!] {
-                println("Image exists in cache")
+                //println("Image exists in cache")
                 cell.PostImage.image = img
             }
             else {
@@ -89,7 +90,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                             if data != nil {
                                 
-                                println("Downloading new image from URL...")
+                                //println("Downloading new image from URL...")
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data)
                                 // Store the image in to our cache
@@ -107,21 +108,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
         }
-        
-//        if post.media_url != nil {
-//            if let imageUrl = NSURL(string: post.media_url!) {
-//                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-//                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-//                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//                    if data != nil {
-//                        let image = UIImage(data: data)
-//                        cell.PostImage.image = image
-//                    }
-//                    
-//                })
-//            }
-//        }
-        
+
+        cell.PostTitle.text = post.title
         cell.UserLabel.text = post.username
         cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
@@ -129,6 +117,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.PostCommentCount.text = post.total_comments
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
+        cell.PostId = post.post_id
+        cell.parentView = self
         
         if post.is_like {
             cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")
@@ -165,7 +155,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         })
     }
     
-    //camera stuff
+    //prep for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
@@ -173,8 +163,14 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             
             vc.newImage = self.newImage
         }
+        else if (segue.identifier == "ShowComments") {
+            var vc = segue.destinationViewController as! CommentsViewController
+            
+            vc.postId = self.selectedPostCellId
+        }
     }
     
+    //camera stuff
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
 
         newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2

@@ -10,6 +10,7 @@ import UIKit
 
 class PostTableViewCell: UITableViewCell {
     
+    @IBOutlet weak var PostTitle: UILabel!
     @IBOutlet weak var UserImage: UIImageView!
     @IBOutlet weak var UserLabel: UILabel!
     @IBOutlet weak var UserLocation: UILabel!
@@ -123,5 +124,16 @@ class PostTableViewCell: UITableViewCell {
             likeAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
             self.homeView?.presentViewController(likeAlert, animated: true, completion: nil)
         }
+    }
+    
+    @IBAction func PostCommentButtonTouch(sender: UIButton) {
+        
+        if parentView is HomeViewController {
+            (parentView as! HomeViewController).selectedPostCellId = PostId
+        }
+        if parentView is TrendingViewController {
+            (parentView as! TrendingViewController).selectedPostCellId = PostId
+        }
+        parentView.performSegueWithIdentifier("ShowComments", sender:self)
     }
 }
