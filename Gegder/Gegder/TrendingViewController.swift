@@ -50,7 +50,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         
         // Pull to refresh code
         self.refreshControl = UIRefreshControl()
-        self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        //self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
         self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
         self.TrendingTableView.addSubview(refreshControl)
     }
