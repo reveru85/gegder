@@ -10,6 +10,7 @@ import UIKit
 
 class CommentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var CommentsTextField: UITextField!
     @IBOutlet weak var NoCommentsView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
     @IBOutlet weak var bottomConstraint2: NSLayoutConstraint!
@@ -107,6 +108,11 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         textField.resignFirstResponder()
         return true
+    }
+    
+    @IBAction func SendComment(sender: UIButton) {
+        println("send comment")
+        println(CommentsTextField.text)
     }
 }
 
