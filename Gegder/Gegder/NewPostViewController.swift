@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
     @IBOutlet weak var postButton: UIBarButtonItem!
@@ -49,35 +50,39 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     @IBAction func PostButton(sender: AnyObject) {
         println("post!")
 //        println(hashtagField.text)
+//        println(titleField.text)
         
         //hide keyboard
         view.endEditing(true)
         
+        //disable buttons and show spinner
         postButton.enabled = false
         cancelButton.enabled = false
-        
         postingBlurView.hidden = false
         
+        //fix image orientation and crop to square
         var editedImage = newImage?.fixOrientation()
         editedImage = editedImage?.cropToSquare()
         
-        //resize
+        //resize image to 720x720
         let size = CGSizeMake(720, 720)
         UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
         editedImage!.drawInRect(CGRect(origin: CGPointZero, size: size))
-        
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
+        //create base64 from image
         var imageData = UIImageJPEGRepresentation(scaledImage, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
-        
+
+        //replace + with %2B to get around HTTP post restriction
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
         
+        //prep data for posting
         let firstPostId = (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID
         
         var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + firstPostId!
-        var postData2 = "&userId=" + userID! + "&isLogin=" + "0"
+        var postData2 = "&userId=" + userID! + "&isLogin=0" + "&title=" + titleField.text + "&hashtag=" + hashtagField.text
         
         var postData = postData1 + postData2
         
@@ -138,7 +143,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         textField.resignFirstResponder()
         return true
     }
-    
     
 }
 

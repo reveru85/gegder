@@ -59,17 +59,15 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     }
     
     override func didReceiveMemoryWarning() {
-        
         super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
         return data.entries.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
         // Initialise an instance of PostData class using the current row
@@ -115,6 +113,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
 
         // Update the UI with the current post
+        cell.PostTitle.text = post.title
         cell.UserLabel.text = post.username
         cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
@@ -136,8 +135,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
-        println(post.display_order)
-        println(post.media_url)
+//        println(post.display_order)
+//        println(post.media_url)
         
         return cell
     }
@@ -200,7 +199,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Get new posts based on newest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_new_post/" + self.data.entries.first!.post_id! + "/" + userID!
         
-        println(urlString)
+//        println(urlString)
         
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)

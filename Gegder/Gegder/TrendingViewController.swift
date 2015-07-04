@@ -107,21 +107,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                 }
             }
         }
-        
-//        if post.media_url != nil {
-//            if let imageUrl = NSURL(string: post.media_url!) {
-//                let imageRequest: NSURLRequest = NSURLRequest(URL: imageUrl)
-//                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-//                NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-//                    if data != nil {
-//                        let image = UIImage(data: data)
-//                        cell.PostImage.image = image
-//                    }
-//                    
-//                })
-//            }
-//        }
-        
+
+        cell.PostTitle.text = post.title
         cell.UserLabel.text = post.username
         cell.UserLocation.text = post.location
         cell.PostDateTime.text = post.created_datetime
@@ -129,6 +116,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.PostCommentCount.text = post.total_comments
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
+        cell.PostId = post.post_id
         
         if post.is_like {
             cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")
