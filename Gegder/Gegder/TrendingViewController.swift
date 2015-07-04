@@ -118,6 +118,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
         cell.PostId = post.post_id
+        cell.UserId = self.userID
+        cell.IsLike = post.is_like
+        cell.IsDislike = post.is_dislike
         cell.parentView = self
         
         if post.is_like {

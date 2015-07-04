@@ -126,6 +126,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.UserId = self.userID
         cell.IsLike = post.is_like
         cell.IsDislike = post.is_dislike
+        cell.parentView = self
         
         if post.is_like {
             cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")

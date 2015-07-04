@@ -95,10 +95,6 @@ class PostData {
         println(newEntries)
         
         entries = newEntries + oldEntries
-        
-//        println("before count: \(oldEntries.count)")
-//        println("after count: \(entries.count)")
-//        println("new count: \(newEntries.count)")
     }
     
     func likePost(postId: String) {
