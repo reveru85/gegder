@@ -97,4 +97,28 @@ class PostData {
         println("after count: \(entries.count)")
         println("new count: \(newEntries.count)")
     }
+    
+    func likePost(postId: String) {
+        for entry in entries {
+            if entry.post_id == postId {
+                
+                entry.is_like = true
+                var likesInt = entry.total_likes?.toInt()
+                likesInt!++
+                entry.total_likes = String(likesInt!)
+            }
+        }
+    }
+    
+    func dislikePost(postId: String) {
+        for entry in entries {
+            if entry.post_id == postId {
+                
+                entry.is_dislike = true
+                var dislikesInt = entry.total_dislikes?.toInt()
+                dislikesInt!++
+                entry.total_dislikes = String(dislikesInt!)
+            }
+        }
+    }
 }
