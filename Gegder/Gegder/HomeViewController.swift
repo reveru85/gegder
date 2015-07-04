@@ -123,6 +123,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
         cell.PostId = post.post_id
+        cell.UserId = self.userID
+        cell.IsLike = post.is_like
+        cell.IsDislike = post.is_dislike
         cell.parentView = self
         
         if post.is_like {
@@ -137,8 +140,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
-//        println(post.display_order)
-//        println(post.media_url)
+        println(post.display_order)
+        println(post.post_id)
         
         return cell
     }
