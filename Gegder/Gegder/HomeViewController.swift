@@ -136,7 +136,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         }
         
         println(post.display_order)
-        println(post.media_url)
+        println(post.post_id)
         
         return cell
     }

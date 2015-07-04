@@ -35,11 +35,13 @@ class PostTableViewCell: UITableViewCell {
         //Check if action is valid
         //Post "like" to server
         //Update image
+        println("like button pressed")
     }
     
     @IBAction func PostDislikeButtonTouch(sender: UIButton) {
         //Check if action is valid
         //Post "like" to server
         //Update image
+        println("dislike button pressed")
     }
 }
