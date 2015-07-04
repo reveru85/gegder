@@ -92,7 +92,7 @@ class PostData {
             newEntries.append(entry)
         }
         
-        println(newEntries)
+//        println(newEntries)
         
         entries = newEntries + oldEntries
     }
