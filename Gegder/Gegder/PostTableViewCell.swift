@@ -31,4 +31,15 @@ class PostTableViewCell: UITableViewCell {
         super.setSelected(selected, animated: animated)
     }
     
+    @IBAction func PostLikeButtonTouch(sender: UIButton) {
+        //Check if action is valid
+        //Post "like" to server
+        //Update image
+    }
+    
+    @IBAction func PostDislikeButtonTouch(sender: UIButton) {
+        //Check if action is valid
+        //Post "like" to server
+        //Update image
+    }
 }
