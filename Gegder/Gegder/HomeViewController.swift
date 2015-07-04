@@ -17,6 +17,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var lastPostID = ""
     var refreshControl: UIRefreshControl!
     var imageCache = [String:UIImage]()
+    var selectedPostCellId = ""
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -80,7 +81,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // If this image is already cached, don't re-download
         if (urlString != nil) {
             if let img = imageCache[urlString!] {
-                println("Image exists in cache")
+                //println("Image exists in cache")
                 cell.PostImage.image = img
             }
             else {
@@ -93,7 +94,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                             if data != nil {
                                 
-                                println("Downloading new image from URL...")
+                                //println("Downloading new image from URL...")
                                 // Convert the downloaded data in to a UIImage object
                                 let image = UIImage(data: data)
                                 // Store the image in to our cache
@@ -122,6 +123,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         cell.PostLikeCount.text = post.total_likes
         cell.PostDislikeCount.text = post.total_dislikes
         cell.PostId = post.post_id
+        cell.parentView = self
         
         if post.is_like {
             cell.PostLikeButton.imageView?.image = UIImage(named:"ic_like_on")
@@ -222,17 +224,22 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
-    //camera stuff
+    //prep for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
             var vc = nc.viewControllers.first as! NewPostViewController
             
             vc.newImage = self.newImage
         }
+        else if (segue.identifier == "ShowComments") {
+            var vc = segue.destinationViewController as! CommentsViewController
+            
+            vc.postId = self.selectedPostCellId
+        }
     }
     
+    //camera stuff
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
         
         newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2

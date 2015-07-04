@@ -18,6 +18,8 @@
 		134F2E351B32F8DC00C09E9B /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E301B32F8DC00C09E9B /* Lato-Regular.ttf */; };
 		134F2E361B32F8DC00C09E9B /* Lato-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E311B32F8DC00C09E9B /* Lato-Semibold.ttf */; };
 		134F2E371B32F8DC00C09E9B /* OpenSansBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 134F2E321B32F8DC00C09E9B /* OpenSansBold.ttf */; };
+		13660C9B1B47A40A00A3D8D3 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13660C9A1B47A40A00A3D8D3 /* CommentsViewController.swift */; };
+		13660C9F1B47AC4100A3D8D3 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */; };
 		13B1FC6F1B2C1EA7005FDEFB /* NotificationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */; };
 		13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */; };
 		13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */; };
@@ -86,6 +88,8 @@
 		134F2E301B32F8DC00C09E9B /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		134F2E311B32F8DC00C09E9B /* Lato-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Semibold.ttf"; sourceTree = "<group>"; };
 		134F2E321B32F8DC00C09E9B /* OpenSansBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = OpenSansBold.ttf; sourceTree = "<group>"; };
+		13660C9A1B47A40A00A3D8D3 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
+		13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsViewController.swift; sourceTree = "<group>"; };
 		13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
 		13B1FC721B2C1F39005FDEFB /* WelcomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WelcomeViewController.swift; sourceTree = "<group>"; };
@@ -161,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
+				13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */,
+				13660C9A1B47A40A00A3D8D3 /* CommentsViewController.swift */,
 				2D079BF21B29C8AE004D141D /* HomeViewController.swift */,
 				1344BFED1B417799004F798F /* NewPostViewController.swift */,
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
@@ -347,8 +353,10 @@
 			files = (
 				13B1FC711B2C1EEF005FDEFB /* SearchViewController.swift in Sources */,
 				2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */,
+				13660C9B1B47A40A00A3D8D3 /* CommentsViewController.swift in Sources */,
 				2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */,
 				1344BFEE1B417799004F798F /* NewPostViewController.swift in Sources */,
+				13660C9F1B47AC4100A3D8D3 /* CommentsTableViewCell.swift in Sources */,
 				134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */,
 				13B1FC731B2C1F39005FDEFB /* WelcomeViewController.swift in Sources */,
 				2D079BF31B29C8AE004D141D /* HomeViewController.swift in Sources */,

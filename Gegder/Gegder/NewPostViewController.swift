@@ -48,9 +48,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func PostButton(sender: AnyObject) {
-        println("post!")
-//        println(hashtagField.text)
-//        println(titleField.text)
         
         //hide keyboard
         view.endEditing(true)
@@ -95,8 +92,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         request.timeoutInterval = 60
         request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
         request.HTTPShouldHandleCookies=false
-        
-        println("sending post")
         
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {

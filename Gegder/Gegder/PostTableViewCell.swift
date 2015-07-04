@@ -24,6 +24,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var PostDislikeButton: UIButton!
     @IBOutlet weak var PostDislikeCount: UILabel!
     var PostId: String!
+    var parentView: UIViewController!
     
     override func awakeFromNib() {
         super.awakeFromNib()        
@@ -43,5 +44,16 @@ class PostTableViewCell: UITableViewCell {
         //Check if action is valid
         //Post "like" to server
         //Update image
+    }
+    
+    @IBAction func PostCommentButtonTouch(sender: UIButton) {
+        
+        if parentView is HomeViewController {
+            (parentView as! HomeViewController).selectedPostCellId = PostId
+        }
+        if parentView is TrendingViewController {
+            (parentView as! TrendingViewController).selectedPostCellId = PostId
+        }
+        parentView.performSegueWithIdentifier("ShowComments", sender:self)
     }
 }
