@@ -22,6 +22,7 @@ class PostTableViewCell: UITableViewCell {
     @IBOutlet weak var PostLikeCount: UILabel!
     @IBOutlet weak var PostDislikeButton: UIButton!
     @IBOutlet weak var PostDislikeCount: UILabel!
+    var PostId: String!
     
     override func awakeFromNib() {
         super.awakeFromNib()        
