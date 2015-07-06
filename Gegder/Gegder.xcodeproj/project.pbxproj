@@ -35,9 +35,9 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
-		2D17255B1B4ACCED00283E79 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D17255A1B4ACCED00283E79 /* FBSDKCoreKit.framework */; };
-		2D1725611B4ACFB300283E79 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725601B4ACFB300283E79 /* FBSDKLoginKit.framework */; };
-		2D1725631B4ACFC700283E79 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725621B4ACFC700283E79 /* Bolts.framework */; };
+		2DF964871B4ADA07002D32A5 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725621B4ACFC700283E79 /* Bolts.framework */; };
+		2DF964881B4ADA07002D32A5 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D17255A1B4ACCED00283E79 /* FBSDKCoreKit.framework */; };
+		2DF964891B4ADA07002D32A5 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725601B4ACFB300283E79 /* FBSDKLoginKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -129,9 +129,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D1725631B4ACFC700283E79 /* Bolts.framework in Frameworks */,
-				2D1725611B4ACFB300283E79 /* FBSDKLoginKit.framework in Frameworks */,
-				2D17255B1B4ACCED00283E79 /* FBSDKCoreKit.framework in Frameworks */,
+				2DF964871B4ADA07002D32A5 /* Bolts.framework in Frameworks */,
+				2DF964881B4ADA07002D32A5 /* FBSDKCoreKit.framework in Frameworks */,
+				2DF964891B4ADA07002D32A5 /* FBSDKLoginKit.framework in Frameworks */,
 				132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
