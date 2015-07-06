@@ -12,6 +12,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     
     @IBOutlet weak var NotificationsTableView: UITableView!
     let postCellId = "NotificationsCell"
+    let data = NotificationData()
     
     class NotificationsEntry {
         var title : String?
@@ -19,8 +20,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         var user : String?
         var message : String?
     }
-    
-    var entries = [NotificationsEntry]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -30,23 +29,6 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         NotificationsTableView.dataSource = self
         NotificationsTableView.estimatedRowHeight = 44
         NotificationsTableView.rowHeight = UITableViewAutomaticDimension
-        
-        //init fixed data
-        var entry = NotificationsEntry()
-        entry.title = "Welcome to Gegder"
-        entry.datetime = "30 May 2015, 00:00"
-        entry.user = "Gegder Administrator"
-        entry.message = "Welcome to Gegder from admin"
-        
-        entries.append(entry)
-        
-        var entry2 = NotificationsEntry()
-        entry2.title = "Announcement"
-        entry2.datetime = "30 May 2015, 00:00"
-        entry2.user = "Gegder Administrator"
-        entry2.message = "Announcement"
-        
-        entries.append(entry2)
     }
     
     override func didReceiveMemoryWarning() {
@@ -55,7 +37,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return entries.count
+        return data.entries.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -65,12 +47,30 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         cell.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
         
         // Initialise an instance of PostData class using the current row
-        let post = entries[indexPath.row]
+        let post = data.entries[indexPath.row]
 
         cell.Title.text = post.title
         cell.DateTime.text = post.datetime
+        cell.entry = post
 
         return cell
     }
+    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        tableView.deselectRowAtIndexPath(indexPath, animated: false)
+        
+    }
+    
+    //prep for segue transitions
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "ShowNotification") {
+
+            var vc = segue.destinationViewController as! SingleNotificationViewController
+            vc.entry = (sender as! NotificationsTableViewCell).entry
+            
+        }
+    }
+
 }
 

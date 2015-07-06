@@ -14,7 +14,6 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var CommentsTextField: UITextField!
     @IBOutlet weak var NoCommentsView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
-    @IBOutlet weak var bottomConstraint2: NSLayoutConstraint!
     @IBOutlet weak var CommentsTableView: UITableView!
     var postId = ""
     let commentCellId = "CommentCell"

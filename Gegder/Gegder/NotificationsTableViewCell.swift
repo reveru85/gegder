@@ -13,6 +13,8 @@ class NotificationsTableViewCell: UITableViewCell {
     @IBOutlet weak var DateTime: UILabel!
     @IBOutlet weak var Title: UILabel!
     
+    var entry : NotificationData.NotificationEntry!
+    
     override func awakeFromNib() {
         super.awakeFromNib()
     }
