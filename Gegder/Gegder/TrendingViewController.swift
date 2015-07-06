@@ -17,6 +17,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     var refreshControl: UIRefreshControl!
     var imageCache = [String:UIImage]()
     var selectedPostCellId = ""
+    var selectedPostCell : PostTableViewCell!
     
     //camera stuff
     let picker = UIImagePickerController()
@@ -173,6 +174,8 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             var vc = segue.destinationViewController as! CommentsViewController
             
             vc.postId = self.selectedPostCellId
+            vc.parentView = self
+            vc.currentCellView = self.selectedPostCell
         }
     }
     

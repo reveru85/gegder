@@ -120,4 +120,15 @@ class PostData {
             }
         }
     }
+    
+    func incrementComment(postId: String) {
+        for entry in entries {
+            if entry.post_id == postId {
+                
+                var commentsInt = entry.total_comments?.toInt()
+                commentsInt!++
+                entry.total_comments = String(commentsInt!)
+            }
+        }
+    }
 }
