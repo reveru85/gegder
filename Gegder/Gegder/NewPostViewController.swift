@@ -99,14 +99,14 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-                println(strData)
+//                println(strData)
 
                 var posts = JSON(data: data!)
                 
                 // Only add if JSON from server contains more posts
                 if posts.count != 0 {
                     
-                    println("Number of new posts: \(posts.count)")
+//                    println("Number of new posts: \(posts.count)")
                     self.homeView!.data.addEntriesToFrontFromJSON(posts)
                     (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.homeView!.data.entries.first!.post_id!
                     self.homeView!.HomeTableView.reloadData()
@@ -137,7 +137,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
                 self.previewHeightConstraint?.active = true
             }
             
-//            self.bottomConstraint?.constant = isShowing ? endFrameHeight + 10 : 10.0
             UIView.animateWithDuration(duration,
                 delay: NSTimeInterval(0),
                 options: animationCurve,
@@ -147,7 +146,13 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(textField: UITextField) -> Bool {
-        textField.resignFirstResponder()
+        
+        if (textField === titleField) {
+            hashtagField.becomeFirstResponder()
+        } else if (textField === hashtagField) {
+            textField.resignFirstResponder()
+        }
+        
         return true
     }
     

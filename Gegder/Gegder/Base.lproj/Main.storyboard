@@ -807,7 +807,7 @@
                                     <constraint firstAttribute="height" constant="30" id="sc1-pf-EE6"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="next"/>
                                 <connections>
                                     <outlet property="delegate" destination="Q7A-z6-3Oh" id="mav-Ni-OJh"/>
                                 </connections>
