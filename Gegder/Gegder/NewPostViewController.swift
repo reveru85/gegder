@@ -10,6 +10,7 @@ import UIKit
 
 class NewPostViewController: UIViewController, UITextFieldDelegate {
     
+    @IBOutlet weak var previewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -127,7 +128,16 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
             let animationCurveRawNSN = userInfo[UIKeyboardAnimationCurveUserInfoKey] as? NSNumber
             let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
-            self.bottomConstraint?.constant = isShowing ? endFrameHeight : 0.0
+            
+            if isShowing {
+                self.bottomConstraint?.constant = endFrameHeight + 10
+                self.previewHeightConstraint?.active = false
+            } else {
+                self.bottomConstraint?.constant = 10.0
+                self.previewHeightConstraint?.active = true
+            }
+            
+//            self.bottomConstraint?.constant = isShowing ? endFrameHeight + 10 : 10.0
             UIView.animateWithDuration(duration,
                 delay: NSTimeInterval(0),
                 options: animationCurve,
