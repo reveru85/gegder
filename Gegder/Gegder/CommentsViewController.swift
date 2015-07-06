@@ -19,12 +19,14 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     var postId = ""
     let commentCellId = "CommentCell"
     let data = CommentData()
+    let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    var refreshControl: UIRefreshControl!
+    var parentView: UIViewController!
+    var currentCellView: PostTableViewCell!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
-        
-        println(postId)
         
         CommentsTableView.delegate = self
         CommentsTableView.dataSource = self
@@ -35,8 +37,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillHideNotification, object: nil)
         
         // Get comments
-//        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_list/" + userID!
-        var urlString = "http://"
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto_comment/dphodto_comment_list/" + postId
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
         let queue: NSOperationQueue = NSOperationQueue.mainQueue()
@@ -45,10 +46,15 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 var posts = JSON(data: data!)
                 self.data.clearEntries()
                 self.data.addEntriesFromJSON(posts)
-//                (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.data.entries.first!.post_id!
                 self.CommentsTableView.reloadData()
             }
         })
+        
+        // Pull to refresh code
+        self.refreshControl = UIRefreshControl()
+        //self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
+        self.refreshControl.addTarget(self, action: "getNewComments", forControlEvents: UIControlEvents.ValueChanged)
+        self.CommentsTableView.addSubview(refreshControl)
     }
     
     deinit {
@@ -111,11 +117,30 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         return true
     }
     
+    func getNewComments() {
+        
+        // Get comments
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto_comment/dphodto_comment_list/" + postId
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var posts = JSON(data: data!)
+                self.data.clearEntries()
+                self.data.addEntriesFromJSON(posts)
+                self.CommentsTableView.reloadData()
+            }
+            
+            self.refreshControl.endRefreshing()
+        })
+    }
+    
     @IBAction func SendComment(sender: UIButton) {
         println("send comment")
-        println(CommentsTextField.text)
+        let comment = CommentsTextField.text
         
-        if CommentsTextField.text.isEmpty {
+        if comment.isEmpty {
             println("no comment entered")
             return
         }
@@ -126,16 +151,58 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         postingBlurView.hidden = false
         
         //send comment to server
+        var postData = "dphodtoId=" + postId + "&userId=" + userID! + "&comment=" + comment
         
-        //reload comments from server on send complete (in async)
+        let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto_comment/dphodto_comment_create"
+        var url = NSURL(string: urlPath)
+        var request: NSMutableURLRequest = NSMutableURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
         
-        //hide sending view and re-enable comments posting (in async)
-        sender.enabled = true
-        CommentsTextField.enabled = true
-        postingBlurView.hidden = true
+        request.HTTPMethod = "POST"
+        request.timeoutInterval = 60
+        request.HTTPBody = postData.dataUsingEncoding(NSUTF8StringEncoding)
+        request.HTTPShouldHandleCookies=false
         
-        //clear CommentsTextField if posting succeeded (in async)
-        CommentsTextField.text = ""
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var str = NSString(data: data, encoding: NSUTF8StringEncoding)
+                
+                if str == "completed" {
+                    
+                    //reload comments from server on send complete (in async)
+                    self.getNewComments()
+                    
+                    //hide sending view and re-enable comments posting (in async)
+                    sender.enabled = true
+                    self.CommentsTextField.enabled = true
+                    self.postingBlurView.hidden = true
+                    
+                    //clear CommentsTextField if posting succeeded (in async)
+                    self.CommentsTextField.text = ""
+                    
+                    if self.parentView is HomeViewController {
+                        
+                        // Update post entry variable in HomeViewController (backend data)
+                        (self.parentView as! HomeViewController).data.incrementComment(self.postId)
+                        
+                        // Update post cell display in HomeViewController (frontend display)
+                        var commentsInt = self.currentCellView.PostCommentCount.text?.toInt()
+                        commentsInt!++
+                        self.currentCellView.PostCommentCount.text = String(commentsInt!)
+                    }
+                    else if self.parentView is TrendingViewController {
+                        
+                        // Update post entry variable in TrendingViewController (backend data)
+                        (self.parentView as! TrendingViewController).data.incrementComment(self.postId)
+                        
+                        // Update post cell display in TrendingViewController (frontend display)
+                        var commentsInt = self.currentCellView.PostCommentCount.text?.toInt()
+                        commentsInt!++
+                        self.currentCellView.PostCommentCount.text = String(commentsInt!)
+                    }
+                }
+            }
+        })
     }
 }
 

@@ -222,10 +222,14 @@ class PostTableViewCell: UITableViewCell {
         
         if parentView is HomeViewController {
             (parentView as! HomeViewController).selectedPostCellId = PostId
+            (parentView as! HomeViewController).selectedPostCell = self
         }
         if parentView is TrendingViewController {
             (parentView as! TrendingViewController).selectedPostCellId = PostId
+            (parentView as! TrendingViewController).selectedPostCell = self
         }
         parentView.performSegueWithIdentifier("ShowComments", sender:self)
     }
+    
+    
 }
