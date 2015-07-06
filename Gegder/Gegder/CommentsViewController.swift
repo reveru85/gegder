@@ -136,7 +136,6 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     @IBAction func SendComment(sender: UIButton) {
-        println("send comment")
         let comment = CommentsTextField.text
         
         if comment.isEmpty {

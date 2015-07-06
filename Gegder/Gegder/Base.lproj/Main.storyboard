@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14D136" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1OG-Oe-avg">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7706" systemVersion="14E46" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="1OG-Oe-avg">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7703"/>
         <capability name="Alignment constraints with different attributes" minToolsVersion="5.1"/>
@@ -1085,11 +1085,8 @@
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-Hg-xm2">
-                                                    <rect key="frame" x="68" y="45" width="512" height="15"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="15" id="V1T-GA-4bl"/>
-                                                    </constraints>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" lineBreakMode="tailTruncation" numberOfLines="99" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bdt-Hg-xm2">
+                                                    <rect key="frame" x="68" y="45" width="512" height="144"/>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
                                                     <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
@@ -1104,6 +1101,7 @@
                                                 <constraint firstItem="aRV-hS-OeU" firstAttribute="leading" secondItem="RPE-vJ-PzY" secondAttribute="leading" constant="10" id="Ylz-0V-JvY"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="lF1-GN-xfH" secondAttribute="trailing" constant="20" id="h7z-Ho-Pgz"/>
                                                 <constraint firstAttribute="trailing" secondItem="ynW-Mr-gbR" secondAttribute="trailing" constant="20" id="kWV-tZ-vrP"/>
+                                                <constraint firstAttribute="bottom" secondItem="bdt-Hg-xm2" secondAttribute="bottom" constant="10" id="p1g-JD-dSi"/>
                                                 <constraint firstItem="lF1-GN-xfH" firstAttribute="leading" secondItem="aRV-hS-OeU" secondAttribute="trailing" constant="8" id="pkz-ub-U33"/>
                                                 <constraint firstItem="bdt-Hg-xm2" firstAttribute="leading" secondItem="aRV-hS-OeU" secondAttribute="trailing" constant="8" id="qcz-lo-HJq"/>
                                                 <constraint firstItem="bdt-Hg-xm2" firstAttribute="top" secondItem="ynW-Mr-gbR" secondAttribute="bottom" id="uRx-ez-83h"/>
