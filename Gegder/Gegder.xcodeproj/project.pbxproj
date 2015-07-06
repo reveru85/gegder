@@ -33,6 +33,9 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
+		2D17255B1B4ACCED00283E79 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D17255A1B4ACCED00283E79 /* FBSDKCoreKit.framework */; };
+		2D1725611B4ACFB300283E79 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725601B4ACFB300283E79 /* FBSDKLoginKit.framework */; };
+		2D1725631B4ACFC700283E79 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D1725621B4ACFC700283E79 /* Bolts.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,6 +112,10 @@
 		2D079C071B29C8AF004D141D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		2D079C081B29C8AF004D141D /* GegderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GegderTests.swift; sourceTree = "<group>"; };
 		2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SwiftyJSON.swift; path = "../../SwiftyJSON-master/Source/SwiftyJSON.swift"; sourceTree = "<group>"; };
+		2D17255A1B4ACCED00283E79 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		2D17255F1B4ACD8E00283E79 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
+		2D1725601B4ACFB300283E79 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		2D1725621B4ACFC700283E79 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -118,6 +125,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D1725631B4ACFC700283E79 /* Bolts.framework in Frameworks */,
+				2D1725611B4ACFB300283E79 /* FBSDKLoginKit.framework in Frameworks */,
+				2D17255B1B4ACCED00283E79 /* FBSDKCoreKit.framework in Frameworks */,
 				132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -148,6 +158,9 @@
 		2D079BE21B29C8AE004D141D = {
 			isa = PBXGroup;
 			children = (
+				2D1725621B4ACFC700283E79 /* Bolts.framework */,
+				2D1725601B4ACFB300283E79 /* FBSDKLoginKit.framework */,
+				2D17255A1B4ACCED00283E79 /* FBSDKCoreKit.framework */,
 				2D74669E1B384D1E009E6891 /* ben.playground */,
 				2D079BED1B29C8AE004D141D /* Gegder */,
 				2D079C051B29C8AF004D141D /* GegderTests */,
@@ -168,6 +181,7 @@
 		2D079BED1B29C8AE004D141D /* Gegder */ = {
 			isa = PBXGroup;
 			children = (
+				2D17255F1B4ACD8E00283E79 /* Bridging-Header.h */,
 				2D079BF01B29C8AE004D141D /* AppDelegate.swift */,
 				13660CA01B47CD6400A3D8D3 /* CommentData.swift */,
 				13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */,
@@ -506,10 +520,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Saphia/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gegder/Bridging-Header.h";
 			};
 			name = Debug;
 		};
@@ -519,10 +538,15 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					/Users/Saphia/Documents/FacebookSDK,
+				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				SWIFT_OBJC_BRIDGING_HEADER = "Gegder/Bridging-Header.h";
 			};
 			name = Release;
 		};
