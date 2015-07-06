@@ -10,6 +10,7 @@ import UIKit
 
 class CommentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var CommentsTextField: UITextField!
     @IBOutlet weak var NoCommentsView: UIView!
     @IBOutlet weak var bottomConstraint: NSLayoutConstraint!
@@ -96,7 +97,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             let animationCurveRaw = animationCurveRawNSN?.unsignedLongValue ?? UIViewAnimationOptions.CurveEaseInOut.rawValue
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             self.bottomConstraint?.constant = isShowing ? endFrameHeight - 49 : 0.0
-            self.bottomConstraint2?.constant = isShowing ? endFrameHeight + 7 - 49 : 7.0
+            //self.bottomConstraint2?.constant = isShowing ? endFrameHeight + 7 - 49 : 7.0
             UIView.animateWithDuration(duration,
                 delay: NSTimeInterval(0),
                 options: animationCurve,
@@ -113,6 +114,28 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBAction func SendComment(sender: UIButton) {
         println("send comment")
         println(CommentsTextField.text)
+        
+        if CommentsTextField.text.isEmpty {
+            println("no comment entered")
+            return
+        }
+        
+        //on send comment button clicked
+        sender.enabled = false
+        CommentsTextField.enabled = false
+        postingBlurView.hidden = false
+        
+        //send comment to server
+        
+        //reload comments from server on send complete (in async)
+        
+        //hide sending view and re-enable comments posting (in async)
+        sender.enabled = true
+        CommentsTextField.enabled = true
+        postingBlurView.hidden = true
+        
+        //clear CommentsTextField if posting succeeded (in async)
+        CommentsTextField.text = ""
     }
 }
 

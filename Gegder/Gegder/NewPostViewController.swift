@@ -56,6 +56,8 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         postButton.enabled = false
         cancelButton.enabled = false
         postingBlurView.hidden = false
+        titleField.enabled = false
+        hashtagField.enabled = false
         
         //fix image orientation and crop to square
         var editedImage = newImage?.fixOrientation()

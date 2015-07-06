@@ -140,7 +140,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     
     func getNewPosts() {
         
-        println("Getting new trending posts...")
+//        println("Getting new trending posts...")
         
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_trending_list/" + userID!
         let url = NSURL(string: urlString)

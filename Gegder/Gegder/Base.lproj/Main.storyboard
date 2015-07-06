@@ -36,6 +36,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="PoetsenOne-Regular.otf">
             <string>PoetsenOne-Regular</string>
@@ -984,6 +985,31 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
+                            <visualEffectView hidden="YES" opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="sKB-HM-Mmd">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="437"/>
+                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="MKU-Zx-Vop">
+                                    <rect key="frame" x="0.0" y="0.0" width="600" height="437"/>
+                                    <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                    <subviews>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="x4a-0Q-Log">
+                                            <rect key="frame" x="290" y="180" width="20" height="20"/>
+                                        </activityIndicatorView>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sJr-8J-who">
+                                            <rect key="frame" x="267" y="208" width="67" height="21"/>
+                                            <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
+                                            <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                    <constraints>
+                                        <constraint firstItem="sJr-8J-who" firstAttribute="centerX" secondItem="x4a-0Q-Log" secondAttribute="centerX" id="eiD-NB-DSO"/>
+                                        <constraint firstAttribute="centerY" secondItem="sJr-8J-who" secondAttribute="centerY" id="ek9-yL-rei"/>
+                                        <constraint firstAttribute="centerX" secondItem="x4a-0Q-Log" secondAttribute="centerX" id="hF2-FF-gId"/>
+                                        <constraint firstItem="sJr-8J-who" firstAttribute="top" secondItem="x4a-0Q-Log" secondAttribute="bottom" constant="8" id="q3N-sN-zXa"/>
+                                    </constraints>
+                                </view>
+                                <blurEffect style="dark"/>
+                            </visualEffectView>
                             <view hidden="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RvO-xq-83L">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="437"/>
                                 <subviews>
@@ -1016,15 +1042,10 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" minimumFontSize="17" clearButtonMode="whileEditing" translatesAutoresizingMaskIntoConstraints="NO" id="oOm-bh-Ufd">
                                 <rect key="frame" x="8" y="444" width="534" height="36"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="hPJ-4g-bEV"/>
+                                    <constraint firstAttribute="height" constant="36" id="VrJ-kF-w3E"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="done"/>
-                                <variation key="default">
-                                    <mask key="constraints">
-                                        <exclude reference="hPJ-4g-bEV"/>
-                                    </mask>
-                                </variation>
                                 <connections>
                                     <outlet property="delegate" destination="zVK-OS-hDa" id="8NU-Fu-cnl"/>
                                 </connections>
@@ -1032,20 +1053,23 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="oOm-bh-Ufd" firstAttribute="top" secondItem="QHM-g5-X7F" secondAttribute="bottom" constant="7" id="0Ot-U3-069"/>
+                            <constraint firstItem="sKB-HM-Mmd" firstAttribute="leading" secondItem="CfV-vS-WFa" secondAttribute="leading" id="1SZ-6q-GUq"/>
                             <constraint firstAttribute="trailing" secondItem="QHM-g5-X7F" secondAttribute="trailing" id="4Zx-RP-eGE"/>
+                            <constraint firstAttribute="trailing" secondItem="sKB-HM-Mmd" secondAttribute="trailing" id="4a4-az-jE5"/>
                             <constraint firstAttribute="trailing" secondItem="RvO-xq-83L" secondAttribute="trailing" id="5wt-sA-SKQ"/>
                             <constraint firstItem="QHM-g5-X7F" firstAttribute="leading" secondItem="CfV-vS-WFa" secondAttribute="leading" id="Bi3-n1-Y9S"/>
                             <constraint firstItem="QHM-g5-X7F" firstAttribute="top" secondItem="GYe-Pr-EXZ" secondAttribute="bottom" id="C3z-ac-7Fl"/>
                             <constraint firstItem="RvO-xq-83L" firstAttribute="leading" secondItem="CfV-vS-WFa" secondAttribute="leading" id="Loh-CN-bBw"/>
+                            <constraint firstItem="sKB-HM-Mmd" firstAttribute="top" secondItem="GYe-Pr-EXZ" secondAttribute="bottom" id="Tc9-K7-9cb"/>
                             <constraint firstItem="ro2-By-wT5" firstAttribute="top" secondItem="RvO-xq-83L" secondAttribute="bottom" id="b7c-Wv-UkG"/>
                             <constraint firstItem="ro2-By-wT5" firstAttribute="leading" secondItem="oOm-bh-Ufd" secondAttribute="trailing" constant="8" id="brF-2E-iIF"/>
                             <constraint firstItem="hvQ-LO-iJ6" firstAttribute="top" secondItem="ro2-By-wT5" secondAttribute="bottom" id="c9O-jQ-hAp"/>
+                            <constraint firstItem="ro2-By-wT5" firstAttribute="centerY" secondItem="oOm-bh-Ufd" secondAttribute="centerY" id="iuD-Me-Uuo"/>
                             <constraint firstItem="ro2-By-wT5" firstAttribute="top" secondItem="QHM-g5-X7F" secondAttribute="bottom" id="l9X-he-zTk"/>
+                            <constraint firstItem="ro2-By-wT5" firstAttribute="top" secondItem="sKB-HM-Mmd" secondAttribute="bottom" id="qmm-uG-mMi"/>
                             <constraint firstAttribute="trailing" secondItem="ro2-By-wT5" secondAttribute="trailing" id="rcM-ow-t7X"/>
                             <constraint firstItem="RvO-xq-83L" firstAttribute="top" secondItem="GYe-Pr-EXZ" secondAttribute="bottom" id="sFI-Jt-STp"/>
                             <constraint firstItem="oOm-bh-Ufd" firstAttribute="leading" secondItem="CfV-vS-WFa" secondAttribute="leading" constant="8" id="vg3-Wq-l9c"/>
-                            <constraint firstItem="hvQ-LO-iJ6" firstAttribute="top" secondItem="oOm-bh-Ufd" secondAttribute="bottom" constant="7" id="ytT-Zt-BnK"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Comments" id="z9f-rv-BEG">
@@ -1056,7 +1080,7 @@
                         <outlet property="CommentsTextField" destination="oOm-bh-Ufd" id="9hQ-2f-Tix"/>
                         <outlet property="NoCommentsView" destination="RvO-xq-83L" id="KEl-TA-VQx"/>
                         <outlet property="bottomConstraint" destination="c9O-jQ-hAp" id="PD0-kg-4Ty"/>
-                        <outlet property="bottomConstraint2" destination="ytT-Zt-BnK" id="4TR-pz-CXL"/>
+                        <outlet property="postingBlurView" destination="sKB-HM-Mmd" id="NbJ-cS-Mqo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vSC-vi-1jx" userLabel="First Responder" sceneMemberID="firstResponder"/>

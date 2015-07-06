@@ -140,8 +140,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
-        println(post.display_order)
-        println(post.post_id)
+//        println(post.display_order)
+//        println(post.post_id)
         
         return cell
     }
@@ -160,8 +160,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             // Track the last post ID globally so as to not make repeated "Get Previous Posts" on the same last post
             if lastPostID != currentLastPostID {
                 
-                println("Last Post ID: \(lastPostID)")
-                println("Current Last: \(currentLastPostID!)")
+//                println("Last Post ID: \(lastPostID)")
+//                println("Current Last: \(currentLastPostID!)")
                 
                 lastPostID = currentLastPostID!
                 getPreviousPosts(currentLastPostID)
@@ -171,12 +171,12 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getPreviousPosts(postID : String?) {
     
-        println("Loading more posts...")
+//        println("Loading more posts...")
         
         // Get previous posts based on oldest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_previous_post/" + postID! + "/" + userID!
         
-        println(urlString)
+//        println(urlString)
         
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
@@ -188,7 +188,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // Only add if JSON from server contains more posts
                 if posts.count != 0 {
                     
-                    println("Number of new posts: \(posts.count)")
+//                    println("Number of new posts: \(posts.count)")
                     
                     self.data.addEntriesFromJSON(posts)
                     self.HomeTableView.reloadData()
@@ -199,7 +199,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func getNewPosts(sender:AnyObject) {
         
-        println("Getting new posts...")
+//        println("Getting new posts...")
         
         // Get new posts based on newest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_new_post/" + self.data.entries.first!.post_id! + "/" + userID!
@@ -216,7 +216,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 // Only add if JSON from server contains more posts
                 if posts.count != 0 {
                     
-                    println("Number of new posts: \(posts.count)")
+//                    println("Number of new posts: \(posts.count)")
                     self.data.addEntriesToFrontFromJSON(posts)
                     (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.data.entries.first!.post_id!
                     self.HomeTableView.reloadData()
