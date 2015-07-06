@@ -37,6 +37,7 @@
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
         </mutableArray>
         <mutableArray key="PoetsenOne-Regular.otf">
             <string>PoetsenOne-Regular</string>
@@ -319,20 +320,68 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Coming soon" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="PdV-fm-gIj">
-                                <rect key="frame" x="243" y="231" width="114" height="24"/>
-                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="OWO-L8-zza">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NotificationsCell" rowHeight="71" id="1Vg-DW-702" customClass="NotificationsTableViewCell" customModule="Gegder" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="44"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="1Vg-DW-702" id="eoT-LU-XBm">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <imageView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleAspectFit" image="logo_post" translatesAutoresizingMaskIntoConstraints="NO" id="BQ2-wK-HYI">
+                                                    <rect key="frame" x="10" y="10" width="50" height="50"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="BQ2-wK-HYI" secondAttribute="height" multiplier="1:1" priority="999" id="GSM-ZP-FhX"/>
+                                                        <constraint firstAttribute="width" constant="50" id="fd3-sq-oRJ"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Gegder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyI-Cc-USE">
+                                                    <rect key="frame" x="68" y="18" width="512" height="17"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 May 2015, 00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Q1-Qh4">
+                                                    <rect key="frame" x="68" y="35" width="512" height="14"/>
+                                                    <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="11"/>
+                                                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="DyI-Cc-USE" firstAttribute="leading" secondItem="BQ2-wK-HYI" secondAttribute="trailing" constant="8" id="3QP-66-i5v"/>
+                                                <constraint firstItem="WEJ-Q1-Qh4" firstAttribute="top" secondItem="DyI-Cc-USE" secondAttribute="bottom" id="D79-br-MGA"/>
+                                                <constraint firstAttribute="bottom" secondItem="BQ2-wK-HYI" secondAttribute="bottom" constant="10" id="Dh8-9Y-z0J"/>
+                                                <constraint firstAttribute="trailing" secondItem="WEJ-Q1-Qh4" secondAttribute="trailing" constant="20" id="HKO-FV-Ej2"/>
+                                                <constraint firstItem="BQ2-wK-HYI" firstAttribute="leading" secondItem="eoT-LU-XBm" secondAttribute="leading" constant="10" id="XU9-r3-ecL"/>
+                                                <constraint firstAttribute="trailing" secondItem="DyI-Cc-USE" secondAttribute="trailing" constant="20" id="j9r-Zk-tr1"/>
+                                                <constraint firstItem="BQ2-wK-HYI" firstAttribute="top" secondItem="eoT-LU-XBm" secondAttribute="top" constant="10" id="mvn-Vw-gLr"/>
+                                                <constraint firstItem="BQ2-wK-HYI" firstAttribute="centerY" secondItem="DyI-Cc-USE" secondAttribute="bottom" id="okD-EV-81O"/>
+                                                <constraint firstItem="WEJ-Q1-Qh4" firstAttribute="leading" secondItem="BQ2-wK-HYI" secondAttribute="trailing" constant="8" id="xC2-Fy-7Ea"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="DateTime" destination="WEJ-Q1-Qh4" id="9VE-1C-xhE"/>
+                                            <outlet property="Title" destination="DyI-Cc-USE" id="zlY-eU-Sf8"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="centerY" secondItem="PdV-fm-gIj" secondAttribute="centerY" id="Orw-Wf-87O"/>
-                            <constraint firstAttribute="centerX" secondItem="PdV-fm-gIj" secondAttribute="centerX" id="h6g-bW-8NM"/>
+                            <constraint firstItem="x5m-t2-ct6" firstAttribute="top" secondItem="OWO-L8-zza" secondAttribute="bottom" id="5oi-qi-Vxn"/>
+                            <constraint firstItem="OWO-L8-zza" firstAttribute="leading" secondItem="lMQ-7q-VmE" secondAttribute="leading" id="5q0-28-thf"/>
+                            <constraint firstAttribute="trailing" secondItem="OWO-L8-zza" secondAttribute="trailing" id="AN8-Gb-spm"/>
+                            <constraint firstItem="OWO-L8-zza" firstAttribute="top" secondItem="W4X-03-TNK" secondAttribute="bottom" id="WcR-zq-Q5e"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Gegder" id="Ssz-yu-Lkl"/>
+                    <connections>
+                        <outlet property="NotificationsTableView" destination="OWO-L8-zza" id="Sws-gY-dX4"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JCs-jc-XUo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -354,16 +403,16 @@
                                 <rect key="frame" x="0.0" y="20" width="600" height="193"/>
                                 <subviews>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="lcN-3w-igT">
-                                        <rect key="frame" x="223" y="20" width="154" height="154"/>
+                                        <rect key="frame" x="236" y="42" width="129" height="129"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="lcN-3w-igT" secondAttribute="height" multiplier="1:1" id="WOU-Pd-AdO"/>
                                         </constraints>
                                     </imageView>
                                 </subviews>
                                 <constraints>
-                                    <constraint firstAttribute="centerY" secondItem="lcN-3w-igT" secondAttribute="centerY" constant="-0.5" id="0SL-1n-FO0"/>
+                                    <constraint firstItem="lcN-3w-igT" firstAttribute="centerY" secondItem="h5s-tX-smS" secondAttribute="centerY" constant="10" id="0SL-1n-FO0"/>
                                     <constraint firstAttribute="centerX" secondItem="lcN-3w-igT" secondAttribute="centerX" id="fD4-Sm-E28"/>
-                                    <constraint firstItem="lcN-3w-igT" firstAttribute="width" secondItem="h5s-tX-smS" secondAttribute="height" multiplier="4:5" id="kzE-ZE-wbr"/>
+                                    <constraint firstItem="lcN-3w-igT" firstAttribute="width" secondItem="h5s-tX-smS" secondAttribute="height" multiplier="2:3" id="kzE-ZE-wbr"/>
                                 </constraints>
                             </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="203-Aa-fmW" userLabel="View2">
@@ -404,7 +453,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-Kk-OMY" userLabel="View31">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
                                                 <rect key="frame" x="202" y="39" width="195" height="58"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
@@ -439,7 +488,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-u0-APV" userLabel="View32">
                                         <rect key="frame" x="0.0" y="96" width="600" height="97"/>
                                         <subviews>
-                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
+                                            <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
                                                 <rect key="frame" x="277" y="15" width="46" height="27"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                 <state key="normal" title="Not now">
@@ -994,7 +1043,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QHM-g5-X7F">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="QHM-g5-X7F">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="437"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
@@ -1180,7 +1229,7 @@
         <image name="post_default" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UuJ-rW-vLr"/>
-        <segue reference="XEi-PZ-yX4"/>
+        <segue reference="6vC-hC-E2b"/>
+        <segue reference="zQB-wV-I6O"/>
     </inferredMetricsTieBreakers>
 </document>
