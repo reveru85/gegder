@@ -109,7 +109,7 @@
                                                 <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post_default" translatesAutoresizingMaskIntoConstraints="NO" id="ndA-co-Do6">
                                                     <rect key="frame" x="0.0" y="70" width="600" height="600"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="ndA-co-Do6" secondAttribute="height" multiplier="1:1" id="nIc-Mq-VXh"/>
+                                                        <constraint firstAttribute="width" secondItem="ndA-co-Do6" secondAttribute="height" multiplier="1:1" priority="999" id="nIc-Mq-VXh"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datetime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hcs-Fc-8P9">
@@ -492,7 +492,7 @@
                                                 <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="post_default" translatesAutoresizingMaskIntoConstraints="NO" id="OTL-G8-FoT">
                                                     <rect key="frame" x="0.0" y="70" width="600" height="600"/>
                                                     <constraints>
-                                                        <constraint firstAttribute="width" secondItem="OTL-G8-FoT" secondAttribute="height" multiplier="1:1" id="AjE-5K-br3"/>
+                                                        <constraint firstAttribute="width" secondItem="OTL-G8-FoT" secondAttribute="height" multiplier="1:1" priority="999" id="AjE-5K-br3"/>
                                                     </constraints>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Datetime" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QA4-4D-ia4">

@@ -29,6 +29,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         (UIApplication.sharedApplication().delegate as! AppDelegate).homeView = self
         
+//        HomeTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
+        
         HomeTableView.delegate = self
         HomeTableView.dataSource = self
         HomeTableView.estimatedRowHeight = 44
@@ -70,6 +72,9 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
+
+        //prevent layout constraints error
+        cell.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
         
         // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]

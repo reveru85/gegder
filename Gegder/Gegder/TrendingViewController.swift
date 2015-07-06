@@ -67,6 +67,9 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
         
+        //prevent layout constraints error
+        cell.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
+        
         // Initialise an instance of PostData class using the current row
         let post = data.entries[indexPath.row]
         cell.PostImage.image = UIImage(named:"post_default")
