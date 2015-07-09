@@ -539,6 +539,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Susanne/Documents/FacebookSDK,
+					/Users/Saphia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -557,6 +558,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/Susanne/Documents/FacebookSDK,
+					/Users/Saphia/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";

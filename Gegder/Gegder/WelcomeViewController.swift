@@ -42,6 +42,17 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             // ADD CODE HERE TO SWITCH VIEW TO HOME VC
         }
+        else
+        {
+//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+            self.view.addSubview(loginView)
+            loginView.center = self.view.center
+            loginView.readPermissions = ["public_profile", "email", "user_friends"]
+            loginView.delegate = self
+            loginView.hidden = true
+            
+//            loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+        }
     }
     
     override func didReceiveMemoryWarning() {
@@ -76,7 +87,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     @IBAction func FBButtonTouch(sender: UIButton) {
-        loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+        //loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
