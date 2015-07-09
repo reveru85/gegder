@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class TrendingViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
 
     @IBOutlet weak var TrendingTableView: UITableView!
     let postCellId = "PostCell2"
@@ -177,6 +177,20 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             vc.parentView = self
             vc.currentCellView = self.selectedPostCell
         }
+        else if (segue.identifier == "menuPopoverSegue") {
+            
+            let vc = segue.destinationViewController as! MenuViewController
+            vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+            vc.popoverPresentationController!.delegate = self
+            vc.parentView = self
+        }
+        else if (segue.identifier == "ShowWebView") {
+            
+            let option = (sender as! MenuViewController).option
+            let vc = segue.destinationViewController as! WebViewController
+            vc.option = option
+        }
+
     }
     
     //camera stuff

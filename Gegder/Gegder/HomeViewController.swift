@@ -8,7 +8,7 @@
 
 import UIKit
 
-class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     
     @IBOutlet weak var HomeTableView: UITableView!
     let postCellId = "PostCell"
@@ -29,8 +29,6 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // Do any additional setup after loading the view, typically from a nib.
         
         (UIApplication.sharedApplication().delegate as! AppDelegate).homeView = self
-        
-//        HomeTableView.setTranslatesAutoresizingMaskIntoConstraints(false)
         
         HomeTableView.delegate = self
         HomeTableView.dataSource = self
@@ -234,6 +232,23 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             vc.parentView = self
             vc.currentCellView = self.selectedPostCell
         }
+        else if (segue.identifier == "menuPopoverSegue") {
+            
+            let vc = segue.destinationViewController as! MenuViewController
+            vc.modalPresentationStyle = UIModalPresentationStyle.Popover
+            vc.popoverPresentationController!.delegate = self
+            vc.parentView = self
+        }
+        else if (segue.identifier == "ShowWebView") {
+
+            let option = (sender as! MenuViewController).option
+            let vc = segue.destinationViewController as! WebViewController
+            vc.option = option
+        }
+    }
+    
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
     }
     
     //camera stuff

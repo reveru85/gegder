@@ -75,6 +75,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
     }
     
+    @IBAction func FBButtonTouch(sender: UIButton) {
+        loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+    }
+    
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
         println("User Logged Out")
         (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = false
