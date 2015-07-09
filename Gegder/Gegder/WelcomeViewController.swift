@@ -14,6 +14,8 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var NotNowButton: UIButton!
     @IBOutlet weak var ConnectFBButton: UIButton!
     
+    let loginView : FBSDKLoginButton = FBSDKLoginButton()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -26,11 +28,14 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         }
         else
         {
-            let loginView : FBSDKLoginButton = FBSDKLoginButton()
+//            let loginView : FBSDKLoginButton = FBSDKLoginButton()
             self.view.addSubview(loginView)
             loginView.center = self.view.center
             loginView.readPermissions = ["public_profile", "email", "user_friends"]
             loginView.delegate = self
+            loginView.hidden = true
+            
+//            loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
         }
     }
     
@@ -63,6 +68,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 // Do work
             }
         }
+    }
+    
+    @IBAction func FBButtonTouch(sender: UIButton) {
+        loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {

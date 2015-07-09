@@ -270,11 +270,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Gegder" id="bTy-xz-zRa">
                         <barButtonItem key="backBarButtonItem" title="Back" id="wo2-j4-025"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="m1F-Kc-hae">
+                            <connections>
+                                <segue destination="P6C-3y-iho" kind="popoverPresentation" identifier="menuPopoverSegue" popoverAnchorBarButtonItem="m1F-Kc-hae" id="c1W-58-koP">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="TrendingTableView" destination="0la-Z0-O2g" id="41x-7G-2eA"/>
                         <segue destination="yPJ-Hy-sfT" kind="presentation" identifier="GoToNewPost" id="XEi-PZ-yX4"/>
                         <segue destination="zVK-OS-hDa" kind="show" identifier="ShowComments" id="UuJ-rW-vLr"/>
+                        <segue destination="Tew-65-CYa" kind="show" identifier="ShowWebView" id="iAu-Vz-umc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>
@@ -344,7 +352,7 @@
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Welcome to Gegder" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DyI-Cc-USE">
                                                     <rect key="frame" x="68" y="18" width="512" height="17"/>
                                                     <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="30 May 2015, 00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="WEJ-Q1-Qh4">
@@ -474,6 +482,9 @@
                                                     </userDefinedRuntimeAttribute>
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="FBButtonTouch:" destination="1OG-Oe-avg" eventType="touchUpInside" id="XSp-3f-DyC"/>
+                                                </connections>
                                             </button>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-hn-zXj">
                                                 <rect key="frame" x="290" y="58" width="20" height="20"/>
@@ -496,8 +507,9 @@
                                         <rect key="frame" x="0.0" y="96" width="600" height="97"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
-                                                <rect key="frame" x="277" y="15" width="46" height="27"/>
+                                                <rect key="frame" x="257" y="1" width="86" height="55"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
+                                                <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                                 <state key="normal" title="Not now">
                                                     <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -550,6 +562,117 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fdQ-UP-Dgx" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1135" y="-1681"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="HEl-Xa-rcL">
+            <objects>
+                <tableViewController id="P6C-3y-iho" customClass="MenuViewController" customModule="Gegder" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pZ-3h-ech">
+                        <rect key="frame" x="0.0" y="0.0" width="100" height="88"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                        <sections>
+                            <tableViewSection id="9mA-Bs-vv7">
+                                <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5dI-df-qwB">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5dI-df-qwB" id="k7W-Wh-4aZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-w3-ctG">
+                                                    <rect key="frame" x="14" y="3" width="72" height="38"/>
+                                                    <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
+                                                    <state key="normal" title="About">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="AboutButtonTouch:" destination="P6C-3y-iho" eventType="touchUpInside" id="oMk-md-thE"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="cp1-w3-ctG" secondAttribute="centerY" id="3Ai-fm-vCO"/>
+                                                <constraint firstAttribute="centerX" secondItem="cp1-w3-ctG" secondAttribute="centerX" id="xEs-q2-13J"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Gvo-Gr-Ys4">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Gvo-Gr-Ys4" id="3kY-cT-84u">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-27-blK">
+                                                    <rect key="frame" x="14" y="3" width="72" height="38"/>
+                                                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                    <state key="normal" title="Help">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="HelpButtonTouch:" destination="P6C-3y-iho" eventType="touchUpInside" id="R7Z-dO-gW3"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerY" secondItem="2ig-27-blK" secondAttribute="centerY" id="HIm-6G-3Qj"/>
+                                                <constraint firstAttribute="centerX" secondItem="2ig-27-blK" secondAttribute="centerX" id="I5a-3Z-Zc7"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                        </sections>
+                        <connections>
+                            <outlet property="dataSource" destination="P6C-3y-iho" id="5y8-0x-3BM"/>
+                            <outlet property="delegate" destination="P6C-3y-iho" id="A4E-6m-FIX"/>
+                        </connections>
+                    </tableView>
+                    <value key="contentSizeForViewInPopover" type="size" width="100" height="88"/>
+                    <nil key="simulatedStatusBarMetrics"/>
+                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+                    <size key="freeformSize" width="100" height="88"/>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dml-G9-Kgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1551" y="-2490"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="xPL-cX-eIN">
+            <objects>
+                <viewController id="Tew-65-CYa" userLabel="Web View Controller" customClass="WebViewController" customModule="Gegder" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="YYJ-tf-CVL"/>
+                        <viewControllerLayoutGuide type="bottom" id="YbQ-l0-riD"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="hDd-hj-hV0">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <subviews>
+                            <webView contentMode="scaleToFill" mediaPlaybackAllowsAirPlay="NO" keyboardDisplayRequiresUserAction="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OB7-3D-lVx">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="487"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <dataDetectorType key="dataDetectorTypes"/>
+                            </webView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="OB7-3D-lVx" firstAttribute="top" secondItem="YYJ-tf-CVL" secondAttribute="bottom" id="2XC-Uo-Oof"/>
+                            <constraint firstAttribute="bottom" secondItem="OB7-3D-lVx" secondAttribute="bottom" id="A2p-p8-sXT"/>
+                            <constraint firstItem="OB7-3D-lVx" firstAttribute="leading" secondItem="hDd-hj-hV0" secondAttribute="leading" id="Q2W-Wb-Q1l"/>
+                            <constraint firstAttribute="trailing" secondItem="OB7-3D-lVx" secondAttribute="trailing" id="nxa-9d-1Qp"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Browser" id="gYZ-Ar-KwR">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="tIO-jX-ImJ"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="webView" destination="OB7-3D-lVx" id="iJM-xX-cjQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="QxB-Ub-o6T" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2073" y="-2468"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="usV-u9-ip4">
@@ -774,11 +897,19 @@
                     </view>
                     <navigationItem key="navigationItem" title="Gegder" id="YWl-Wu-DeZ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="oKl-S3-Va7"/>
+                        <barButtonItem key="leftBarButtonItem" title="Menu" id="mk4-ev-ARW">
+                            <connections>
+                                <segue destination="P6C-3y-iho" kind="popoverPresentation" identifier="menuPopoverSegue" popoverAnchorBarButtonItem="mk4-ev-ARW" id="owN-xk-3fl">
+                                    <popoverArrowDirection key="popoverArrowDirection" up="YES" down="YES" left="YES" right="YES"/>
+                                </segue>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="HomeTableView" destination="sPk-kr-Cre" id="Mhm-bB-nPM"/>
                         <segue destination="yPJ-Hy-sfT" kind="presentation" identifier="GoToNewPost" id="zQB-wV-I6O"/>
                         <segue destination="zVK-OS-hDa" kind="show" identifier="ShowComments" id="6vC-hC-E2b"/>
+                        <segue destination="Tew-65-CYa" kind="show" identifier="ShowWebView" id="naq-P2-aSN"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MEB-Xj-b0k" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1239,7 +1370,7 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9m4-ht-jp8">
                                 <rect key="frame" x="80" y="34" width="484" height="21"/>
                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Message" lineBreakMode="tailTruncation" numberOfLines="10" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VMw-Gz-N0h">
@@ -1288,7 +1419,9 @@
         <image name="post_default" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="UuJ-rW-vLr"/>
+        <segue reference="iAu-Vz-umc"/>
         <segue reference="XEi-PZ-yX4"/>
+        <segue reference="6vC-hC-E2b"/>
+        <segue reference="owN-xk-3fl"/>
     </inferredMetricsTieBreakers>
 </document>
