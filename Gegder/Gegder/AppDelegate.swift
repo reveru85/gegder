@@ -14,10 +14,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     internal var userID: String?
+    internal var isFBLogin: Bool?
     internal var firstPostID : String?
     internal var homeView: HomeViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
+        
+        isFBLogin = false;
         
         let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
         let deviceHash = deviceID.md5()

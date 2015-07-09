@@ -80,9 +80,17 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         //prep data for posting
         let firstPostId = (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID
+        var isLogin = ""
+        
+        if (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin == true {
+            isLogin = "1"
+        }
+        else {
+            isLogin = "0"
+        }
         
         var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + firstPostId!
-        var postData2 = "&userId=" + userID! + "&isLogin=0" + "&title=" + titleField.text + "&hashtag=" + hashtagField.text
+        var postData2 = "&userId=" + userID! + "&isLogin=" + isLogin + "&title=" + titleField.text + "&hashtag=" + hashtagField.text
         
         var postData = postData1 + postData2
         
