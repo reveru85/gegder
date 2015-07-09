@@ -465,11 +465,11 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eWF-sh-TzZ" userLabel="View3">
                                 <rect key="frame" x="0.0" y="407" width="600" height="193"/>
                                 <subviews>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-Kk-OMY" userLabel="View31">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="gUJ-Kk-OMY" userLabel="View31">
                                         <rect key="frame" x="0.0" y="0.0" width="600" height="96"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="z89-bw-vJq">
-                                                <rect key="frame" x="202" y="39" width="195" height="58"/>
+                                                <rect key="frame" x="202" y="29" width="195" height="58"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                                 <state key="normal" title="Connect with Facebook">
@@ -487,14 +487,14 @@
                                                 </connections>
                                             </button>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-hn-zXj">
-                                                <rect key="frame" x="290" y="58" width="20" height="20"/>
+                                                <rect key="frame" x="290" y="48" width="20" height="20"/>
                                             </activityIndicatorView>
                                         </subviews>
                                         <constraints>
                                             <constraint firstItem="c4y-hn-zXj" firstAttribute="centerY" secondItem="z89-bw-vJq" secondAttribute="centerY" id="84P-Xl-2Gs"/>
                                             <constraint firstAttribute="centerX" secondItem="z89-bw-vJq" secondAttribute="centerX" id="PvM-6l-L1E"/>
                                             <constraint firstAttribute="centerX" secondItem="c4y-hn-zXj" secondAttribute="centerX" id="deI-fZ-rTn"/>
-                                            <constraint firstAttribute="centerY" secondItem="z89-bw-vJq" secondAttribute="centerY" constant="-20" id="nqT-NU-fRa"/>
+                                            <constraint firstAttribute="centerY" secondItem="z89-bw-vJq" secondAttribute="centerY" constant="-10" id="nqT-NU-fRa"/>
                                             <constraint firstAttribute="centerY" secondItem="c4y-hn-zXj" secondAttribute="centerY" id="pc2-h1-y2X"/>
                                         </constraints>
                                         <variation key="default">
@@ -503,11 +503,11 @@
                                             </mask>
                                         </variation>
                                     </view>
-                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-u0-APV" userLabel="View32">
+                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2aA-u0-APV" userLabel="View32">
                                         <rect key="frame" x="0.0" y="96" width="600" height="97"/>
                                         <subviews>
                                             <button hidden="YES" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="wA7-To-Pob">
-                                                <rect key="frame" x="257" y="1" width="86" height="55"/>
+                                                <rect key="frame" x="257" y="11" width="86" height="55"/>
                                                 <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="12"/>
                                                 <inset key="contentEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
                                                 <state key="normal" title="Not now">
@@ -521,7 +521,7 @@
                                         </subviews>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="wA7-To-Pob" secondAttribute="centerX" id="v5u-xr-6Cu"/>
-                                            <constraint firstAttribute="centerY" secondItem="wA7-To-Pob" secondAttribute="centerY" constant="20" id="wsP-fW-8SZ"/>
+                                            <constraint firstAttribute="centerY" secondItem="wA7-To-Pob" secondAttribute="centerY" constant="10" id="wsP-fW-8SZ"/>
                                         </constraints>
                                     </view>
                                 </subviews>
