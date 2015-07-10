@@ -193,6 +193,10 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
 
     }
     
+    func adaptivePresentationStyleForPresentationController(controller: UIPresentationController) -> UIModalPresentationStyle {
+        return UIModalPresentationStyle.None
+    }
+    
     //camera stuff
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
 

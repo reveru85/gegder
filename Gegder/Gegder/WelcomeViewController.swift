@@ -14,13 +14,16 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     @IBOutlet weak var NotNowButton: UIButton!
     @IBOutlet weak var ConnectFBButton: UIButton!
     
-    var userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
+    var userID = ""
     var fbId = ""
     var firstName = ""
     var lastName = ""
     var gender = ""
     var email = ""
     var timezone = 0
+    let loginView : FBSDKLoginButton = FBSDKLoginButton()
+    var firstload = true
+    var loginFromWelcomeScreen = true
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,11 +31,73 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         ConnectFBButton.layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.3).CGColor
         
-        let loginView : FBSDKLoginButton = FBSDKLoginButton()
         self.view.addSubview(loginView)
         loginView.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 100)
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
         loginView.delegate = self
+        loginView.hidden = true
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        var login = false
+        login = (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin!
+        if login {
+            NotNowButton.hidden = true
+            ConnectFBButton.setTitle("Logout from Facebook", forState: UIControlState.allZeros)
+        } else {
+            if !firstload { NotNowButton.hidden = false }
+            ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)
+        }
+        
+    }
+    
+    override func viewDidAppear(animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        loginFromWelcomeScreen = true
+        
+        if firstload {
+            firstload = false
+            
+            let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
+            let deviceHash = deviceID.md5()
+            
+            var urlString = "http://dev.snapsnap.com.sg/index.php/user/load_user/" + deviceHash!
+            
+            //Get UserID from server based on deviceID's hash
+            var url = NSURL(string: urlString)
+            var request = NSURLRequest(URL: url!)
+            let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+            NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                if data != nil {
+                    var user = JSON(data: data!)
+                    self.userID = user["id"].string!
+                    (UIApplication.sharedApplication().delegate as! AppDelegate).userID = self.userID
+                    self.userIDLoadComplete()
+                }
+            })
+        }
+        
+        
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if (segue.identifier == "GoToHome") {
+            (UIApplication.sharedApplication().delegate as! AppDelegate).mainTabViewController = segue.destinationViewController as? UITabBarController
+        }
+    }
+    
+    func userIDLoadComplete() {
+        LoadingSpinner.hidden = true
+        ConnectFBButton.hidden = false
+        NotNowButton.hidden = false
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
@@ -41,18 +106,8 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = true
             
             // ADD CODE HERE TO SWITCH VIEW TO HOME VC
+            self.performSegueWithIdentifier("GoToHome", sender: self)
         }
-    }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    func userIDLoadComplete() {
-        LoadingSpinner.hidden = true
-        ConnectFBButton.hidden = false
-        NotNowButton.hidden = false
     }
     
     func loginButton(loginButton: FBSDKLoginButton!, didCompleteWithResult result: FBSDKLoginManagerLoginResult!, error: NSError!) {
@@ -71,17 +126,22 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             {
                 // Do work
                 returnUserData()
+                if loginFromWelcomeScreen {
+                    self.performSegueWithIdentifier("GoToHome", sender: self)
+                }
             }
         }
     }
     
     @IBAction func FBButtonTouch(sender: UIButton) {
-        //loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+        loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-        println("User Logged Out")
+//        println("User Logged Out")
         (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = false
+        NotNowButton.hidden = false
+        ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)
     }
     
     func returnUserData()
@@ -112,8 +172,8 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     
     func updateUserData() {
         // Update user data
-        userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
-        var postData0 = "userId=" + userID! + "&facebookId=" + self.fbId
+        userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID!
+        var postData0 = "userId=" + userID + "&facebookId=" + self.fbId
         var postData1 = "&firstName=" + self.firstName + "&lastName=" + self.lastName
         var postData2 = "&email=" + self.email + "&gender=" + self.gender
         var postData3 = "&timezone=" + String(self.timezone)
@@ -134,10 +194,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var str = NSString(data: data, encoding: NSUTF8StringEncoding)
                 
                 if str == "completed" {
-                    println("Update complete")
+//                    println("Update complete")
                 }
                 else if str == "not_updated" {
-                    println("Update failed")
+//                    println("Update failed")
                 }
             }
         })

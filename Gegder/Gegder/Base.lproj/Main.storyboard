@@ -483,7 +483,7 @@
                                                     <userDefinedRuntimeAttribute type="boolean" keyPath="layer.maskToBounds" value="YES"/>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
-                                                    <action selector="FBButtonTouch:" destination="1OG-Oe-avg" eventType="touchUpInside" id="XSp-3f-DyC"/>
+                                                    <action selector="FBButtonTouch:" destination="1OG-Oe-avg" eventType="touchUpInside" id="ZRh-9k-hUR"/>
                                                 </connections>
                                             </button>
                                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="c4y-hn-zXj">
@@ -515,7 +515,7 @@
                                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="49e-Tb-3d3" kind="presentation" id="0Um-JR-f4g"/>
+                                                    <segue destination="49e-Tb-3d3" kind="presentation" identifier="GoToHome" id="0Um-JR-f4g"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -568,12 +568,58 @@
             <objects>
                 <tableViewController id="P6C-3y-iho" customClass="MenuViewController" customModule="Gegder" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" scrollEnabled="NO" dataMode="static" style="plain" separatorStyle="default" allowsSelection="NO" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="5pZ-3h-ech">
-                        <rect key="frame" x="0.0" y="0.0" width="100" height="88"/>
+                        <rect key="frame" x="0.0" y="0.0" width="150" height="176"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="sectionIndexBackgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
                         <sections>
                             <tableViewSection id="9mA-Bs-vv7">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="4m7-hQ-82j">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="4m7-hQ-82j" id="ffz-jH-6MZ">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dpt-qF-F62">
+                                                    <rect key="frame" x="35" y="3" width="81" height="38"/>
+                                                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                    <state key="normal" title="Home">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="HomeButtonTouch:" destination="P6C-3y-iho" eventType="touchUpInside" id="RA4-Oo-l72"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="dpt-qF-F62" secondAttribute="centerX" id="Qz7-Lj-cNh"/>
+                                                <constraint firstAttribute="centerY" secondItem="dpt-qF-F62" secondAttribute="centerY" id="tEz-2a-lPl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="Ush-PL-GDC">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Ush-PL-GDC" id="eCO-t5-ejE">
+                                            <rect key="frame" x="0.0" y="0.0" width="200" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KIv-rS-3Jk">
+                                                    <rect key="frame" x="36" y="3" width="78" height="38"/>
+                                                    <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
+                                                    <state key="normal" title="Login">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="LoginButtonTouch:" destination="P6C-3y-iho" eventType="touchUpInside" id="KUG-yy-AEw"/>
+                                                    </connections>
+                                                </button>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstAttribute="centerX" secondItem="KIv-rS-3Jk" secondAttribute="centerX" id="3Tn-xq-1Rz"/>
+                                                <constraint firstAttribute="centerY" secondItem="KIv-rS-3Jk" secondAttribute="centerY" id="ut4-vY-dgp"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" id="5dI-df-qwB">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="5dI-df-qwB" id="k7W-Wh-4aZ">
@@ -581,7 +627,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cp1-w3-ctG">
-                                                    <rect key="frame" x="14" y="3" width="72" height="38"/>
+                                                    <rect key="frame" x="39" y="3" width="72" height="38"/>
                                                     <inset key="contentEdgeInsets" minX="15" minY="10" maxX="15" maxY="10"/>
                                                     <state key="normal" title="About">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -604,7 +650,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2ig-27-blK">
-                                                    <rect key="frame" x="14" y="3" width="72" height="38"/>
+                                                    <rect key="frame" x="39" y="3" width="72" height="38"/>
                                                     <inset key="contentEdgeInsets" minX="20" minY="10" maxX="20" maxY="10"/>
                                                     <state key="normal" title="Help">
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -628,10 +674,13 @@
                             <outlet property="delegate" destination="P6C-3y-iho" id="A4E-6m-FIX"/>
                         </connections>
                     </tableView>
-                    <value key="contentSizeForViewInPopover" type="size" width="100" height="88"/>
+                    <value key="contentSizeForViewInPopover" type="size" width="100" height="176"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="100" height="88"/>
+                    <size key="freeformSize" width="150" height="176"/>
+                    <connections>
+                        <outlet property="loginButton" destination="KIv-rS-3Jk" id="IEK-Bw-ty3"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Dml-G9-Kgj" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -1419,8 +1468,8 @@
         <image name="post_default" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iAu-Vz-umc"/>
-        <segue reference="XEi-PZ-yX4"/>
+        <segue reference="naq-P2-aSN"/>
+        <segue reference="zQB-wV-I6O"/>
         <segue reference="6vC-hC-E2b"/>
         <segue reference="owN-xk-3fl"/>
     </inferredMetricsTieBreakers>

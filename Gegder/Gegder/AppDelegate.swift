@@ -17,28 +17,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     internal var isFBLogin: Bool?
     internal var firstPostID : String?
     internal var homeView: HomeViewController?
+    internal var mainTabViewController: UITabBarController?
+    internal var welcomeViewController: WelcomeViewController?
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
         isFBLogin = false;
         
-        let deviceID = UIDevice.currentDevice().identifierForVendor.UUIDString
-        let deviceHash = deviceID.md5()
-        
-        var urlString = "http://dev.snapsnap.com.sg/index.php/user/load_user/" + deviceHash!
-        
-        //Get UserID from server based on deviceID's hash
-        var url = NSURL(string: urlString)
-        var request = NSURLRequest(URL: url!)
-        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if data != nil {
-                var user = JSON(data: data!)
-                self.userID = user["id"].string                
-                var welcomeViewController = self.window!.rootViewController as! WelcomeViewController
-                welcomeViewController.userIDLoadComplete()
-            }
-        })
+        welcomeViewController = self.window!.rootViewController as? WelcomeViewController
         
         // Override point for customization after application launch.
         var navigationBarAppearance = UINavigationBar.appearance()
