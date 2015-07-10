@@ -50,7 +50,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         manager!.fetchWithCompletion { location, error in
             
             if let loc = location {
-                println(loc)
+//                println(loc)
             } else if let err = error {
                 println(err.localizedDescription)
                 

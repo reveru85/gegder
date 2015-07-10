@@ -23,7 +23,6 @@ class MenuViewController: UITableViewController {
         welcomeView = (UIApplication.sharedApplication().delegate as! AppDelegate).welcomeViewController
         
         var login : Bool
-        
         login = (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin!
         
         if login {

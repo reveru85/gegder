@@ -45,10 +45,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         var login = false
         login = (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin!
         if login {
-            NotNowButton.hidden = true
+            NotNowButton.setTitle("Continue", forState: UIControlState.allZeros)
             ConnectFBButton.setTitle("Logout from Facebook", forState: UIControlState.allZeros)
         } else {
-            if !firstload { NotNowButton.hidden = false }
+            NotNowButton.setTitle("Not now", forState: UIControlState.allZeros)
             ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)
         }
         
@@ -141,8 +141,12 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
 //        println("User Logged Out")
         (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = false
-        NotNowButton.hidden = false
+        NotNowButton.setTitle("Not now", forState: UIControlState.allZeros)
         ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)
+        
+        if (UIApplication.sharedApplication().delegate as! AppDelegate).homeView != nil {
+            (UIApplication.sharedApplication().delegate as! AppDelegate).homeView?.dismissViewControllerAnimated(true, completion: nil)
+        }
     }
     
     func returnUserData()
