@@ -40,6 +40,7 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
+		2DEAC3B91B4EBE80001AF8A3 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		2D17255F1B4ACD8E00283E79 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
+		2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -200,6 +202,7 @@
 				135635DC1B4AC6EC00AEF832 /* NotificationData.swift */,
 				135635D61B4AB13000AEF832 /* NotificationsTableViewCell.swift */,
 				13B1FC6E1B2C1EA7005FDEFB /* NotificationsViewController.swift */,
+				2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */,
 				134429D11B2EF45B00C56968 /* PostData.swift */,
 				134429D31B2EF72C00C56968 /* PostTableViewCell.swift */,
 				13B1FC701B2C1EEF005FDEFB /* SearchViewController.swift */,
@@ -389,6 +392,7 @@
 				135635DD1B4AC6EC00AEF832 /* NotificationData.swift in Sources */,
 				2D079BF51B29C8AE004D141D /* TrendingViewController.swift in Sources */,
 				13660C9B1B47A40A00A3D8D3 /* CommentsViewController.swift in Sources */,
+				2DEAC3B91B4EBE80001AF8A3 /* OneShotLocationManager.swift in Sources */,
 				2D079BF11B29C8AE004D141D /* AppDelegate.swift in Sources */,
 				1344BFEE1B417799004F798F /* NewPostViewController.swift in Sources */,
 				13660C9F1B47AC4100A3D8D3 /* CommentsTableViewCell.swift in Sources */,
