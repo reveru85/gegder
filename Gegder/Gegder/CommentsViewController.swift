@@ -10,6 +10,7 @@ import UIKit
 
 class CommentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate {
     
+    @IBOutlet weak var postButton: UIButton!
     @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var CommentsTextField: UITextField!
     @IBOutlet weak var NoCommentsView: UIView!
@@ -26,6 +27,14 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+        
+        var login : Bool
+        login = (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin!
+        
+        if !login {
+            postButton.hidden = true
+            CommentsTextField.hidden = true
+        }
         
         CommentsTableView.delegate = self
         CommentsTableView.dataSource = self

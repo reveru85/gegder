@@ -1162,11 +1162,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-nV-WOc">
-                                            <rect key="frame" x="290" y="231" width="20" height="20"/>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-nV-WOc">
+                                            <rect key="frame" x="290" y="230" width="20" height="20"/>
                                         </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Posting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ6-Kw-T15">
-                                            <rect key="frame" x="265" y="259" width="72" height="20"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ6-Kw-T15">
+                                            <rect key="frame" x="267" y="258" width="67" height="21"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -1425,6 +1425,7 @@
                         <outlet property="CommentsTextField" destination="oOm-bh-Ufd" id="9hQ-2f-Tix"/>
                         <outlet property="NoCommentsView" destination="RvO-xq-83L" id="KEl-TA-VQx"/>
                         <outlet property="bottomConstraint" destination="c9O-jQ-hAp" id="PD0-kg-4Ty"/>
+                        <outlet property="postButton" destination="ro2-By-wT5" id="pFv-zm-bmq"/>
                         <outlet property="postingBlurView" destination="sKB-HM-Mmd" id="NbJ-cS-Mqo"/>
                     </connections>
                 </viewController>

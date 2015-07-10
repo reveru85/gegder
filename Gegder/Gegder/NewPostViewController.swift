@@ -163,7 +163,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
             if isShowing {
-                println(endFrameHeight)
                 self.bottomConstraint?.constant = endFrameHeight + 10
                 self.previewHeightConstraint?.active = false
             } else {
