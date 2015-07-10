@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class NewPostViewController: UIViewController, UITextFieldDelegate {
     
@@ -22,6 +23,19 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     let homeView = (UIApplication.sharedApplication().delegate as! AppDelegate).homeView
     
+    // Location functionality
+    var manager: OneShotLocationManager?
+    var address = ""            // subThroughfare + throughfare + country + postal code
+    var latitude = ""           //              > latitude
+    var longitude = ""          //              > longitude
+    var subThoroughfare = ""    // 211C         > location*
+    var thoroughfare = ""       // Punggol Walk > location*
+    var postalCode = ""         // 823211       > location*
+    var country = ""            // Singapore    > locationCategory1 (Country)
+    var administrativeArea = "" // Singapore    > locationCategory2 (State)
+    var locality = ""           // Punggol      > locationCategory3 (City)
+    var subAdministrativeArea = "" // nil       > locationCategory4 (County)
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -30,6 +44,23 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillShowNotification, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: Selector("keyboardNotification:"), name:UIKeyboardWillHideNotification, object: nil)
+        
+        // Get current location immediately after image is taken
+        manager = OneShotLocationManager()
+        manager!.fetchWithCompletion { location, error in
+            
+            if let loc = location {
+                println(loc)
+            } else if let err = error {
+                println(err.localizedDescription)
+                
+            }
+            
+            self.manager = nil
+            
+            // Convert location to geocode
+            self.getLocationAddress(location! as CLLocation)
+        }
     }
     
     deinit {
@@ -91,8 +122,11 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         
         var postData1 = "jpegImageEncoded=" + newBase64String + "&latestPostId=" + firstPostId!
         var postData2 = "&userId=" + userID! + "&isLogin=" + isLogin + "&title=" + titleField.text + "&hashtag=" + hashtagField.text
+        var postData3 = "&latitude=" + self.latitude + "&longitude=" + self.longitude + "&location=" + self.address
+        var postData4 = "&locationCategory1=" + self.country + "&locationCategory2=" + self.administrativeArea
+        var postData5 = "&locationCategory3=" + self.locality + "&locationCategory4=" + self.subAdministrativeArea
         
-        var postData = postData1 + postData2
+        var postData = postData1 + postData2 + postData3 + postData4 + postData5
         
         let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_image_post"
         var url = NSURL(string: urlPath)
@@ -107,14 +141,12 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-//                println(strData)
 
                 var posts = JSON(data: data!)
                 
                 // Only add if JSON from server contains more posts
                 if posts.count != 0 {
                     
-//                    println("Number of new posts: \(posts.count)")
                     self.homeView!.data.addEntriesToFrontFromJSON(posts)
                     (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID = self.homeView!.data.entries.first!.post_id!
                     self.homeView!.HomeTableView.reloadData()
@@ -123,7 +155,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
                 self.dismissViewControllerAnimated(true, completion: nil)
             }
         })
-        
     }
     
     func keyboardNotification(notification: NSNotification) {
@@ -164,6 +195,58 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
+    func getLocationAddress(location:CLLocation) {
+        var geocoder = CLGeocoder()
+        
+        geocoder.reverseGeocodeLocation(location, completionHandler: {(placemarks, error)->Void in
+            var placemark:CLPlacemark!
+            
+            if error == nil && placemarks.count > 0 {
+                placemark = placemarks[0] as! CLPlacemark
+                
+                self.address = ""
+                self.subThoroughfare = ""
+                self.thoroughfare = ""
+                self.country = ""
+                self.postalCode = ""
+                self.locality = ""
+                self.administrativeArea = ""
+                self.subAdministrativeArea = ""
+                
+                if placemark.subThoroughfare != nil {
+                    self.subThoroughfare = placemark.subThoroughfare
+                    self.address = placemark.subThoroughfare + " "
+                }
+                
+                if placemark.thoroughfare != nil {
+                    self.thoroughfare = placemark.thoroughfare
+                    self.address = self.address + placemark.thoroughfare + ", "
+                }
+                
+                if placemark.country != nil {
+                    self.country = placemark.country
+                    self.address = self.address + placemark.country + " "
+                }
+                
+                if placemark.postalCode != nil {
+                    self.postalCode = placemark.postalCode
+                    self.address = self.address + placemark.postalCode + " "
+                }
+                
+                if placemark.locality != nil {
+                    self.locality = placemark.locality
+                }
+                
+                if placemark.administrativeArea != nil {
+                    self.administrativeArea = placemark.administrativeArea
+                }
+                
+                if placemark.subAdministrativeArea != nil {
+                    self.subAdministrativeArea = placemark.subAdministrativeArea
+                }
+            }
+        })
+    }
 }
 
 extension UIImage {
