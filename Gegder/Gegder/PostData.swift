@@ -52,6 +52,20 @@ class PostData {
             entry.location = post["location"].string!
             entry.media_url = post["link_url"].string!
             entry.created_datetime = post["created_datetime"].string!
+            
+            var dateString = post["created_datetime"].string!
+            var dateFormatter = NSDateFormatter()
+            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            
+            if let date = dateFormatter.dateFromString(dateString) {
+                // Format into desired format
+                dateFormatter.dateFormat = "dd MMM yyyy, hh:mm"
+                entry.created_datetime = dateFormatter.stringFromDate(date)
+                
+            } else {
+                entry.created_datetime = dateString
+            }
+            
             entry.hash_tag = post["hash_tag"].string!
             entry.description = post["description"].string!
             entry.total_comments = post["total_comments"].string!
@@ -91,8 +105,6 @@ class PostData {
             
             newEntries.append(entry)
         }
-        
-//        println(newEntries)
         
         entries = newEntries + oldEntries
     }
