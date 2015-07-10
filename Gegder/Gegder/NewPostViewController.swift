@@ -11,7 +11,8 @@ import CoreLocation
 
 class NewPostViewController: UIViewController, UITextFieldDelegate {
     
-    @IBOutlet weak var previewHeightConstraint: NSLayoutConstraint!
+    @IBOutlet weak var locationLabel: UILabel!
+    @IBOutlet var previewHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var titleField: UITextField!
     @IBOutlet weak var postingBlurView: UIVisualEffectView!
     @IBOutlet weak var cancelButton: UIBarButtonItem!
@@ -48,14 +49,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         // Get current location immediately after image is taken
         manager = OneShotLocationManager()
         manager!.fetchWithCompletion { location, error in
-            
-            if let loc = location {
-//                println(loc)
-            } else if let err = error {
-                println(err.localizedDescription)
-                
-            }
-            
+           
             self.manager = nil
             
             // Convert location to geocode
@@ -105,7 +99,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         //create base64 from image
         var imageData = UIImageJPEGRepresentation(scaledImage, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
-
+        
         //replace + with %2B to get around HTTP post restriction
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
         
@@ -141,7 +135,7 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
             if data != nil {
                 var strData = NSString(data: data, encoding: NSUTF8StringEncoding)
-
+                
                 var posts = JSON(data: data!)
                 
                 // Only add if JSON from server contains more posts
@@ -169,11 +163,12 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
             if isShowing {
+                println(endFrameHeight)
                 self.bottomConstraint?.constant = endFrameHeight + 10
                 self.previewHeightConstraint?.active = false
             } else {
-                self.bottomConstraint?.constant = 10.0
                 self.previewHeightConstraint?.active = true
+                self.bottomConstraint?.constant = 10.0
             }
             
             UIView.animateWithDuration(duration,
@@ -244,6 +239,9 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
                 if placemark.subAdministrativeArea != nil {
                     self.subAdministrativeArea = placemark.subAdministrativeArea
                 }
+                
+                self.locationLabel.text = self.address
+                
             }
         })
     }

@@ -102,7 +102,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
-            println("Existing login")
+//            println("Existing login")
             // User is already logged in, do work such as go to next view controller.
             (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = true
             
