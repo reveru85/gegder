@@ -199,10 +199,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 var str = NSString(data: data, encoding: NSUTF8StringEncoding)
                 
                 if str == "completed" {
-//                    println("Update complete")
+                    println("Profile update successfully.")
                 }
                 else if str == "not_updated" {
-//                    println("Update failed")
+                    println("Profile update failed.")
                 }
             }
         })

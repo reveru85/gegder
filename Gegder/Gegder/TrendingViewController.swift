@@ -52,8 +52,30 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         // Pull to refresh code
         self.refreshControl = UIRefreshControl()
         //self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "testFlagAsInapproriate", forControlEvents: UIControlEvents.ValueChanged)
         self.TrendingTableView.addSubview(refreshControl)
+    }
+    
+    func testFlagAsInapproriate() {
+        
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/27F7A18E5F1F1D4B5F20467EE99DB080"// + userID!
+        let url = NSURL(string: urlString)
+        var request = NSURLRequest(URL: url!)
+        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+            if data != nil {
+                var str = NSString(data: data, encoding: NSUTF8StringEncoding)
+                
+                if str == "completed" {
+                    println("Flag as inappropriate success!")
+                }
+                else {
+                    println("Flag failed.")
+                }
+                
+                self.refreshControl.endRefreshing()
+            }
+        })
     }
 
     override func didReceiveMemoryWarning() {
@@ -139,12 +161,12 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
+        println(post.post_id)
+        
         return cell
     }
     
     func getNewPosts() {
-        
-//        println("Getting new trending posts...")
         
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_trending_list/" + userID!
         let url = NSURL(string: urlString)
@@ -228,6 +250,5 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             noCamera()
         }
     }
-
 }
 
