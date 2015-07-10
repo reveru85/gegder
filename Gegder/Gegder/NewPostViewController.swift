@@ -23,7 +23,6 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     var newImage: UIImage?
     let userID = (UIApplication.sharedApplication().delegate as! AppDelegate).userID
     let homeView = (UIApplication.sharedApplication().delegate as! AppDelegate).homeView
-    var defaultBottomConstraintConstant : CGFloat?
     
     // Location functionality
     var manager: OneShotLocationManager?
@@ -164,11 +163,12 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
             let animationCurve:UIViewAnimationOptions = UIViewAnimationOptions(rawValue: animationCurveRaw)
             
             if isShowing {
-                self.previewHeightConstraint?.active = false
+                println(endFrameHeight)
                 self.bottomConstraint?.constant = endFrameHeight + 10
+                self.previewHeightConstraint?.active = false
             } else {
-                self.bottomConstraint?.constant = 10.0
                 self.previewHeightConstraint?.active = true
+                self.bottomConstraint?.constant = 10.0
             }
             
             UIView.animateWithDuration(duration,

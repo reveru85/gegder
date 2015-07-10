@@ -1162,11 +1162,11 @@
                                     <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <subviews>
-                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-nV-WOc">
-                                            <rect key="frame" x="290" y="230" width="20" height="20"/>
+                                        <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" misplaced="YES" animating="YES" style="white" translatesAutoresizingMaskIntoConstraints="NO" id="ypE-nV-WOc">
+                                            <rect key="frame" x="290" y="231" width="20" height="20"/>
                                         </activityIndicatorView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Posting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ6-Kw-T15">
-                                            <rect key="frame" x="267" y="258" width="67" height="21"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Posting..." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EZ6-Kw-T15">
+                                            <rect key="frame" x="265" y="259" width="72" height="20"/>
                                             <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="17"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             <nil key="highlightedColor"/>
@@ -1188,11 +1188,9 @@
                             <constraint firstItem="fuq-lr-doX" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" constant="10" id="1Bv-5i-FKq"/>
                             <constraint firstItem="Zw7-Va-nkb" firstAttribute="top" secondItem="FI8-cq-ua0" secondAttribute="bottom" constant="10" id="1fN-1J-QRY"/>
                             <constraint firstItem="kvR-5a-KGH" firstAttribute="width" secondItem="SIk-tc-blA" secondAttribute="width" id="6V8-LP-PzV"/>
-                            <constraint firstItem="FI8-cq-ua0" firstAttribute="top" secondItem="pMg-bl-aOd" secondAttribute="bottom" id="9zb-7o-CQZ"/>
                             <constraint firstItem="ELR-8c-lFb" firstAttribute="width" secondItem="SIk-tc-blA" secondAttribute="width" id="Cye-wW-RL0"/>
                             <constraint firstAttribute="centerX" secondItem="kvR-5a-KGH" secondAttribute="centerX" id="DOV-he-LHO"/>
                             <constraint firstItem="FI8-cq-ua0" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" id="Fku-cZ-p2K"/>
-                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="kvR-5a-KGH" secondAttribute="bottom" id="Gx2-IS-Coi"/>
                             <constraint firstAttribute="trailing" secondItem="FI8-cq-ua0" secondAttribute="trailing" id="JUz-SO-vma"/>
                             <constraint firstAttribute="trailing" secondItem="fuq-lr-doX" secondAttribute="trailing" constant="10" id="K4G-JK-QAr"/>
                             <constraint firstItem="Zw7-Va-nkb" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" constant="10" id="KZs-Je-ia9"/>
@@ -1200,10 +1198,12 @@
                             <constraint firstItem="TJj-Nm-J0o" firstAttribute="leading" secondItem="SIk-tc-blA" secondAttribute="leading" constant="10" id="NUV-Gw-Izx"/>
                             <constraint firstItem="TJj-Nm-J0o" firstAttribute="top" secondItem="fuq-lr-doX" secondAttribute="bottom" constant="10" id="Ofy-Gv-StR"/>
                             <constraint firstAttribute="trailing" secondItem="v15-tQ-3sJ" secondAttribute="trailing" constant="10" id="R0I-ea-JrT"/>
-                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="v15-tQ-3sJ" secondAttribute="bottom" priority="999" constant="10" id="WJe-ND-40g"/>
+                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="kvR-5a-KGH" secondAttribute="bottom" id="ZbH-hQ-jTq"/>
                             <constraint firstItem="v15-tQ-3sJ" firstAttribute="top" secondItem="fuq-lr-doX" secondAttribute="bottom" constant="7" id="aVb-C2-EBe"/>
-                            <constraint firstItem="kvR-5a-KGH" firstAttribute="top" secondItem="pMg-bl-aOd" secondAttribute="bottom" id="l4N-bW-6tm"/>
+                            <constraint firstItem="Udg-lp-BQ6" firstAttribute="top" secondItem="v15-tQ-3sJ" secondAttribute="bottom" priority="999" constant="10" id="gpx-ns-YvE"/>
                             <constraint firstItem="v15-tQ-3sJ" firstAttribute="leading" secondItem="TJj-Nm-J0o" secondAttribute="trailing" constant="5" id="rOY-6g-d2z"/>
+                            <constraint firstItem="kvR-5a-KGH" firstAttribute="top" secondItem="pMg-bl-aOd" secondAttribute="bottom" id="uSh-B6-5xF"/>
+                            <constraint firstItem="FI8-cq-ua0" firstAttribute="top" secondItem="pMg-bl-aOd" secondAttribute="bottom" id="xoe-4x-mJo"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Preview" id="HDx-XG-bc1">
@@ -1219,8 +1219,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="SuperView" destination="SIk-tc-blA" id="fYI-N9-cgb"/>
-                        <outlet property="bottomConstraint" destination="WJe-ND-40g" id="by9-aG-PvB"/>
+                        <outlet property="bottomConstraint" destination="gpx-ns-YvE" id="0af-f0-Nut"/>
                         <outlet property="cameraPreview" destination="ELR-8c-lFb" id="9Vc-KG-kks"/>
                         <outlet property="cancelButton" destination="bEM-5z-xDp" id="S6h-Zl-8f9"/>
                         <outlet property="hashtagField" destination="fuq-lr-doX" id="yhP-jA-UyG"/>
