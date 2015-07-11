@@ -2,7 +2,6 @@
 //  WebViewController.swift
 //  Gegder
 //
-//  Created by Yi Hao on 9/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -10,7 +9,7 @@ import UIKit
 
 class WebViewController: UIViewController {
     
-    //option 1:about 2:help
+    // Options> 1:about 2:help
     var option: Int32!
     var address: String!
     let aboutAddress = "http://gegder.com/about.php"
@@ -44,6 +43,4 @@ class WebViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
-    
 }

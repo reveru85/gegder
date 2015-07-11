@@ -2,7 +2,6 @@
 //  PostTableViewCell.swift
 //  Gegder
 //
-//  Created by Yi Hao on 15/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -83,7 +82,6 @@ class PostTableViewCell: UITableViewCell {
             }
         }
         if parentView is TrendingViewController {
-            //(parentView as! TrendingViewController).selectedPostCellId = PostId
             
             if IsDislike == false {
                 
@@ -230,6 +228,4 @@ class PostTableViewCell: UITableViewCell {
         }
         parentView.performSegueWithIdentifier("ShowComments", sender:self)
     }
-    
-    
 }

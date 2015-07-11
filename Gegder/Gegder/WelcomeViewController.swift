@@ -2,7 +2,6 @@
 //  WelcomeViewController.swift
 //  Gegder
 //
-//  Created by Ben on 11/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -51,7 +50,6 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             NotNowButton.setTitle("Not now", forState: UIControlState.allZeros)
             ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)
         }
-        
     }
     
     override func viewDidAppear(animated: Bool) {
@@ -67,7 +65,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
             
             var urlString = "http://dev.snapsnap.com.sg/index.php/user/load_user/" + deviceHash!
             
-            //Get UserID from server based on deviceID's hash
+            // Get UserID from server based on deviceID's hash
             var url = NSURL(string: urlString)
             var request = NSURLRequest(URL: url!)
             let queue: NSOperationQueue = NSOperationQueue.mainQueue()
@@ -80,8 +78,6 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
                 }
             })
         }
-        
-        
     }
     
     override func didReceiveMemoryWarning() {
@@ -102,11 +98,10 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         if (FBSDKAccessToken.currentAccessToken() != nil)
         {
-//            println("Existing login")
             // User is already logged in, do work such as go to next view controller.
             (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = true
             
-            // ADD CODE HERE TO SWITCH VIEW TO HOME VC
+            // Transition to home view
             self.performSegueWithIdentifier("GoToHome", sender: self)
         }
     }
@@ -139,7 +134,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
     }
     
     func loginButtonDidLogOut(loginButton: FBSDKLoginButton!) {
-//        println("User Logged Out")
+
         (UIApplication.sharedApplication().delegate as! AppDelegate).isFBLogin = false
         NotNowButton.setTitle("Not now", forState: UIControlState.allZeros)
         ConnectFBButton.setTitle("Connect with Facebook", forState: UIControlState.allZeros)

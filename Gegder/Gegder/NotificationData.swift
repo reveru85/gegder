@@ -2,7 +2,6 @@
 //  NotificationData.swift
 //  Gegder
 //
-//  Created by Yi Hao on 6/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -19,7 +18,7 @@ class NotificationData {
     var entries = [NotificationEntry]()
     
     init() {
-        //init fixed data
+        // Init fixed data
         var entry = NotificationEntry()
         entry.title = "Welcome to Gegder"
         entry.datetime = "30 May 2015, 00:00"
