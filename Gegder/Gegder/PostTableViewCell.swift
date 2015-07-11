@@ -236,11 +236,7 @@ class PostTableViewCell: UITableViewCell {
         let shareAction = UIAlertAction(title: "Share on Facebook", style: .Default, handler: {
             (alert: UIAlertAction!) -> Void in
             
-            println("Share on FB")
-            
             if self.parentView is HomeViewController {
-                
-                println("Home")
                 
                 let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
                 //http://gegder.com/post.php?id=03CF3480CE0F658C79C00B4934D6CC12
@@ -257,8 +253,6 @@ class PostTableViewCell: UITableViewCell {
                 
             } else if self.parentView is TrendingViewController {
                 
-                println("Trending")
-            
                 let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
                 //http://gegder.com/post.php?id=03CF3480CE0F658C79C00B4934D6CC12
                 content.contentURL = NSURL(string: (self.parentView as! TrendingViewController).data.findEntry(self.PostId).media_url!)
@@ -272,8 +266,6 @@ class PostTableViewCell: UITableViewCell {
                 button.frame = CGRectMake((UIScreen.mainScreen().bounds.width - 100) * 0.5, 50, 100, 25)
                 (self.parentView as! TrendingViewController).view.addSubview(button)
             }
-            
-            println("Share done")
         })
 
         let flagAction = UIAlertAction(title: "Flag as inappropriate", style: .Destructive, handler: {
