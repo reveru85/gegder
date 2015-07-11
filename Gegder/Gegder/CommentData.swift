@@ -41,11 +41,11 @@ class CommentData {
         }
     }
     
-    func removeEntry(postId: String) {
+    func removeEntry(commentId: String) {
         
         for (index, entry) in enumerate(entries) {
             
-            if entry.postId == postId {
+            if entry.commentId == commentId {
                 
                 entries.removeAtIndex(index)
                 break
