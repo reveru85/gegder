@@ -26,8 +26,6 @@ class CommentsTableViewCell: UITableViewCell {
     
     @IBAction func FlagButtonTouch(sender: UIButton) {
         
-        println("Flag comment")
-        
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto_comment/action_flag_as_inappropriate/" + self.entry.commentId!
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
