@@ -54,36 +54,6 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
         self.TrendingTableView.addSubview(refreshControl)
     }
-    
-    func testFlagAsInapproriate() {
-        
-        var postId : String = "77E06E56FA007DB5EF78EBCA38F84B25" // inverted apple icon
-        
-        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/" + postId
-        let url = NSURL(string: urlString)
-        var request = NSURLRequest(URL: url!)
-        let queue: NSOperationQueue = NSOperationQueue.mainQueue()
-        NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
-            if data != nil {
-                var str = NSString(data: data, encoding: NSUTF8StringEncoding)
-                
-                if str == "completed" {
-                    println("Flag as inappropriate success!")
-                    
-                    // Remove post from post data in code behind
-                    self.data.removeEntry(postId)
-                    
-                    // Refresh front end UI view
-                    self.TrendingTableView.reloadData()
-                }
-                else {
-                    println("Flag failed.")
-                }
-                
-                self.refreshControl.endRefreshing()
-            }
-        })
-    }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
