@@ -249,7 +249,13 @@ class PostTableViewCell: UITableViewCell {
                 let button : FBSDKShareButton = FBSDKShareButton()
                 button.shareContent = content
                 button.frame = CGRectMake((UIScreen.mainScreen().bounds.width - 100) * 0.5, 50, 100, 25)
-                (self.parentView as! HomeViewController).view.addSubview(button)
+                button.hidden = true
+//                (self.parentView as! HomeViewController).view.addSubview(button)
+                
+//                button.removeFromSuperview()
+                button.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
+                
+//                button.delete(self)
                 
             } else if self.parentView is TrendingViewController {
                 

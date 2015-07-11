@@ -31,7 +31,7 @@ class WelcomeViewController: UIViewController, FBSDKLoginButtonDelegate {
         
         ConnectFBButton.layer.backgroundColor = UIColor.darkGrayColor().colorWithAlphaComponent(0.3).CGColor
         
-        self.view.addSubview(loginView)
+//        self.view.addSubview(loginView)
         loginView.center = CGPoint(x: self.view.center.x, y: self.view.center.y + 100)
         loginView.readPermissions = ["public_profile", "email", "user_friends"]
         loginView.delegate = self
