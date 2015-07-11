@@ -40,6 +40,7 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
+		2D94BA6D1B511C510057EB42 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */; };
 		2DEAC3B91B4EBE80001AF8A3 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */; };
 /* End PBXBuildFile section */
 
@@ -127,6 +128,7 @@
 		2D17255F1B4ACD8E00283E79 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
+		2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -135,6 +137,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2D94BA6D1B511C510057EB42 /* FBSDKShareKit.framework in Frameworks */,
 				135635E81B4ADB9F00AEF832 /* Bolts.framework in Frameworks */,
 				135635E91B4ADB9F00AEF832 /* FBSDKCoreKit.framework in Frameworks */,
 				135635EA1B4ADB9F00AEF832 /* FBSDKLoginKit.framework in Frameworks */,
@@ -168,6 +171,7 @@
 		2D079BE21B29C8AE004D141D = {
 			isa = PBXGroup;
 			children = (
+				2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */,
 				135635E51B4ADB9F00AEF832 /* Bolts.framework */,
 				135635E61B4ADB9F00AEF832 /* FBSDKCoreKit.framework */,
 				135635E71B4ADB9F00AEF832 /* FBSDKLoginKit.framework */,

@@ -2,7 +2,6 @@
 //  CommentData.swift
 //  Gegder
 //
-//  Created by Yi Hao on 4/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -39,6 +38,18 @@ class CommentData {
             entry.name = post["username"].string!
             
             entries.append(entry)
+        }
+    }
+    
+    func removeEntry(commentId: String) {
+        
+        for (index, entry) in enumerate(entries) {
+            
+            if entry.commentId == commentId {
+                
+                entries.removeAtIndex(index)
+                break
+            }
         }
     }
 }

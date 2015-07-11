@@ -114,16 +114,23 @@ class PostData {
         
         for (index, entry) in enumerate(entries) {
             
-//            println("Finding post...")
-            
             if entry.post_id == postId {
-//                println(entries.count)
-//                println("Post found. Removing post from array...")
+                
                 entries.removeAtIndex(index)
-//                println(entries.count)
                 break
             }
         }
+    }
+    
+    func findEntry(postId: String) -> PostEntry! {
+        
+        for entry in entries {
+            if entry.post_id == postId {
+                return entry
+            }
+        }
+        
+        return nil
     }
     
     func likePost(postId: String) {
