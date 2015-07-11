@@ -55,11 +55,13 @@ class PostData {
             
             var dateString = post["created_datetime"].string!
             var dateFormatter = NSDateFormatter()
-            dateFormatter.dateFormat = "yyyy-MM-dd hh:mm:ss"
+            dateFormatter.locale = NSLocale(localeIdentifier: "en_US_POSIX")
+            dateFormatter.timeZone = NSTimeZone(forSecondsFromGMT: 28800)
+            dateFormatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
             
             if let date = dateFormatter.dateFromString(dateString) {
                 // Format into desired format
-                dateFormatter.dateFormat = "dd MMM yyyy, hh:mm"
+                dateFormatter.dateFormat = "dd MMM yyyy, HH:mm"
                 entry.created_datetime = dateFormatter.stringFromDate(date)
                 
             } else {
