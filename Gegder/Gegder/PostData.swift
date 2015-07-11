@@ -122,6 +122,17 @@ class PostData {
         }
     }
     
+    func findEntry(postId: String) -> PostEntry! {
+        
+        for entry in entries {
+            if entry.post_id == postId {
+                return entry
+            }
+        }
+        
+        return nil
+    }
+    
     func likePost(postId: String) {
         for entry in entries {
             if entry.post_id == postId {

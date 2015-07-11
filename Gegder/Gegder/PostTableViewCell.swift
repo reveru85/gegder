@@ -237,6 +237,43 @@ class PostTableViewCell: UITableViewCell {
             (alert: UIAlertAction!) -> Void in
             
             println("Share on FB")
+            
+            if self.parentView is HomeViewController {
+                
+                println("Home")
+                
+                let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+                //http://gegder.com/post.php?id=03CF3480CE0F658C79C00B4934D6CC12
+                content.contentURL = NSURL(string: (self.parentView as! HomeViewController).data.findEntry(self.PostId).media_url!)
+                content.contentTitle = (self.parentView as! HomeViewController).data.findEntry(self.PostId).title!
+                content.contentDescription = (self.parentView as! HomeViewController).data.findEntry(self.PostId).hash_tag!
+                content.imageURL = NSURL(string: (self.parentView as! HomeViewController).data.findEntry(self.PostId).media_url!)
+                
+                // To be cleaned up
+                let button : FBSDKShareButton = FBSDKShareButton()
+                button.shareContent = content
+                button.frame = CGRectMake((UIScreen.mainScreen().bounds.width - 100) * 0.5, 50, 100, 25)
+                (self.parentView as! HomeViewController).view.addSubview(button)
+                
+            } else if self.parentView is TrendingViewController {
+                
+                println("Trending")
+            
+                let content : FBSDKShareLinkContent = FBSDKShareLinkContent()
+                //http://gegder.com/post.php?id=03CF3480CE0F658C79C00B4934D6CC12
+                content.contentURL = NSURL(string: (self.parentView as! TrendingViewController).data.findEntry(self.PostId).media_url!)
+                content.contentTitle = (self.parentView as! TrendingViewController).data.findEntry(self.PostId).title!
+                content.contentDescription = (self.parentView as! TrendingViewController).data.findEntry(self.PostId).hash_tag!
+                content.imageURL = NSURL(string: (self.parentView as! TrendingViewController).data.findEntry(self.PostId).media_url!)
+                
+                // To be cleaned up
+                let button : FBSDKShareButton = FBSDKShareButton()
+                button.shareContent = content
+                button.frame = CGRectMake((UIScreen.mainScreen().bounds.width - 100) * 0.5, 50, 100, 25)
+                (self.parentView as! TrendingViewController).view.addSubview(button)
+            }
+            
+            println("Share done")
         })
 
         let flagAction = UIAlertAction(title: "Flag as inappropriate", style: .Destructive, handler: {

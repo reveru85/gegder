@@ -38,12 +38,12 @@ class CommentsTableViewCell: UITableViewCell {
                 
                 if str == "completed" {
                     // Remove post from post data in code behind and refresh view
-//                    (self.parentView as! CommentsViewController).data.removeEntry(self.entry.commentId!)
-//                    (self.parentView as! CommentsViewController).CommentsTableView.reloadData()
-//                    
-//                    var flagAlert = UIAlertController(title: "", message: "You have flagged the post as inappropriate.", preferredStyle: UIAlertControllerStyle.Alert)
-//                    flagAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
-//                    (self.parentView as! HomeViewController).presentViewController(flagAlert, animated: true, completion: nil)
+                    (self.parentView as CommentsViewController).data.removeEntry(self.entry.commentId!)
+                    (self.parentView as CommentsViewController).CommentsTableView.reloadData()
+                    
+                    var flagAlert = UIAlertController(title: "", message: "You have flagged the comment as inappropriate.", preferredStyle: UIAlertControllerStyle.Alert)
+                    flagAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
+                    (self.parentView as CommentsViewController).presentViewController(flagAlert, animated: true, completion: nil)
                 }
             }
         })
