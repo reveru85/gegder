@@ -237,14 +237,54 @@ class PostTableViewCell: UITableViewCell {
             (alert: UIAlertAction!) -> Void in
             
             println("Share on FB")
-            
         })
 
         let flagAction = UIAlertAction(title: "Flag as inappropriate", style: .Destructive, handler: {
             (alert: UIAlertAction!) -> Void in
             
-            println("Flag post")
-            
+            if self.parentView is HomeViewController {
+                
+                var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/" + self.PostId
+                let url = NSURL(string: urlString)
+                var request = NSURLRequest(URL: url!)
+                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+                NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                    if data != nil {
+                        var str = NSString(data: data, encoding: NSUTF8StringEncoding)
+                        
+                        if str == "completed" {
+                            // Remove post from post data in code behind and refresh view
+                            (self.parentView as! HomeViewController).data.removeEntry(self.PostId)
+                            (self.parentView as! HomeViewController).HomeTableView.reloadData()
+                            
+                            var flagAlert = UIAlertController(title: "", message: "You have flagged the post as inappropriate.", preferredStyle: UIAlertControllerStyle.Alert)
+                            flagAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
+                            (self.parentView as! HomeViewController).presentViewController(flagAlert, animated: true, completion: nil)
+                        }
+                    }
+                })
+            } else if self.parentView is TrendingViewController {
+                
+                var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/" + self.PostId
+                let url = NSURL(string: urlString)
+                var request = NSURLRequest(URL: url!)
+                let queue: NSOperationQueue = NSOperationQueue.mainQueue()
+                NSURLConnection.sendAsynchronousRequest(request, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
+                    if data != nil {
+                        var str = NSString(data: data, encoding: NSUTF8StringEncoding)
+                        
+                        if str == "completed" {
+                            // Remove post from post data in code behind and refresh view
+                            (self.parentView as! TrendingViewController).data.removeEntry(self.PostId)
+                            (self.parentView as! TrendingViewController).TrendingTableView.reloadData()
+                            
+                            var flagAlert = UIAlertController(title: "", message: "You have flagged the post as inappropriate.", preferredStyle: UIAlertControllerStyle.Alert)
+                            flagAlert.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.Cancel, handler: nil))
+                            (self.parentView as! TrendingViewController).presentViewController(flagAlert, animated: true, completion: nil)
+                        }
+                    }
+                })
+            }
         })
         
         let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
