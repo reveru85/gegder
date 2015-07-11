@@ -96,6 +96,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.CommentDatetime.text = post.datetime
         cell.Comment.text = post.comment
         cell.entry = post
+        cell.parentView = self
         
         return cell
     }
