@@ -194,8 +194,9 @@
                                                         <constraint firstAttribute="width" secondItem="Sh8-XP-msZ" secondAttribute="height" multiplier="1:1" id="C9D-8e-IJJ"/>
                                                         <constraint firstAttribute="width" constant="25" id="GzH-mk-p1Q"/>
                                                     </constraints>
-                                                    <inset key="titleEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                    <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="-100" maxY="0.0"/>
                                                     <state key="normal" title="More" image="ic_menu_post">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -895,8 +896,9 @@
                                                         <constraint firstAttribute="width" constant="25" id="p4d-uQ-3cM"/>
                                                         <constraint firstAttribute="width" secondItem="LCA-4Y-R3u" secondAttribute="height" multiplier="1:1" id="qKh-iU-zov"/>
                                                     </constraints>
-                                                    <inset key="titleEdgeInsets" minX="20" minY="20" maxX="20" maxY="20"/>
+                                                    <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="-100" maxY="0.0"/>
                                                     <state key="normal" title="More" image="ic_menu_post">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1342,7 +1344,9 @@
                                                         <constraint firstAttribute="width" secondItem="Lbt-LE-OAl" secondAttribute="height" multiplier="1:1" id="Pyc-ed-yYM"/>
                                                         <constraint firstAttribute="height" constant="25" id="RwX-yi-op9"/>
                                                     </constraints>
+                                                    <inset key="titleEdgeInsets" minX="-100" minY="0.0" maxX="-100" maxY="-100"/>
                                                     <state key="normal" title="Flag" image="ic_flag">
+                                                        <color key="titleColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                         <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                                     </state>
                                                     <connections>
@@ -1558,9 +1562,9 @@
         <image name="post_default" width="500" height="500"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="c1W-58-koP"/>
-        <segue reference="UuJ-rW-vLr"/>
-        <segue reference="iAu-Vz-umc"/>
-        <segue reference="XEi-PZ-yX4"/>
+        <segue reference="owN-xk-3fl"/>
+        <segue reference="6vC-hC-E2b"/>
+        <segue reference="naq-P2-aSN"/>
+        <segue reference="zQB-wV-I6O"/>
     </inferredMetricsTieBreakers>
 </document>
