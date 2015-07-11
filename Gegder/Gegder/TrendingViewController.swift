@@ -167,7 +167,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
-//        println(post.post_id)
+        //println(post.post_id)
         
         return cell
     }
