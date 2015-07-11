@@ -2,7 +2,6 @@
 //  HomeTableViewController.swift
 //  Gegder
 //
-//  Created by Ben on 11/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -21,7 +20,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
     var selectedPostCellId = ""
     var selectedPostCell : PostTableViewCell!
     
-    //camera stuff
+    // Camera view
     let picker = UIImagePickerController()
     var newImage: UIImage?
     
@@ -51,13 +50,13 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             }
         })
         
-        //camera stuff
+        // Camera view
         picker.delegate = self
         
         // Pull to refresh code
         self.refreshControl = UIRefreshControl()
         //self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "getNewPosts:", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
         self.HomeTableView.addSubview(refreshControl)
     }
     
@@ -86,7 +85,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         // If this image is already cached, don't re-download
         if (urlString != nil) {
             if let img = imageCache[urlString!] {
-                //println("Image exists in cache")
+                
                 cell.PostImage.image = img
             }
             else {
@@ -99,15 +98,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                             if data != nil {
                                 
-                                //println("Downloading new image from URL...")
-                                // Convert the downloaded data in to a UIImage object
+                                // Convert the downloaded data in to a UIImage object and cache
                                 let image = UIImage(data: data)
-                                // Store the image in to our cache
                                 self.imageCache[urlString!] = image
+                                
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
                                     if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                                        //cellToUpdate.imageView?.image = image
+                                        
                                         (cellToUpdate as! PostTableViewCell).PostImage.image = image
                                     }
                                 })
@@ -193,7 +191,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
-    func getNewPosts(sender:AnyObject) {
+    func getNewPosts() {
         
         // Get new posts based on newest post
         var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/dphodto_new_post/" + self.data.entries.first!.post_id! + "/" + userID!
@@ -218,7 +216,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         })
     }
     
-    //prep for segue transitions
+    // Prepare for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
@@ -252,12 +250,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return UIModalPresentationStyle.None
     }
     
-    //camera stuff
+    // Camera view
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-        
-        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2
-        
-        dismissViewControllerAnimated(true, completion: nil) //5
+        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        dismissViewControllerAnimated(true, completion: nil)
         self.performSegueWithIdentifier("GoToNewPost", sender:self)
     }
     

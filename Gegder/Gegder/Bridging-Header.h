@@ -2,7 +2,6 @@
 //  Bridging-Header.h
 //  Gegder
 //
-//  Created by Saphia Neo on 6/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 

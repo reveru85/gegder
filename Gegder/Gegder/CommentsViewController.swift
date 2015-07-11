@@ -2,7 +2,6 @@
 //  CommentsViewController.swift
 //  Gegder
 //
-//  Created by Yi Hao on 4/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -152,12 +151,12 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
             return
         }
         
-        //on send comment button clicked
+        // On send comment button clicked
         sender.enabled = false
         CommentsTextField.enabled = false
         postingBlurView.hidden = false
         
-        //send comment to server
+        // Send comment to server
         var postData = "dphodtoId=" + postId + "&userId=" + userID! + "&comment=" + comment
         
         let urlPath: String = "http://dev.snapsnap.com.sg/index.php/dphodto_comment/dphodto_comment_create"
@@ -176,15 +175,15 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 if str == "completed" {
                     
-                    //reload comments from server on send complete (in async)
+                    // Reload comments from server on send complete (in async)
                     self.getNewComments()
                     
-                    //hide sending view and re-enable comments posting (in async)
+                    // Hide sending view and re-enable comments posting (in async)
                     sender.enabled = true
                     self.CommentsTextField.enabled = true
                     self.postingBlurView.hidden = true
                     
-                    //clear CommentsTextField if posting succeeded (in async)
+                    // Clear CommentsTextField if posting succeeded (in async)
                     self.CommentsTextField.text = ""
                     
                     if self.parentView is HomeViewController {
@@ -196,8 +195,7 @@ class CommentsViewController: UIViewController, UITableViewDataSource, UITableVi
                         var commentsInt = self.currentCellView.PostCommentCount.text?.toInt()
                         commentsInt!++
                         self.currentCellView.PostCommentCount.text = String(commentsInt!)
-                    }
-                    else if self.parentView is TrendingViewController {
+                    } else if self.parentView is TrendingViewController {
                         
                         // Update post entry variable in TrendingViewController (backend data)
                         (self.parentView as! TrendingViewController).data.incrementComment(self.postId)

@@ -2,7 +2,6 @@
 //  MenuViewController.swift
 //  Gegder
 //
-//  Created by Yi Hao on 9/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -64,9 +63,7 @@ class MenuViewController: UITableViewController {
     
     @IBAction func LoginButtonTouch(sender: UIButton) {
         welcomeView.loginFromWelcomeScreen = false
-        
         welcomeView.loginView.sendActionsForControlEvents(UIControlEvents.TouchUpInside)
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
 }

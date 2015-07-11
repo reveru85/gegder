@@ -2,7 +2,6 @@
 //  NewPostViewController.swift
 //  Gegder
 //
-//  Created by Yi Hao on 29/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -67,43 +66,42 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func CancelButton(sender: AnyObject) {
-        //hide keyboard
+        // Hide keyboard
         view.endEditing(true)
-        
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
     @IBAction func PostButton(sender: AnyObject) {
         
-        //hide keyboard
+        // Hide keyboard
         view.endEditing(true)
         
-        //disable buttons and show spinner
+        // Disable buttons and show spinner
         postButton.enabled = false
         cancelButton.enabled = false
         postingBlurView.hidden = false
         titleField.enabled = false
         hashtagField.enabled = false
         
-        //fix image orientation and crop to square
+        // Fix image orientation and crop to square
         var editedImage = newImage?.fixOrientation()
         editedImage = editedImage?.cropToSquare()
         
-        //resize image to 720x720
+        // Resize image to 720x720
         let size = CGSizeMake(720, 720)
         UIGraphicsBeginImageContextWithOptions(size, true, 1.0)
         editedImage!.drawInRect(CGRect(origin: CGPointZero, size: size))
         let scaledImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        //create base64 from image
+        // Create base64 from image
         var imageData = UIImageJPEGRepresentation(scaledImage, 0.5)
         let base64String = imageData.base64EncodedStringWithOptions(.allZeros)
         
-        //replace + with %2B to get around HTTP post restriction
+        // Replace + with %2B to get around HTTP post restriction
         let newBase64String = base64String.stringByReplacingOccurrencesOfString("+", withString: "%2B")
         
-        //prep data for posting
+        // Prepare data for posting
         let firstPostId = (UIApplication.sharedApplication().delegate as! AppDelegate).firstPostID
         var isLogin = ""
         

@@ -2,7 +2,6 @@
 //  TrendingViewController.swift
 //  Gegder
 //
-//  Created by Ben on 11/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -19,7 +18,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
     var selectedPostCellId = ""
     var selectedPostCell : PostTableViewCell!
     
-    //camera stuff
+    // Camera view
     let picker = UIImagePickerController()
     var newImage: UIImage?
 
@@ -46,19 +45,21 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
             }
         })
         
-        // Camera stuff
+        // Camera view
         picker.delegate = self
         
         // Pull to refresh code
         self.refreshControl = UIRefreshControl()
         //self.refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        self.refreshControl.addTarget(self, action: "testFlagAsInapproriate", forControlEvents: UIControlEvents.ValueChanged)
+        self.refreshControl.addTarget(self, action: "getNewPosts", forControlEvents: UIControlEvents.ValueChanged)
         self.TrendingTableView.addSubview(refreshControl)
     }
     
     func testFlagAsInapproriate() {
         
-        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/27F7A18E5F1F1D4B5F20467EE99DB080"// + userID!
+        var postId : String = "77E06E56FA007DB5EF78EBCA38F84B25" // inverted apple icon
+        
+        var urlString = "http://dev.snapsnap.com.sg/index.php/dphodto/action_flag_as_inappropriate/" + postId
         let url = NSURL(string: urlString)
         var request = NSURLRequest(URL: url!)
         let queue: NSOperationQueue = NSOperationQueue.mainQueue()
@@ -68,6 +69,12 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                 
                 if str == "completed" {
                     println("Flag as inappropriate success!")
+                    
+                    // Remove post from post data in code behind
+                    self.data.removeEntry(postId)
+                    
+                    // Refresh front end UI view
+                    self.TrendingTableView.reloadData()
                 }
                 else {
                     println("Flag failed.")
@@ -103,7 +110,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         // If this image is already cached, don't re-download
         if (urlString != nil) {
             if let img = imageCache[urlString!] {
-                //println("Image exists in cache")
+                
                 cell.PostImage.image = img
             }
             else {
@@ -116,15 +123,14 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
                         NSURLConnection.sendAsynchronousRequest(imageRequest, queue: queue, completionHandler: { (response: NSURLResponse!, data: NSData!, error: NSError!) -> Void in
                             if data != nil {
                                 
-                                //println("Downloading new image from URL...")
-                                // Convert the downloaded data in to a UIImage object
+                                // Convert the downloaded data in to a UIImage object and cache it
                                 let image = UIImage(data: data)
-                                // Store the image in to our cache
                                 self.imageCache[urlString!] = image
+                                
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
                                     if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
-                                        //cellToUpdate.imageView?.image = image
+                                        
                                         (cellToUpdate as! PostTableViewCell).PostImage.image = image
                                     }
                                 })
@@ -184,7 +190,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         })
     }
     
-    //prep for segue transitions
+    // Prepare for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "GoToNewPost") {
             var nc = segue.destinationViewController as! UINavigationController
@@ -219,12 +225,10 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         return UIModalPresentationStyle.None
     }
     
-    //camera stuff
+    // Camera view
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [NSObject : AnyObject]) {
-
-        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage //2
-        
-        dismissViewControllerAnimated(true, completion: nil) //5
+        newImage = info[UIImagePickerControllerOriginalImage] as? UIImage
+        dismissViewControllerAnimated(true, completion: nil)
         self.performSegueWithIdentifier("GoToNewPost", sender:self)
     }
     

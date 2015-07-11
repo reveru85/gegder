@@ -2,7 +2,6 @@
 //  SearchViewController.swift
 //  Gegder
 //
-//  Created by Ben on 11/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 

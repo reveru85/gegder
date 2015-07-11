@@ -2,7 +2,6 @@
 //  NotificationsViewController.swift
 //  Gegder
 //
-//  Created by Ben on 11/6/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -43,7 +42,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! NotificationsTableViewCell
         
-        //prevent layout constraints error
+        // Prevent layout constraints error
         cell.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
         
         // Initialise an instance of PostData class using the current row
@@ -62,7 +61,7 @@ class NotificationsViewController: UIViewController, UITableViewDataSource, UITa
         
     }
     
-    //prep for segue transitions
+    // Prepare for segue transitions
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "ShowNotification") {
 

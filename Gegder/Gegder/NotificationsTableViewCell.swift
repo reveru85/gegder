@@ -2,7 +2,6 @@
 //  NotificationsTableViewCell.swift
 //  Gegder
 //
-//  Created by Yi Hao on 6/7/15.
 //  Copyright (c) 2015 Genesys. All rights reserved.
 //
 
@@ -22,5 +21,4 @@ class NotificationsTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
     }
-    
 }
