@@ -231,5 +231,32 @@ class PostTableViewCell: UITableViewCell {
         parentView.performSegueWithIdentifier("ShowComments", sender:self)
     }
     
-    
+    @IBAction func MoreButtonTouch(sender: UIButton) {
+        
+        let optionMenu = UIAlertController(title: "More options", message: nil, preferredStyle: .Alert)
+        
+        let shareAction = UIAlertAction(title: "Share on Facebook", style: .Default, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            println("Share on FB")
+            
+        })
+
+        let flagAction = UIAlertAction(title: "Flag as inappropriate", style: .Destructive, handler: {
+            (alert: UIAlertAction!) -> Void in
+            
+            println("Flag post")
+            
+        })
+        
+        let cancelAction = UIAlertAction(title: "Cancel", style: .Cancel, handler: {
+            (alert: UIAlertAction!) -> Void in
+        })
+
+        optionMenu.addAction(shareAction)
+        optionMenu.addAction(flagAction)
+        optionMenu.addAction(cancelAction)
+        
+        parentView.presentViewController(optionMenu, animated: true, completion: nil)
+    }
 }

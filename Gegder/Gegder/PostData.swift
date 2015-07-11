@@ -113,13 +113,13 @@ class PostData {
         
         for (index, entry) in enumerate(entries) {
             
-            println("Finding post...")
+//            println("Finding post...")
             
             if entry.post_id == postId {
-                println(entries.count)
-                println("Post found. Removing post from array...")
+//                println(entries.count)
+//                println("Post found. Removing post from array...")
                 entries.removeAtIndex(index)
-                println(entries.count)
+//                println(entries.count)
                 break
             }
         }

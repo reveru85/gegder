@@ -188,9 +188,21 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sh8-XP-msZ">
+                                                    <rect key="frame" x="555" y="765" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" secondItem="Sh8-XP-msZ" secondAttribute="height" multiplier="1:1" id="C9D-8e-IJJ"/>
+                                                        <constraint firstAttribute="width" constant="25" id="GzH-mk-p1Q"/>
+                                                    </constraints>
+                                                    <state key="normal" title="More" image="ic_menu_post">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="MoreButtonTouch:" destination="3Wl-Vz-KQI" eventType="touchUpInside" id="wut-g7-gN4"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="SMJ-l5-6sB" firstAttribute="centerY" secondItem="3sl-3c-uU6" secondAttribute="centerY" id="2Ua-SS-TIZ"/>
                                                 <constraint firstItem="bF0-Fg-Xac" firstAttribute="leading" secondItem="OgY-Gk-0dX" secondAttribute="leading" constant="20" id="55N-0O-p3H"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="hbf-JR-eFv" secondAttribute="trailing" constant="20" id="8Q4-ck-6Vo"/>
                                                 <constraint firstItem="O1q-lL-UcW" firstAttribute="centerY" secondItem="Dhv-iF-TXX" secondAttribute="centerY" id="8hx-Rb-CjX"/>
@@ -202,6 +214,7 @@
                                                 <constraint firstItem="O1q-lL-UcW" firstAttribute="leading" secondItem="OgY-Gk-0dX" secondAttribute="leading" constant="20" id="Evg-Dm-SkE"/>
                                                 <constraint firstItem="Hcs-Fc-8P9" firstAttribute="top" secondItem="ndA-co-Do6" secondAttribute="bottom" constant="10" id="Fg3-Ii-uzZ"/>
                                                 <constraint firstItem="bF0-Fg-Xac" firstAttribute="top" secondItem="Hcs-Fc-8P9" secondAttribute="bottom" id="GKh-iz-fRd"/>
+                                                <constraint firstItem="Sh8-XP-msZ" firstAttribute="width" secondItem="Sh8-XP-msZ" secondAttribute="height" multiplier="1:1" id="HBi-fx-c4s"/>
                                                 <constraint firstItem="3sl-3c-uU6" firstAttribute="leading" secondItem="V0c-BU-c34" secondAttribute="trailing" constant="20" id="JCU-qj-Bd6"/>
                                                 <constraint firstItem="3sl-3c-uU6" firstAttribute="top" secondItem="tej-1D-P1p" secondAttribute="bottom" constant="2" id="K8s-W9-mm9"/>
                                                 <constraint firstAttribute="bottom" secondItem="O1q-lL-UcW" secondAttribute="bottom" constant="14" id="SSw-iC-aAe"/>
@@ -212,12 +225,13 @@
                                                 <constraint firstItem="hbf-JR-eFv" firstAttribute="bottom" secondItem="tej-1D-P1p" secondAttribute="top" id="fT1-Rw-C3p"/>
                                                 <constraint firstItem="at8-pE-zai" firstAttribute="centerY" secondItem="Dhv-iF-TXX" secondAttribute="centerY" id="g8e-de-sec"/>
                                                 <constraint firstItem="BcE-kC-uwL" firstAttribute="leading" secondItem="VTe-12-s0n" secondAttribute="trailing" constant="10" id="h0y-jE-dbh"/>
-                                                <constraint firstItem="ndA-co-Do6" firstAttribute="top" secondItem="V0c-BU-c34" secondAttribute="bottom" constant="10" id="hM0-TM-gKc"/>
+                                                <constraint firstAttribute="trailing" secondItem="Sh8-XP-msZ" secondAttribute="trailing" constant="20" id="hKv-uZ-i0U"/>
                                                 <constraint firstItem="Dhv-iF-TXX" firstAttribute="leading" secondItem="O1q-lL-UcW" secondAttribute="trailing" constant="10" id="jli-ku-KIR"/>
                                                 <constraint firstItem="ndA-co-Do6" firstAttribute="top" secondItem="SMJ-l5-6sB" secondAttribute="bottom" constant="10" id="ka9-x6-bVn"/>
                                                 <constraint firstAttribute="trailing" secondItem="SMJ-l5-6sB" secondAttribute="trailing" constant="20" id="l27-Os-Qrh"/>
                                                 <constraint firstItem="BcE-kC-uwL" firstAttribute="centerY" secondItem="VTe-12-s0n" secondAttribute="centerY" id="loc-6e-Z0B"/>
                                                 <constraint firstItem="V0c-BU-c34" firstAttribute="leading" secondItem="OgY-Gk-0dX" secondAttribute="leading" constant="20" id="m5J-Ud-e1b"/>
+                                                <constraint firstItem="O1q-lL-UcW" firstAttribute="centerY" secondItem="Sh8-XP-msZ" secondAttribute="centerY" id="mHb-kd-bsW"/>
                                                 <constraint firstAttribute="trailing" secondItem="ndA-co-Do6" secondAttribute="trailing" id="mjy-df-VGc"/>
                                                 <constraint firstItem="O1q-lL-UcW" firstAttribute="top" secondItem="bF0-Fg-Xac" secondAttribute="bottom" constant="20" id="pvS-eF-Nos"/>
                                                 <constraint firstItem="at8-pE-zai" firstAttribute="centerY" secondItem="pQm-1I-TR7" secondAttribute="centerY" id="s5q-fw-gmK"/>
@@ -230,8 +244,7 @@
                                             </constraints>
                                             <variation key="default">
                                                 <mask key="constraints">
-                                                    <exclude reference="hM0-TM-gKc"/>
-                                                    <exclude reference="2Ua-SS-TIZ"/>
+                                                    <exclude reference="HBi-fx-c4s"/>
                                                 </mask>
                                             </variation>
                                         </tableViewCellContentView>
@@ -875,6 +888,19 @@
                                                     <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LCA-4Y-R3u">
+                                                    <rect key="frame" x="555" y="765" width="25" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="25" id="p4d-uQ-3cM"/>
+                                                        <constraint firstAttribute="width" secondItem="LCA-4Y-R3u" secondAttribute="height" multiplier="1:1" id="qKh-iU-zov"/>
+                                                    </constraints>
+                                                    <state key="normal" title="More" image="ic_menu_post">
+                                                        <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                                    </state>
+                                                    <connections>
+                                                        <action selector="MoreButtonTouch:" destination="ECH-yo-eYu" eventType="touchUpInside" id="Z7S-5R-AOf"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstAttribute="trailing" secondItem="Pbp-3R-3vK" secondAttribute="trailing" constant="20" id="16m-aE-hDI"/>
@@ -882,6 +908,7 @@
                                                 <constraint firstItem="QA4-4D-ia4" firstAttribute="top" secondItem="OTL-G8-FoT" secondAttribute="bottom" constant="10" id="27Z-YP-CTs"/>
                                                 <constraint firstAttribute="trailing" secondItem="QA4-4D-ia4" secondAttribute="trailing" constant="20" id="2it-9j-KIS"/>
                                                 <constraint firstItem="i7d-LM-Iid" firstAttribute="centerY" secondItem="GJF-m1-Vdz" secondAttribute="centerY" id="51R-oi-J95"/>
+                                                <constraint firstAttribute="trailing" secondItem="LCA-4Y-R3u" secondAttribute="trailing" constant="20" id="6gs-nc-ewV"/>
                                                 <constraint firstItem="sHe-4C-3nx" firstAttribute="top" secondItem="AQn-3s-vG6" secondAttribute="top" constant="10" id="7HA-qh-svd"/>
                                                 <constraint firstAttribute="bottom" secondItem="AjY-fe-mcE" secondAttribute="bottom" constant="14" id="7vr-Qo-wlo"/>
                                                 <constraint firstItem="ZhB-XW-l7N" firstAttribute="leading" secondItem="AjY-fe-mcE" secondAttribute="trailing" constant="10" id="9K2-St-xAy"/>
@@ -911,6 +938,7 @@
                                                 <constraint firstAttribute="trailing" secondItem="Gzq-7j-zQp" secondAttribute="trailing" constant="20" id="muo-Dh-vsd"/>
                                                 <constraint firstItem="ZhB-XW-l7N" firstAttribute="centerY" secondItem="AjY-fe-mcE" secondAttribute="centerY" id="nvZ-By-sA4"/>
                                                 <constraint firstItem="Gzq-7j-zQp" firstAttribute="top" secondItem="Pbp-3R-3vK" secondAttribute="bottom" id="q8h-e5-g77"/>
+                                                <constraint firstItem="AjY-fe-mcE" firstAttribute="centerY" secondItem="LCA-4Y-R3u" secondAttribute="centerY" id="xjK-Ey-LO9"/>
                                                 <constraint firstItem="MJO-9Y-nez" firstAttribute="top" secondItem="QA4-4D-ia4" secondAttribute="bottom" id="ytk-HN-Op8"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -1497,6 +1525,7 @@
         <image name="ic_like" width="300" height="300"/>
         <image name="ic_location" width="68" height="96"/>
         <image name="ic_logo_button_post" width="150" height="150"/>
+        <image name="ic_menu_post" width="256" height="256"/>
         <image name="ic_notification_on" width="21" height="25"/>
         <image name="ic_search_on" width="25" height="25"/>
         <image name="logo" width="300" height="300"/>
@@ -1506,8 +1535,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="6vC-hC-E2b"/>
-        <segue reference="zQB-wV-I6O"/>
-        <segue reference="owN-xk-3fl"/>
         <segue reference="naq-P2-aSN"/>
+        <segue reference="zQB-wV-I6O"/>
+        <segue reference="c1W-58-koP"/>
     </inferredMetricsTieBreakers>
 </document>
