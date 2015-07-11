@@ -13,6 +13,7 @@ class CommentsTableViewCell: UITableViewCell {
     @IBOutlet weak var CommentDatetime: UILabel!
     @IBOutlet weak var UserLabel: UILabel!
     
+    var parentView: CommentsViewController!
     var entry : CommentData.CommentEntry!
     
     override func awakeFromNib() {
