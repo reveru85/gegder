@@ -115,7 +115,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                         //might cause an error if image is loaded *after* cell has been reused
                                         //https://stavash.wordpress.com/2012/12/14/advanced-issues-asynchronous-uitableviewcell-content-loading-done-right/
                                         
-                                        println(cellToUpdate.frame.height)
+//                                        println(cellToUpdate.frame.height)
                                     }
                                 })
                             }
@@ -164,7 +164,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var contentYoffset = scrollView.contentOffset.y
         var distanceFromBottom = scrollView.contentSize.height - contentYoffset
         
-        if distanceFromBottom < ( 1.5 * height) {
+        if distanceFromBottom < ( 2 * height) {
             
             // Reached end of table
             let currentLastPostID = data.entries.last?.post_id!

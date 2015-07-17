@@ -28,7 +28,7 @@ class TrendingViewController: UIViewController, UITableViewDataSource, UITableVi
         
         TrendingTableView.delegate = self
         TrendingTableView.dataSource = self
-        TrendingTableView.estimatedRowHeight = 44
+        TrendingTableView.estimatedRowHeight = 600
         TrendingTableView.rowHeight = UITableViewAutomaticDimension
         
         // Get First Load Posts API
