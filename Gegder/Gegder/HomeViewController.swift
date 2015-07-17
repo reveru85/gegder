@@ -32,7 +32,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         HomeTableView.delegate = self
         HomeTableView.dataSource = self
-        HomeTableView.estimatedRowHeight = 44
+        HomeTableView.estimatedRowHeight = 600 //value affects scrolling behavior after new posts loads need more experimentation
         HomeTableView.rowHeight = UITableViewAutomaticDimension
         
         // Get first load posts
@@ -69,9 +69,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         return data.entries.count
     }
     
+    func tableView(tableView: UITableView, didEndDisplayingCell cell: UITableViewCell, forRowAtIndexPath indexPath: NSIndexPath) {
+        //disable any operations still waiting for download, to fix wrong image loads from previously reused cells
+        //https://stavash.wordpress.com/2012/12/14/advanced-issues-asynchronous-uitableviewcell-content-loading-done-right/
+    }
+    
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(postCellId, forIndexPath: indexPath) as! PostTableViewCell
-
+        
         //prevent layout constraints error
         cell.contentView.bounds = CGRectMake(0, 0, 99999, 99999);
         
@@ -107,6 +112,10 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                     if let cellToUpdate = tableView.cellForRowAtIndexPath(indexPath) {
                                         
                                         (cellToUpdate as! PostTableViewCell).PostImage.image = image
+                                        //might cause an error if image is loaded *after* cell has been reused
+                                        //https://stavash.wordpress.com/2012/12/14/advanced-issues-asynchronous-uitableviewcell-content-loading-done-right/
+                                        
+                                        println(cellToUpdate.frame.height)
                                     }
                                 })
                             }
@@ -115,7 +124,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 }
             }
         }
-
+        
         // Update the UI with the current post
         cell.PostTitle.text = post.title
         cell.UserLabel.text = post.username
@@ -143,8 +152,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             cell.PostDislikeButton.imageView?.image = UIImage(named:"ic_dislike")
         }
         
-//        println(post.display_order)
-//        println(post.post_id)
+        //        println(post.display_order)
+        //        println(post.post_id)
         
         return cell
     }
@@ -155,8 +164,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var contentYoffset = scrollView.contentOffset.y
         var distanceFromBottom = scrollView.contentSize.height - contentYoffset
         
-        if distanceFromBottom < height {
-
+        if distanceFromBottom < ( 1.5 * height) {
+            
             // Reached end of table
             let currentLastPostID = data.entries.last?.post_id!
             
@@ -167,6 +176,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 getPreviousPosts(currentLastPostID)
             }
         }
+        
     }
     
     func getPreviousPosts(postID : String?) {
@@ -239,7 +249,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             vc.parentView = self
         }
         else if (segue.identifier == "ShowWebView") {
-
+            
             let option = (sender as! MenuViewController).option
             let vc = segue.destinationViewController as! WebViewController
             vc.option = option
