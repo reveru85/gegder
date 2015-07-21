@@ -48,11 +48,19 @@ class NewPostViewController: UIViewController, UITextFieldDelegate {
         // Get current location immediately after image is taken
         manager = OneShotLocationManager()
         manager!.fetchWithCompletion { location, error in
+            
+            // fetch location or an error
+            if let loc = location {
+//                println(location)
+                // Convert location to geocode
+                self.getLocationAddress(location! as CLLocation)
+            } else if let err = error {
+//                println(err.localizedDescription)
+                self.locationLabel.text = "Unknown location (Disabled in Settings)"
+            }
            
             self.manager = nil
             
-            // Convert location to geocode
-            self.getLocationAddress(location! as CLLocation)
         }
     }
     
