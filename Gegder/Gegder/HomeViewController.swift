@@ -164,7 +164,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         var contentYoffset = scrollView.contentOffset.y
         var distanceFromBottom = scrollView.contentSize.height - contentYoffset
         
-        if distanceFromBottom < ( 2 * height) {
+        if distanceFromBottom < ( 3 * height) {
             
             // Reached end of table
             let currentLastPostID = data.entries.last?.post_id!
