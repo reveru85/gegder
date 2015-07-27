@@ -7,8 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
-		132156BA1B3C274A00468C03 /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		134429D21B2EF45B00C56968 /* PostData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D11B2EF45B00C56968 /* PostData.swift */; };
 		134429D41B2EF72C00C56968 /* PostTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 134429D31B2EF72C00C56968 /* PostTableViewCell.swift */; };
 		1344BFEE1B417799004F798F /* NewPostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1344BFED1B417799004F798F /* NewPostViewController.swift */; };
@@ -21,9 +19,6 @@
 		135635D71B4AB13000AEF832 /* NotificationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135635D61B4AB13000AEF832 /* NotificationsTableViewCell.swift */; };
 		135635DB1B4AC06500AEF832 /* SingleNotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135635DA1B4AC06500AEF832 /* SingleNotificationViewController.swift */; };
 		135635DD1B4AC6EC00AEF832 /* NotificationData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 135635DC1B4AC6EC00AEF832 /* NotificationData.swift */; };
-		135635E81B4ADB9F00AEF832 /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135635E51B4ADB9F00AEF832 /* Bolts.framework */; };
-		135635E91B4ADB9F00AEF832 /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135635E61B4ADB9F00AEF832 /* FBSDKCoreKit.framework */; };
-		135635EA1B4ADB9F00AEF832 /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 135635E71B4ADB9F00AEF832 /* FBSDKLoginKit.framework */; };
 		13660C9B1B47A40A00A3D8D3 /* CommentsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13660C9A1B47A40A00A3D8D3 /* CommentsViewController.swift */; };
 		13660C9F1B47AC4100A3D8D3 /* CommentsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */; };
 		13660CA11B47CD6400A3D8D3 /* CommentData.swift in Sources */ = {isa = PBXBuildFile; fileRef = 13660CA01B47CD6400A3D8D3 /* CommentData.swift */; };
@@ -40,18 +35,16 @@
 		2D079BFD1B29C8AE004D141D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 2D079BFB1B29C8AE004D141D /* LaunchScreen.xib */; };
 		2D079C091B29C8AF004D141D /* GegderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D079C081B29C8AF004D141D /* GegderTests.swift */; };
 		2D17254F1B3ACEF000283E79 /* SwiftyJSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D17254E1B3ACEF000283E79 /* SwiftyJSON.swift */; };
-		2D94BA6D1B511C510057EB42 /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */; };
 		2DEAC3B91B4EBE80001AF8A3 /* OneShotLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */; };
+		4392B2EA1B5FD5E300886F6D /* CryptoSwift.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; };
+		4392B2EB1B5FD5E300886F6D /* CryptoSwift.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 2D74669A1B384425009E6891 /* CryptoSwift.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		4392B2F31B5FD62800886F6D /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392B2EF1B5FD62700886F6D /* Bolts.framework */; };
+		4392B2F41B5FD62800886F6D /* FBSDKCoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392B2F01B5FD62800886F6D /* FBSDKCoreKit.framework */; };
+		4392B2F51B5FD62800886F6D /* FBSDKLoginKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392B2F11B5FD62800886F6D /* FBSDKLoginKit.framework */; };
+		4392B2F61B5FD62800886F6D /* FBSDKShareKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4392B2F21B5FD62800886F6D /* FBSDKShareKit.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		132156BB1B3C274A00468C03 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = 754BE45419693E190098E6F3;
-			remoteInfo = CryptoSwift;
-		};
 		2D079C031B29C8AF004D141D /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 2D079BE31B29C8AE004D141D /* Project object */;
@@ -73,16 +66,23 @@
 			remoteGlobalIDString = 754BE46019693E190098E6F3;
 			remoteInfo = CryptoSwiftTests;
 		};
+		4392B2EC1B5FD5E300886F6D /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 754BE45419693E190098E6F3;
+			remoteInfo = CryptoSwift;
+		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		132156BD1B3C274B00468C03 /* Embed Frameworks */ = {
+		4392B2EE1B5FD5E300886F6D /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				132156BA1B3C274A00468C03 /* CryptoSwift.framework in Embed Frameworks */,
+				4392B2EB1B5FD5E300886F6D /* CryptoSwift.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -102,9 +102,6 @@
 		135635D61B4AB13000AEF832 /* NotificationsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationsTableViewCell.swift; sourceTree = "<group>"; };
 		135635DA1B4AC06500AEF832 /* SingleNotificationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleNotificationViewController.swift; sourceTree = "<group>"; };
 		135635DC1B4AC6EC00AEF832 /* NotificationData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationData.swift; sourceTree = "<group>"; };
-		135635E51B4ADB9F00AEF832 /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
-		135635E61B4ADB9F00AEF832 /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
-		135635E71B4ADB9F00AEF832 /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
 		13660C9A1B47A40A00A3D8D3 /* CommentsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsViewController.swift; sourceTree = "<group>"; };
 		13660C9E1B47AC4100A3D8D3 /* CommentsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentsTableViewCell.swift; sourceTree = "<group>"; };
 		13660CA01B47CD6400A3D8D3 /* CommentData.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CommentData.swift; sourceTree = "<group>"; };
@@ -128,8 +125,11 @@
 		2D17255F1B4ACD8E00283E79 /* Bridging-Header.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "Bridging-Header.h"; sourceTree = "<group>"; };
 		2D7466931B384425009E6891 /* CryptoSwift.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CryptoSwift.xcodeproj; path = ../CryptoSwift/CryptoSwift.xcodeproj; sourceTree = "<group>"; };
 		2D74669E1B384D1E009E6891 /* ben.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = ben.playground; sourceTree = "<group>"; };
-		2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 		2DEAC3B81B4EBE80001AF8A3 /* OneShotLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OneShotLocationManager.swift; sourceTree = "<group>"; };
+		4392B2EF1B5FD62700886F6D /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = ../../../Documents/FacebookSDK/Bolts.framework; sourceTree = "<group>"; };
+		4392B2F01B5FD62800886F6D /* FBSDKCoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKCoreKit.framework; path = ../../../Documents/FacebookSDK/FBSDKCoreKit.framework; sourceTree = "<group>"; };
+		4392B2F11B5FD62800886F6D /* FBSDKLoginKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKLoginKit.framework; path = ../../../Documents/FacebookSDK/FBSDKLoginKit.framework; sourceTree = "<group>"; };
+		4392B2F21B5FD62800886F6D /* FBSDKShareKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FBSDKShareKit.framework; path = ../../../Documents/FacebookSDK/FBSDKShareKit.framework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -137,11 +137,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2D94BA6D1B511C510057EB42 /* FBSDKShareKit.framework in Frameworks */,
-				135635E81B4ADB9F00AEF832 /* Bolts.framework in Frameworks */,
-				135635E91B4ADB9F00AEF832 /* FBSDKCoreKit.framework in Frameworks */,
-				135635EA1B4ADB9F00AEF832 /* FBSDKLoginKit.framework in Frameworks */,
-				132156B91B3C274A00468C03 /* CryptoSwift.framework in Frameworks */,
+				4392B2F31B5FD62800886F6D /* Bolts.framework in Frameworks */,
+				4392B2F41B5FD62800886F6D /* FBSDKCoreKit.framework in Frameworks */,
+				4392B2F51B5FD62800886F6D /* FBSDKLoginKit.framework in Frameworks */,
+				4392B2F61B5FD62800886F6D /* FBSDKShareKit.framework in Frameworks */,
+				4392B2EA1B5FD5E300886F6D /* CryptoSwift.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -171,10 +171,10 @@
 		2D079BE21B29C8AE004D141D = {
 			isa = PBXGroup;
 			children = (
-				2D94BA6C1B511C510057EB42 /* FBSDKShareKit.framework */,
-				135635E51B4ADB9F00AEF832 /* Bolts.framework */,
-				135635E61B4ADB9F00AEF832 /* FBSDKCoreKit.framework */,
-				135635E71B4ADB9F00AEF832 /* FBSDKLoginKit.framework */,
+				4392B2EF1B5FD62700886F6D /* Bolts.framework */,
+				4392B2F01B5FD62800886F6D /* FBSDKCoreKit.framework */,
+				4392B2F11B5FD62800886F6D /* FBSDKLoginKit.framework */,
+				4392B2F21B5FD62800886F6D /* FBSDKShareKit.framework */,
 				2D74669E1B384D1E009E6891 /* ben.playground */,
 				2D079BED1B29C8AE004D141D /* Gegder */,
 				2D079C051B29C8AF004D141D /* GegderTests */,
@@ -268,12 +268,12 @@
 				2D079BE71B29C8AE004D141D /* Sources */,
 				2D079BE81B29C8AE004D141D /* Frameworks */,
 				2D079BE91B29C8AE004D141D /* Resources */,
-				132156BD1B3C274B00468C03 /* Embed Frameworks */,
+				4392B2EE1B5FD5E300886F6D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				132156BC1B3C274A00468C03 /* PBXTargetDependency */,
+				4392B2ED1B5FD5E300886F6D /* PBXTargetDependency */,
 			);
 			name = Gegder;
 			productName = Gegder;
@@ -423,15 +423,15 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		132156BC1B3C274A00468C03 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = CryptoSwift;
-			targetProxy = 132156BB1B3C274A00468C03 /* PBXContainerItemProxy */;
-		};
 		2D079C041B29C8AF004D141D /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 2D079BEA1B29C8AE004D141D /* Gegder */;
 			targetProxy = 2D079C031B29C8AF004D141D /* PBXContainerItemProxy */;
+		};
+		4392B2ED1B5FD5E300886F6D /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = CryptoSwift;
+			targetProxy = 4392B2EC1B5FD5E300886F6D /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -548,6 +548,7 @@
 					"$(inherited)",
 					/Users/Susanne/Documents/FacebookSDK,
 					/Users/Saphia/Documents/FacebookSDK,
+					/Users/Benjamin/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
@@ -569,6 +570,7 @@
 					"$(inherited)",
 					/Users/Susanne/Documents/FacebookSDK,
 					/Users/Saphia/Documents/FacebookSDK,
+					/Users/Benjamin/Documents/FacebookSDK,
 				);
 				INFOPLIST_FILE = Gegder/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
