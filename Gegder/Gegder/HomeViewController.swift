@@ -106,6 +106,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                                 // Convert the downloaded data in to a UIImage object and cache
                                 let image = UIImage(data: data)
                                 self.imageCache[urlString!] = image
+                                self.trimCache()
                                 
                                 // Update the cell
                                 dispatch_async(dispatch_get_main_queue(), {
@@ -156,6 +157,14 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         //        println(post.post_id)
         
         return cell
+    }
+    
+    func trimCache() {
+        if imageCache.count > 20 {
+            for index in 0...9 {
+                imageCache.removeAtIndex(imageCache.startIndex)
+            }
+        }
     }
     
     func scrollViewDidScroll(scrollView: UIScrollView) {
