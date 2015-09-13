@@ -23,6 +23,8 @@ class PostData {
         var is_dislike : Bool
         var post_id : String?
         var display_order : String?
+        var latitude : String?
+        var longitude : String?
         
         init() {
             is_like = false
@@ -77,6 +79,12 @@ class PostData {
             entry.post_id = post["id"].string!
             entry.display_order = post["display_order"].string!
             
+            //println(post["latitude"].string)
+            //println(post["longitude"].string)
+            
+            entry.latitude = post["latitude"].string
+            entry.longitude = post["longitude"].string
+            
             entries.append(entry)
         }
     }
@@ -103,6 +111,9 @@ class PostData {
             entry.is_dislike = post["is_dislike"].bool!
             entry.post_id = post["id"].string!
             entry.display_order = post["display_order"].string!
+            
+            entry.latitude = post["latitude"].string
+            entry.longitude = post["longitude"].string
             
             newEntries.append(entry)
         }

@@ -324,4 +324,15 @@ class PostTableViewCell: UITableViewCell {
         
         parentView.presentViewController(optionMenu, animated: true, completion: nil)
     }
+    
+    @IBAction func LocationButtonTouch(sender: UIButton) {
+        
+        if parentView is HomeViewController {
+            (parentView as! HomeViewController).selectedPostCellId = PostId
+        }
+        
+        if parentView is TrendingViewController {
+            (parentView as! TrendingViewController).selectedPostCellId = PostId
+        }
+    }
 }

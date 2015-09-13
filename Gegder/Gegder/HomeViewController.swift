@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreLocation
 
 class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UIPopoverPresentationControllerDelegate {
     
@@ -49,6 +50,8 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
                 self.HomeTableView.reloadData()
             }
         })
+        
+        println(urlString)
         
         // Camera view
         picker.delegate = self
@@ -158,7 +161,7 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
         
         return cell
     }
-    
+     
     func trimCache() {
         if imageCache.count > 20 {
             for index in 0...9 {
@@ -262,6 +265,30 @@ class HomeViewController: UIViewController, UITableViewDataSource, UITableViewDe
             let option = (sender as! MenuViewController).option
             let vc = segue.destinationViewController as! WebViewController
             vc.option = option
+        }
+        else if (segue.identifier == "showMapView") {
+            
+            var vc = segue.destinationViewController as! LocationViewController
+            
+            println(self.data.findEntry(self.selectedPostCellId).latitude)
+            
+            var latitudeStr : NSString?
+            var longitudeStr : NSString?
+            var location : CLLocation?
+            
+            if self.data.findEntry(self.selectedPostCellId).latitude != nil {
+                latitudeStr = NSString(string: self.data.findEntry(self.selectedPostCellId).latitude!)
+                longitudeStr = NSString(string: self.data.findEntry(self.selectedPostCellId).longitude!)
+                var latitude = latitudeStr!.doubleValue
+                var longitude = longitudeStr!.doubleValue
+                
+                location = CLLocation(latitude: latitude, longitude: longitude)
+                
+                vc.locationTitle = self.data.findEntry(self.selectedPostCellId).location
+                vc.displayLocation = location
+
+            }
+            
         }
     }
     
